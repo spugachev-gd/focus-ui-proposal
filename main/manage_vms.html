@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>
+            Altai Private Cloud
+        </title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="http://localhost/static/img/favicon.ico">
+        <link href="index_user_files/app.css" rel="stylesheet" type="text/css">
+        <link href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css">
+        <link href="css/chosen.css" rel="stylesheet" type="text/css">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                    <span class="icon-bar">                    </span>
+                    <span class="icon-bar">                    </span>
+                    <span class="icon-bar">                    </span>
+                </a>
+                <a class="brand" href="index_user_hor.html">
+                    <img src="index_user_files/GridDynamics-brandmark-24x24px.png">
+                    Altai Private Cloud
+                </a>
+                <div class="nav-collapse collapse" style="height: 0px;">
+                    
+                    <ul class="nav pull-right">
+                        
+                        <li>
+                            <a href="http://localhost/global_administration.html">Admin section</a>
+                        </li>
+                        <li>
+                            <a href="http://localhost/logout/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                
+    <div class="container">
+
+<ul class="breadcrumb">
+  <li><a href="index_user_hor.html">Home</a> <span class="divider">/</span></li>
+  <li class="active">Manage VMs</li>
+</ul>
+
+<div class="span3" style="margin-left: 0px;">
+  <select name="project" class="chzn-select" id="project" data-placeholder="Filter VMs">
+    <option value=""></option>
+    <option value="IT">All&nbsp;(14)</option>
+    <option value="IT">IT&nbsp;(2)</option>
+    <option value="OSCORE">OSCORE&nbsp;(12)</option>
+  </select>
+</div>
+
+<div class="span3">
+  <input type="text" placeholder="Search" class="span2 search-query" style="float: none;">
+</div>
+
+<div>
+    Created From <input class="datepicker span2" name="start" type="text" />
+    To <input class="datepicker span2" name="end" type="text" />
+</div>
+
+
+
+
+
+      <table style="margin-top: 5px;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Network IP</th>
+            <th>Created</th>
+            <th>User</th>
+            <th>Image</th>
+            <th>Flavor</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>
+                    
+                        <a href="vm_details.html">
+                            test1
+                        </a>
+                    
+                </td>
+                <td>47d4ae6e-cbe1-444e-877d-c4dc9cb696c4</td>
+                <td>
+                            VLAN 321:
+                                192.168.100.3
+                </td>
+                <td>09/06/2012 08:32:29</td>
+                <td>
+                    <a href="/global/users/3775a71296e04cf1b2d57a32fc4b0222/">
+                        openstack-core@griddynamics.com
+                    </a>
+                </td>
+                <td>sdf</td>
+                <td>m1.tiny</td>
+            </tr>
+        
+            <tr>
+<td><input type="checkbox"></td>
+                <td>
+                    
+                        <a href="vm_details.html">
+                            test2
+                        </a>
+                    
+                </td>
+                <td>67daf791-1e00-4bb6-af27-340345a5871b</td>
+                <td>
+                            VLAN 321:
+                                192.168.100.4
+                </td>
+                <td>09/06/2012 08:32:38</td>
+                <td>
+                    <a href="/global/users/3775a71296e04cf1b2d57a32fc4b0222/">
+                        openstack-core@griddynamics.com
+                    </a>
+                </td>
+                <td>sdf</td>
+                <td>m1.tiny</td>
+            </tr>
+        
+    </tbody>
+</table>
+<form class="form-horizontal">
+with selected <select class="span1"><option>reboot</option><option>reset</option><option>delete</option></select>
+<button class="btn btn-primary">go</button>
+</form>
+
+<div class="pagination">
+    <ul>
+      <li class="active">
+        <a href="/projects/6/?page=1">1</a>
+      </li>
+      <li class="">
+        <a href="/projects/6/?page=2">2</a>
+      </li>
+      <li>
+        <a href="/projects/6/?page=2">Next</a>
+      </li>
+    </ul>
+</div>
+
+</div><!-- end content -->
+<script src="./js/jquery-1.8.1.min.js"></script>
+<script src="./js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="./js/widgets.js"></script>
+<script src="./js/bootstrap-collapse.js"></script>
+<script src="./js/bootstrap-modal.js"></script>
+<script src="./js/jquery.color.js"></script>
+<script src="./js/datepicker.js"></script>
+<script src="./js/bootstrap-dropdown.js"></script>
+<script src="./js/chosen.jquery.min.js"></script>
+
+
+<!-- back button -->
+      <div class="back_panel"><a href="javascript: history.back();"><h3><span>&larr;</span><span>&nbsp;Back</span></h3></a></div>
+      <style>
+        .back_panel{
+          position: absolute;
+          left: 0;
+          top: 40px;
+          float: left;
+          height: 100%;
+          width: 150px;
+          opacity: 0.2;
+        }
+        .back_panel a{
+          //border-right: 1px #666666 solid;
+          background-color: #F5F5F5;
+          color: #000000;
+          padding-top: 15px;
+          padding-left: 15px;
+          text-decoration: none;
+          display: block;
+          width: 150px;
+          height: 100%;
+          //text-align: center;
+        }
+      </style>
+      <script>
+        $('.back_panel').mouseenter(function() {
+          $('.back_panel').stop().animate({
+            "opacity": "1",
+          }, 500);
+        });
+        $('.back_panel').mouseleave(function() {
+          $('.back_panel').stop().animate({
+            "opacity": "0.2",
+          }, 500);
+        });
+      </script>
+<!-- end back button -->
+<script>
+	$(function() {
+		$( ".datepicker" ).datepicker();
+	});
+  $(".chzn-select").chosen({allow_single_deselect: true});
+</script>
+</body></html>
