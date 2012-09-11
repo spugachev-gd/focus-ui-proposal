@@ -1,0 +1,29 @@
+.back_panel{
+    position: absolute;
+    left: 0;
+    top: 40px;
+    float: left;
+    height: 100%;
+    width: 35px;
+    opacity: 0.2;
+    overflow: hidden;
+}
+.back_panel a{
+    background-color: #F5F5F5;
+    color: #000000;
+    padding-top: 15px;
+    padding-left: 15px;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    height: 100%;
+}
+.container{
+    padding-left: 30px;
+}
+
+@media (max-width: 950px) {
+    .back_panel{
+        top: 56px;
+    }
+}

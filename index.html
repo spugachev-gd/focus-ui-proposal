@@ -1,17 +1,38 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>
             Altai Private Cloud
         </title>
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" href="http://localhost/static/img/favicon.ico">
-        <link href="index_user_files/app.css" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="static/img/favicon.ico">
+        <link href="static/bootstrap.2.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="static/focus/css/middle.css" rel="stylesheet" type="text/css">
+        <link href="static/bootstrap.2.1.1/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+        <link href="static/dependencies/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css">
+        <link href="static/dependencies/css/chosen.css" rel="stylesheet" type="text/css">
+        <link href="static/focus/css/back.css" rel="stylesheet" type="text/css">
+        <link href="static/focus/css/index.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+        <script src="static/dependencies/js/jquery-1.8.1.min.js"></script>
+        <script src="static/dependencies/js/jquery-ui-1.8.23.custom.min.js"></script>
+        <script src="static/dependencies/js/widgets.js"></script>
+        <script src="static/dependencies/js/jquery.color.js"></script>
+        <script src="static/dependencies/js/chosen.jquery.min.js"></script>
+        <script src="static/bootstrap.2.1.1/js/bootstrap.js"></script>
+
+        <script src="static/focus/js/back.js"></script>
     </head>
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
         
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="z-index: 100;">
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -20,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="index.html">
-                    <img src="index_user_files/GridDynamics-brandmark-24x24px.png">
+                    <img src="static/focus/img/GridDynamics-brandmark-24x24px.png">
                     Altai Private Cloud
                 </a>
                 <div class="nav-collapse collapse" style="height: 0px;">
@@ -42,17 +63,17 @@
     <ul class="thumbnails">
         <li class="span2">
             <a class="thumbnail" href="spawn_vm.html">
-                <img alt="Start VM" src="./imgs/2/Laptop.png">
+                <img alt="Start VM" src="static/focus/img/thumbs/Laptop.png">
                 <div class="caption">
-                    <h3>Start VM</h3>
+                    <h4>Start VM</h4>
                 </div>
             </a>
         </li>
         <li class="span2">
             <a class="thumbnail" href="manage_vms.html">
-                <img alt="Manage VMs" src="./imgs/2/check-marks.png">
+                <img alt="Manage VMs" src="static/focus/img/thumbs/check-marks.png">
                 <div class="caption">
-                    <h3>Manage VMs</h3>
+                    <h4>Manage VMs</h4>
                 </div>
             </a>
         </li>
@@ -63,17 +84,17 @@
   <ul class="thumbnails">
     <li class="span2">
       <a class="thumbnail" href="upload_image.html">
-        <img alt="Upload Image" src="./imgs/2/Arrow.png">
+        <img alt="Upload Image" src="static/focus/img/thumbs/Arrow.png">
         <div class="caption">
-          <h3>Upload Image</h3>
+          <h4>Upload Image</h4>
         </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="manage_images.html">
-        <img alt="Manage Images" src="./imgs/2/check-marks.png">
+        <img alt="Manage Images" src="static/focus/img/thumbs/check-marks.png">
           <div class="caption">
-              <h3>Manage Images</h3>
+              <h4>Manage Images</h4>
           </div>
       </a>
     </li>
@@ -84,41 +105,41 @@
   <ul class="thumbnails">
     <li class="span2">
       <a class="thumbnail" href="#projectChooser" data-toggle="modal">
-        <img alt="Security Groups" src="./imgs/2/shield.png">
+        <img alt="Security Groups" src="static/focus/img/thumbs/shield.png">
           <div class="caption">
-              <h3>Security Groups</h3>
+              <h4>Security Groups</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="billing.html">
-        <img alt="Billing" src="./imgs/2/Doller1.png">
+        <img alt="Billing" src="static/focus/img/thumbs/Doller1.png">
           <div class="caption">
-              <h3>Billing</h3>
+              <h4>Billing</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="members.html">
-        <img alt="Members" src="./imgs/2/Smile-face.png">
+        <img alt="Members" src="static/focus/img/thumbs/Smile-face.png">
           <div class="caption">
-              <h3>Members</h3>
+              <h4>Members</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="user_project_audit.html">
-        <img alt="Audit" src="./imgs/2/Paper.png">
+        <img alt="Audit" src="static/focus/img/thumbs/Paper.png">
           <div class="caption">
-              <h3>Audit</h3>
+              <h4>Audit</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="invite.html">
-        <img alt="Invite" src="./imgs/2/Shake-hand.png">
+        <img alt="Invite" src="static/focus/img/thumbs/Shake-hand.png">
           <div class="caption">
-              <h3>Invite</h3>
+              <h4>Invite</h4>
           </div>
       </a>
     </li>
@@ -128,33 +149,33 @@
   <ul class="thumbnails">
     <li class="span2">
       <a class="thumbnail" href="ssh.html">
-        <img alt="SSH" src="./imgs/2/Ofice-bag.png">
+        <img alt="SSH" src="static/focus/img/thumbs/Ofice-bag.png">
           <div class="caption">
-              <h3>SSH Keys</h3>
+              <h4>SSH Keys</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="user_personal_audit.html">
-        <img alt="Audit" src="./imgs/2/Paper.png">
+        <img alt="Audit" src="static/focus/img/thumbs/Paper.png">
           <div class="caption">
-              <h3>Audit</h3>
+              <h4>Audit</h4>
           </div>
       </a>
     </li>
     <li class="span2">
       <a class="thumbnail" href="settings.html">
-        <img alt="settings" src="./imgs/2/puzzels.png">
+        <img alt="settings" src="static/focus/img/thumbs/puzzels.png">
           <div class="caption">
-              <h3>Settings</h3>
+              <h4>Settings</h4>
           </div>
       </a>
     </li>
       <li class="span2">
           <a class="thumbnail" href="credentials.html">
-              <img alt="credentials" src="./imgs/credentials.jpg">
+              <img alt="credentials" src="static/focus/img/thumbs/credentials.jpg">
               <div class="caption">
-                  <h3>Credentials</h3>
+                  <h4>Credentials</h4>
               </div>
           </a>
       </li>
@@ -175,8 +196,8 @@
           <div style="width:505px;height:200px;border: 1px solid #DDDDDD;border-radius: 4px 4px 4px 4px;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);padding: 4px;">
             <a href="security_groups.html">
               <div style="width: 300px; float:left; position:relative;">
-                  <img src="./imgs/project1.png" style="position: relative;">
-                  <img style="position: absolute; top: 150px; left: 250px;" src="./imgs/50.png">
+                  <img src="static/focus/img/project1.png" style="position: relative;">
+                  <img style="position: absolute; top: 150px; left: 250px;" src="static/focus/img/50.png">
               </div>
               <div style="width: 200px; float:right; height:200px;">
                   <h1 style="padding-top: 20px; padding-left: 20px;">IT</h1>
@@ -189,8 +210,8 @@
           <div style="width:505px;height:200px;border: 1px solid #DDDDDD;border-radius: 4px 4px 4px 4px;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);padding: 4px;">
             <a href="security_groups.html">
                 <div style="width: 300px; float:left; position:relative;">
-                    <img src="./imgs/project2.jpg" style="position: relative;">
-                    <img style="position: absolute; top: 150px; left: 250px;" src="./imgs/50.png">
+                    <img src="static/focus/img/project2.jpg" style="position: relative;">
+                    <img style="position: absolute; top: 150px; left: 250px;" src="static/focus/img/50.png">
                 </div>
               <div style="width: 200px; float:right; height:200px;">
                   <h1 style="padding-top: 20px; padding-left: 20px;">OSCORE</h1>
@@ -203,8 +224,8 @@
           <div style="width:505px;height:200px;border: 1px solid #DDDDDD;border-radius: 4px 4px 4px 4px;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);padding: 4px;">
             <a href="security_groups.html">
                 <div style="width: 300px; float:left; position:relative;">
-                    <img src="./imgs/project3.jpg" style="position: relative;">
-                    <img style="position: absolute; top: 150px; left: 250px;" src="./imgs/50.png">
+                    <img src="static/focus/img/project3.jpg" style="position: relative;">
+                    <img style="position: absolute; top: 150px; left: 250px;" src="static/focus/img/50.png">
                 </div>
               <div style="width: 200px; float:right; height:200px;">
                   <h1 style="padding-top: 20px; padding-left: 20px;">Nice.com</h1>
@@ -222,33 +243,4 @@
 <!-- END MODAL -->
     </div>
 
-<style>
-  .back_panel{
-    position: absolute;
-    left: 0;
-    top: 40px;
-    float: left;
-    height: 100px;
-    width: 150px;
-  }
-  .back_panel a{
-    border-right: 1px #666666 solid;
-    background-color: #F5F5F5;
-    color: #000000;
-    padding-top: 15px;
-    padding-left: 15px;
-    text-decoration: none;
-    display: block;
-    width: 150px;
-    height: 100%;
-  }
-  .caption{
-      text-align: center;
-  }
-</style>
-
-<script src="./js/jquery-1.8.1.min.js"></script>
-<script src="./js/widgets.js"></script>
-<script src="./js/bootstrap-collapse.js"></script>
-<script src="./js/bootstrap-modal.js"></script>
 </body></html>
