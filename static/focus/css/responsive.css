@@ -8,6 +8,9 @@
     .control-bar .datepicker-block{
         width: 400px;
     }
+    .table input{
+        width: 80%;
+    }
 }
 
 @media (max-width: 980px) {
@@ -24,17 +27,32 @@
     .control-bar select, .control-bar input{
         width: 100px;
     }
+    .control-bar a{
+        width: 100%;
+        float: left;
+    }
     .form-horizontal select{
         width: 100px;
         margin-bottom: 5px;
     }
+    .control-bar .span5{
+        width: 200px;
+    }
     .control-bar div{
+        float: left;
         width: 150px;
+    }
+    .table input{
+        width: 50%;
     }
 }
 @media (max-width: 550px){
     .controls *{
         width: 80%;
+    }
+    .control-bar a{
+        width: 100%;
+        float: left;
     }
 }
 

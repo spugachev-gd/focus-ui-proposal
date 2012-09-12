@@ -62,33 +62,35 @@
         <li class="active">Audit</li>
     </ul>
 
-    <div class="span3" style="margin-left: 0px;">
-        <select name="project" class="chzn-select" id="user" data-placeholder="Filter Users">
-            <option value=""></option>
-            <option value="all">All&nbsp;(3)</option>
-            <option value="spugachev">spugachev</option>
-            <option value="apugachev">apugachev</option>
-            <option value="nsavin">nsavin</option>
-        </select>
-    </div>
+    <div class="control-bar">
+        <div class="span4">
+            <select name="project" class="chzn-select" id="user" data-placeholder="Filter Users">
+                <option value=""></option>
+                <option value="all">All&nbsp;(3)</option>
+                <option value="spugachev">spugachev</option>
+                <option value="apugachev">apugachev</option>
+                <option value="nsavin">nsavin</option>
+            </select>
+        </div>
 
-    <div class="span3" style="margin-left: 0px;">
-        <select name="project" class="chzn-select" id="project" data-placeholder="Filter Actions">
-            <option value=""></option>
-            <option value="">All&nbsp;(3)</option>
-            <option value="added">added</option>
-            <option value="edited">edited</option>
-            <option value="removed">removed</option>
-        </select>
-    </div>
+        <div class="span3">
+            <select name="project" class="chzn-select" id="project" data-placeholder="Filter Actions">
+                <option value=""></option>
+                <option value="">All&nbsp;(3)</option>
+                <option value="added">added</option>
+                <option value="edited">edited</option>
+                <option value="removed">removed</option>
+            </select>
+        </div>
 
-    <div class="span2">
-        <input type="text" placeholder="Search" class="span2 search-query" style="float: none;">
-    </div>
+        <div class="span3">
+            <input type="text" placeholder="Search" class="search-query" style="float: none;">
+        </div>
 
-    <div class="span3">
-        Created From <input class="datepicker span1" name="start" type="text" />
-        To <input class="datepicker span1" name="end" type="text" />
+        <div class="span4 datepicker-block">
+            Created From <input class="datepicker" name="start" type="text" />
+            To <input class="datepicker" name="end" type="text" />
+        </div>
     </div>
     <table class="table table-striped table-bordered table-condensed">
         <thead>
