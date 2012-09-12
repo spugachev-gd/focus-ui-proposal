@@ -1,5 +1,46 @@
+@media (max-width: 1200px) {
+    .control-bar select, .control-bar input{
+        width: 75%;
+    }
+    .control-bar .datepicker{
+        width: 80px;;
+    }
+    .control-bar .datepicker-block{
+        width: 400px;
+    }
+}
+
 @media (max-width: 980px) {
     .back_panel{
         top: 56px;
     }
+    .control-bar div{
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .control-bar select, .control-bar input{
+        width: 100px;
+    }
+    .form-horizontal select{
+        width: 100px;
+        margin-bottom: 5px;
+    }
+    .control-bar div{
+        width: 150px;
+    }
+}
+@media (max-width: 550px){
+    .controls *{
+        width: 80%;
+    }
+}
+
+.control-bar div{
+    margin-left: 0px;
+}
+.datepicker{
+    width: 80px;
 }

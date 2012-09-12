@@ -10,9 +10,3 @@
         box-sizing: border-box;
     }
 }
-
-@media (max-width: 550px){
-    .controls *{
-        width: 80%;
-    }
-}
