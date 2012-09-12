@@ -21,9 +21,3 @@
 .container{
     padding-left: 30px;
 }
-
-@media (max-width: 980px) {
-    .back_panel{
-        top: 56px;
-    }
-}
