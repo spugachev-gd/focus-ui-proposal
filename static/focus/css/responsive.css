@@ -1,12 +1,20 @@
+.control-bar div{
+    margin-left: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.datepicker{
+    width: 80px;
+}
+.datepicker-block{
+    width: 350px;
+}
+
+
 @media (max-width: 1200px) {
     .table input{
         width: 80%;
-    }
-    .control-bar *:not(.chzn-select *){
-        width: 80%;
-    }
-    .search-query-div{
-        margin-right: 5px;
     }
 }
 
@@ -18,23 +26,13 @@
         width: 300px;
     }
 }
-/*@media (max-width: 768px){
-    .search-query-div{
-        width: 150px;
+@media (max-width: 768px){
+    .add-btn a{
+        float: none;
+        margin-left: 5px;
     }
-}*/
+}
 
-.control-bar div{
-    margin-left: 0px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
-.datepicker{
-    width: 80px;
-}
-.datepicker-block{
-    width: 350px;
-}
-.search-query{
-    float: none;
+.add-btn{
+    float: right;
 }
