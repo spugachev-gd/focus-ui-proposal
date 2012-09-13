@@ -1,15 +1,12 @@
 @media (max-width: 1200px) {
-    .control-bar select, .control-bar input{
-        width: 75%;
-    }
-    .control-bar .datepicker{
-        width: 80px;;
-    }
-    .control-bar .datepicker-block{
-        width: 400px;
-    }
     .table input{
         width: 80%;
+    }
+    .control-bar *:not(.chzn-select *){
+        width: 80%;
+    }
+    .search-query-div{
+        margin-right: 5px;
     }
 }
 
@@ -17,50 +14,26 @@
     .back_panel{
         top: 56px;
     }
-    .control-bar div{
-        margin-left: 10px;
-        margin-bottom: 5px;
+    .control-bar .chzn-select-container{
+        width: 300px;
     }
 }
-
-@media (max-width: 768px) {
-    .control-bar select, .control-bar input{
-        width: 100px;
-    }
-    .control-bar a{
-        width: 100%;
-        float: left;
-    }
-    .form-horizontal select{
-        width: 100px;
-        margin-bottom: 5px;
-    }
-    .control-bar .span5{
-        width: 200px;
-    }
-    .control-bar div{
-        float: left;
+/*@media (max-width: 768px){
+    .search-query-div{
         width: 150px;
     }
-    .table input{
-        width: 50%;
-    }
-}
-@media (max-width: 550px){
-    .controls *{
-        width: 80%;
-    }
-    .control-bar a{
-        width: 100%;
-        float: left;
-    }
-}
+}*/
 
 .control-bar div{
     margin-left: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 .datepicker{
     width: 80px;
+}
+.datepicker-block{
+    width: 350px;
 }
 .search-query{
     float: none;
