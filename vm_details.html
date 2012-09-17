@@ -3,26 +3,23 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li class="active">"My Virtual Machine Name"</li>
+    <li><a href="manage_vms_clear.html">Manage VMs</a> <span class="divider">/</span></li>
+    <li class="active">Test VM Name</li>
 </ul>
-<div class="alert alert-info">
-    <button type="button" class="close" data-dismiss="alert">×</button>Password: asd12312asdaw21312
-</div>
-<div class="row">
-    <div class="btn-group span3"  style="margin: 0px 0px 20px 30px;">
-        <a href="vm_details.html" class="btn btn-success">Details</a>
-        <a href="spawn_vm.html" class="btn btn-success">Spawn New</a>
+<div>
+    <div class="btn-group span4" style="margin: 0px 0px 20px 0px;">
+        <a href="#" class="btn btn-success">Reboot</a><a href="#" class="btn btn-success">Reset</a><a href="#" class="btn btn-success">Show VNC</a><a href="#" class="btn btn-success">Show log</a>
     </div>
-    <div class="input-append">
-        <input class="span5" id="appendedInputButton" size="16" type="text" placeholder="People, to be notified about this VM when it gain an IP"><button class="btn" type="button">Send</button>
+    <div class="span1 pull-right" style="margin: 0px 0px 20px 0px;">
+        <a href="#" class="btn btn-danger">Delete</a>
     </div>
 </div>
 <table class="table table-striped table-bordered table-condensed" style="margin-top: 5px;">
     <tr>
         <td colspan=2>
-            <h4>
+            <h3>
                 VM
-            </h4>
+            </h3>
         </td>
     </tr>
     <tr>
@@ -31,7 +28,7 @@ layout: base
     </tr>
     <tr>
         <td>Network IP</td>
-        <td><img src="static/focus/img/ajax-loader.gif"></td>
+        <td>VLAN 321: 192.168.100.3</td>
     </tr>
     <tr>
         <td>Created</td>
@@ -44,35 +41,37 @@ layout: base
     <tr>
         <td>User</td>
         <td>
+
             <a href="/global/users/3775a71296e04cf1b2d57a32fc4b0222/">
                 openstack-core@griddynamics.com
             </a>
+
         </td>
     </tr>
 </table>
 <table class="table table-striped table-bordered table-condensed">
     <tr>
         <td colspan=2>
-            <h4>
+            <h3>
                 Image
-            </h4>
+            </h3>
         </td>
     </tr>
     <tr>
         <td width="200px">Id</td>
-        <td><a href="image_details.html">50e2761f-b93e-4277-af4e-17afef999296</a></td>
+        <td>50e2761f-b93e-4277-af4e-17afef999296</td>
     </tr>
     <tr>
         <td>Name</td>
-        <td>mini_image_log.img</td>
+        <td>sdf</td>
     </tr>
 </table>
 <table class="table table-striped table-bordered table-condensed">
     <tr>
         <td colspan=2>
-            <h4>
+            <h3>
                 Flavor
-            </h4>
+            </h3>
         </td>
     </tr>
     <tr>

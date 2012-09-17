@@ -1,0 +1,60 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li class="active">Upload Image</li>
+</ul>
+<div class="row">
+    <div class="span7">
+        <form method="POST" class="form-horizontal new-image well">
+            <div class="upload-view">
+                <fieldset>
+                    <div class="control-group ">
+                        <label class="control-label">
+                            <b>Project</b>
+                        </label>
+                        <div class="controls">
+                            <select name="project" class="chzn-select" id="project" data-placeholder="Select Project" tabindex="1">
+                                <option value=""></option>
+                                <option value="IT">IT</option>
+                                <option value="OSCORE">OSCORE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group upload-type">
+                        <label class="control-label"> Upload type </label>
+                        <div class="controls">
+                            <label class="radio inline">
+                                <input type="radio" value="solid" name="upload_type" onclick="window.location = 'upload_image.html';" tabindex="2"> Solid
+                            </label>
+                            <label class="radio inline">
+                                <input type="radio" value="amazon_like" name="upload_type" onclick="window.location = 'upload_image_amazon_like.html';" tabindex="2"> Amazon Like
+                            </label>
+                        </div>
+                    </div>
+                    <div data-error-key="name" class="control-group name">
+                        <label class="control-label"> Name </label>
+                        <div class="controls">
+                            <input type="text" id="id_name" name="name" tabindex="3">
+                        </div>
+                    </div>
+                    {{ content }}
+                </fieldset>
+                <div class="form-actions">
+                    <button disabled="" type="submit" class="btn btn-primary tc-add" tabindex="10">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="span5">
+        <h4>Recommended:</h4>
+        <ul class="recommended_images">
+            <li><a name="Ubuntu" href="http://www.ubuntu.com/download/...release=lts&bits=32">Ubuntu (http://www.ubuntu.com/download/...release=lts&bits=32)</a></li>
+            <li><a name="Centos" href="http://mirror.yandex.ru/centos/..._64-LiveCD.iso">Centos (http://mirror.yandex.ru/centos/..._64-LiveCD.iso)</a></li>
+            <li><a name="Fedora" href="http://download.fedoraproje...-x86_64-Live-Desktop.iso">Fedora(http://download.fedoraproje...-x86_64-Live-Desktop.iso)</a></li>
+            <li><a name="Gentoo" href="http://distfiles.gentoo.org/...-minimal-20120621.iso">Gentoo (http://distfiles.gentoo.org/...-minimal-20120621.iso)</a></li>
+        </ul>
+    </div>
+</div>
+{% include back_button.html %}

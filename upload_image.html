@@ -1,66 +1,52 @@
 ---
-layout: base
+layout: upload_image_base
 ---
-<ul class="breadcrumb">
-    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li class="active">Upload Image</li>
-</ul>
-<form method="POST" class="form-horizontal new-image well">
-    <div class="upload-view"><fieldset>
-        <div class="control-group ">
-            <label class="control-label">
-                <b>Project</b>
-            </label>
-            <div class="controls">
-                <select name="project" class="chzn-select" id="project" data-placeholder="Select Project"><option value=""></option><option value="IT">IT</option><option value="OSCORE">OSCORE</option></select>
-            </div>
-        </div>
-        <div class="control-group upload-type">
-            <label class="control-label"> Upload type </label>
-            <div class="controls">
-                <label class="radio inline">
-                    <input type="radio" value="solid" name="upload_type" checked="checked"> Solid
-                </label>
-                <label class="radio inline">
-                    <input type="radio" value="amazon_like" name="upload_type"> Amazon Like
-                </label>
-            </div>
-        </div>
-        <div data-error-key="name" class="control-group name">
-            <label class="control-label">
-                Name
-            </label>
-            <div class="controls">
-                <input type="text" value="" id="id_name" name="name">
-            </div>
-        </div>
-        <div data-error-key="uploader" class="control-group uploader solid">
-            <label class="control-label">File to upload</label>
-            <div class="controls">
-                <div style="padding-top: 5px; position: relative;" id="container">
-                    <input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">
-                    <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button>
-                    <div id="filelist"></div>
-                    <div id="p176e0enma1fbf126u1jj81rlg1np70_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 59px; height: 28px; overflow: hidden; z-index: -1; opacity: 0; top: 5px; left: 224px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p176e0enma1fbf126u1jj81rlg1np70_html5"></div></div>
-            </div>
-            <div id="autoupload_container" class="controls hide">
-                <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
-            </div>
-        </div>
-        <div class="control-group disk-format">
-            <label class="control-label"> Disk format </label>
-            <div class="controls">
-                <label class="radio inline">
-                    <input type="radio" checked="" value="raw" name="disk_format"> raw
-                </label>
-                <label class="radio inline">
-                    <input type="radio" value="qcow2" name="disk_format"> qcow2
-                </label>
-            </div>
-        </div>
-    </fieldset>
-        <div class="form-actions">
-            <button disabled="" type="submit" class="btn btn-primary tc-add">Add</button>
+<div data-error-key="uploader" class="control-group uploader from_file solid">
+    <label class="control-label">File to upload</label>
+    <div class="controls">
+        <div style="padding-top: 5px; position: relative;" id="container">
+            <input type="text" id="id_uploaded_file" name="uploaded_file" readonly="" tabindex="4">
+            <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
+            <span class="help-inline"><a href="#" id="upload_switcher"><i class="icon-resize-horizontal"></i>From Url</a></span>
         </div>
     </div>
-</form>
+    <div id="autoupload_container" class="controls hide">
+        <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
+    </div>
+</div>
+<div class="control-group disk-format">
+    <label class="control-label"> Disk format </label>
+    <div class="controls">
+        <label class="radio inline">
+            <input type="radio" checked="" value="raw" name="disk_format" tabindex="6"> raw
+        </label>
+        <label class="radio inline">
+            <input type="radio" value="qcow2" name="disk_format" tabindex="6"> qcow2
+        </label>
+    </div>
+</div>
+<!-- TODO: remove this code later in production version -->
+<script>
+    $(document).on('click', '#upload_switcher', function(event){
+        if ($('.uploader').hasClass('from_file')){
+            $('.uploader').html('<label class="control-label">URL</label><div class="controls"><input type="text" id="image_url"><span class="help-inline"><a href="#" id="upload_switcher"><i class="icon-resize-horizontal"></i>From Url</a></span></div>');
+            $("#upload_switcher").html('<i class="icon-resize-horizontal"></i>&nbsp;From Local Disk</a>');
+        }else{
+            $('.uploader').html('<label class="control-label">Local File</label><div class="controls"><input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">&nbsp;<button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button><span class="help-inline"><a href="#" id="upload_switcher"><i class="icon-resize-horizontal"></i>From Local Disk</a></span></div>');
+            $("#upload_switcher").html('<i class="icon-resize-horizontal"></i>&nbsp;From Url</a>');
+            $("#id_name").val("");
+        }
+        $('.uploader').toggleClass('from_file');
+        event.preventDefault();
+    });
+    $(document).on('click', '.recommended_images li a', function(){
+        if ($('.uploader').hasClass('from_file')){
+            $("#upload_switcher").click();
+        }
+        if (!$('.uploader').hasClass('from_file')){
+            $("#image_url").val($(this).attr('href'));
+            $("#id_name").val($(this).attr('name')).focus();
+        }
+        return false;
+    });
+</script>

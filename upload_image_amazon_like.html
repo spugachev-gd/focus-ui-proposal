@@ -1,0 +1,86 @@
+---
+layout: upload_image_base
+---
+<div data-error-key="kernel" class="control-group uploader kernel from_file">
+    <label class="control-label">Kernel</label>
+    <div class="controls">
+        <div style="padding-top: 5px; position: relative;" id="kernel_container">
+            <select name="kernel" id="id_kernel" tabindex="5">
+                <option selected="" disabled="disabled">Select kernel</option>
+                <option id="kernel_uploaded_file" style="position: relative; z-index: 0;">Upload new kernel</option>
+                <option disabled="disabled">---------</option>
+            </select>
+            <span class="help-inline"><a href="#" id="upload_switcher_kernel"><i class="icon-resize-horizontal"></i>From Url</a></span>
+            <div id="p177a48mb7k981tp212ocqfu1glf3_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 217px; height: 17px; overflow: hidden; z-index: -1; opacity: 0; top: 23px; left: 2px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p177a48mb7k981tp212ocqfu1glf3_html5"></div></div>
+    </div>
+</div>
+<div data-error-key="initrd" class="control-group uploader initrd from_file">
+    <label class="control-label">Initrd</label>
+    <div class="controls">
+        <div style="padding-top: 5px; position: relative;" id="initrd_container">
+            <select disabled name="initrd" id="id_initrd" tabindex="6">
+                <option selected="" disabled="disabled">Select initrd</option>
+                <option id="initrd_uploaded_file" style="position: relative; z-index: 0;">Upload new initrd</option>
+                <option disabled="disabled">---------</option>
+            </select>
+            <span class="help-inline"><a href="#" id="upload_switcher_initrd"><i class="icon-resize-horizontal"></i>From Url</a></span>
+            <div id="p177a48mbo19tc1ba11t1v187m15tl5_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 217px; height: 17px; overflow: hidden; z-index: -1; opacity: 0; top: 23px; left: 2px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p177a48mbo19tc1ba11t1v187m15tl5_html5"></div></div>
+    </div>
+</div>
+<div data-error-key="filesystem" class="control-group uploader filesystem from_file">
+    <label class="control-label">Filesystem</label>
+    <div class="controls">
+        <div style="padding-top: 5px; position: relative;" id="filesystem_container">
+            <input type="text" id="filesystem_uploaded_file" readonly="" tabindex="7">
+            <button disabled="" id="filesystem_uploaded_file_button" class="btn" style="position: relative; z-index: 0;" tabindex="8">Select</button>
+            <span class="help-inline"><a href="#" id="upload_switcher_filesystem"><i class="icon-resize-horizontal"></i>From Url</a></span>
+            <div id="p177a49utu19nlk781d281pju1cpk5_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 59px; height: 28px; overflow: hidden; z-index: -1; opacity: 0; top: 5px; left: 224px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p177a49utu19nlk781d281pju1cpk5_html5"></div></div>
+    </div>
+    <div id="autoupload_container" class="controls hide inline">
+        <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
+    </div>
+</div>
+<!-- TODO: remove this code later in production version -->
+<script>
+    $(document).on('click', '#upload_switcher_kernel', function(event){
+        if ($('.uploader.kernel').hasClass('from_file')){
+            $('.uploader.kernel').html('<label class="control-label">Kernel URL</label><div class="controls"><input type="text" id="image_url"><span class="help-inline"><a href="#" id="upload_switcher_kernel"><i class="icon-resize-horizontal"></i>From Url</a></span></div>');
+            $("#upload_switcher_kernel").html('<i class="icon-resize-horizontal"></i>&nbsp;From Local Disk</a>');
+        }else{
+            $('.uploader.kernel').html('<label class="control-label">Kernel Local File</label><div class="controls"><input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">&nbsp;<button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button><span class="help-inline"><a href="#" id="upload_switcher_kernel"><i class="icon-resize-horizontal"></i>From Local Disk</a></span></div>');
+            $("#upload_switcher_kernel").html('<i class="icon-resize-horizontal"></i>&nbsp;From Url</a>');
+            $("#id_name").val("");
+        }
+        $('.uploader.kernel').toggleClass('from_file');
+        event.preventDefault();
+    });
+    $(document).on('click', '#upload_switcher_initrd', function(event){
+        if ($('.uploader.initrd').hasClass('from_file')){
+            $('.uploader.initrd').html('<label class="control-label">Initrd URL</label><div class="controls"><input type="text" id="image_url"><span class="help-inline"><a href="#" id="upload_switcher_initrd"><i class="icon-resize-horizontal"></i>From Url</a></span></div>');
+            $("#upload_switcher_initrd").html('<i class="icon-resize-horizontal"></i>&nbsp;From Local Disk</a>');
+        }else{
+            $('.uploader.initrd').html('<label class="control-label">Initrd Local File</label><div class="controls"><input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">&nbsp;<button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button><span class="help-inline"><a href="#" id="upload_switcher_initrd"><i class="icon-resize-horizontal"></i>From Local Disk</a></span></div>');
+            $("#upload_switcher_initrd").html('<i class="icon-resize-horizontal"></i>&nbsp;From Url</a>');
+            $("#id_name").val("");
+        }
+        $('.uploader.initrd').toggleClass('from_file');
+        event.preventDefault();
+    });
+    $(document).on('click', '#upload_switcher_filesystem', function(event){
+        if ($('.uploader.filesystem').hasClass('from_file')){
+            $('.uploader.filesystem').html('<label class="control-label">Filesystem URL</label><div class="controls"><input type="text" id="image_url"><span class="help-inline"><a href="#" id="upload_switcher_filesystem"><i class="icon-resize-horizontal"></i>From Url</a></span></div>');
+            $("#upload_switcher_filesystem").html('<i class="icon-resize-horizontal"></i>&nbsp;From Local Disk</a>');
+        }else{
+            $('.uploader.filesystem').html('<label class="control-label">Filesystem Local File</label><div class="controls"><input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">&nbsp;<button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button><span class="help-inline"><a href="#" id="upload_switcher_filesystem"><i class="icon-resize-horizontal"></i>From Local Disk</a></span></div>');
+            $("#upload_switcher_filesystem").html('<i class="icon-resize-horizontal"></i>&nbsp;From Url</a>');
+            $("#id_name").val("");
+        }
+        $('.uploader.filesystem').toggleClass('from_file');
+        event.preventDefault();
+
+    });
+    $(document).on('click', '.recommended_images li a', function(event){
+        event.preventDefault();
+    });
+</script>
+{% include back_button.html %}
