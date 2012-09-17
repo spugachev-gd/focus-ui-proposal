@@ -1,0 +1,68 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Personal settings <span class="divider">/</span></li>
+    <li class="active">Notifications</li>
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <td> Action</td>
+            <td> Notification</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> Virtual Machine was spawned</td>
+            <td>
+                <label class="radio"><input type="radio" checked>&nbsp;Email</label>
+                <label class="radio"><input type="radio" checked>&nbsp;SMS</label>
+                <label class="radio"><input type="radio">&nbsp;Skip</label>
+            </td>
+        </tr>
+        <tr>
+            <td> Virtual Machine is ready</td>
+            <td>
+                <label class="radio"><input type="radio" checked>&nbsp;Email</label>
+                <label class="radio"><input type="radio">&nbsp;SMS</label>
+                <label class="radio"><input type="radio">&nbsp;Skip</label>
+            </td>
+        </tr>
+        <tr>
+            <td> Virtual Machine was deleted</td>
+            <td>
+                <label class="radio"><input type="radio">&nbsp;Email</label>
+                <label class="radio"><input type="radio">&nbsp;SMS</label>
+                <label class="radio"><input type="radio" checked>&nbsp;Skip</label>
+            </td>
+        </tr>
+        <tr>
+            <td> You were added to the project</td>
+            <td>
+                <label class="radio"><input type="radio">&nbsp;Email</label>
+                <label class="radio"><input type="radio">&nbsp;SMS</label>
+                <label class="radio"><input type="radio" checked>&nbsp;Skip</label>
+            </td>
+        </tr>
+        <tr>
+            <td> You were removed from the project</td>
+            <td>
+                <label class="radio"><input type="radio">&nbsp;Email</label>
+                <label class="radio"><input type="radio">&nbsp;SMS</label>
+                <label class="radio"><input type="radio" checked>&nbsp;Skip</label>
+            </td>
+        </tr>
+        <tr>
+            <td> You were removed from the project</td>
+            <td>
+                <label class="radio"><input type="radio">&nbsp;Email</label>
+                <label class="radio"><input type="radio">&nbsp;SMS</label>
+                <label class="radio"><input type="radio" checked>&nbsp;Skip</label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary">Save</button>
+{% include back_button.html %}

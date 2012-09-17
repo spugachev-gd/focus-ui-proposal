@@ -1,0 +1,67 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Personal Settings <span class="divider">/</span></li>
+    <li class="active">Avatar</li>
+</ul>
+<form method="POST" class="form-horizontal user_avatar">
+    <div class="span2" style="position: relative; margin-right: 20px;">
+        <img class="current" src="static/focus/img/170.png">
+        <!--span class="change_avatar_trigger">Change Avatar</span-->
+    </div>
+    <div class="avatar_chooser">
+        <a class="btn btn-primary btn-large">Upload new avatar</a><br><br>
+        Or select your avatar:<hr style="margin-top:0px;">
+        <a href="#"><img src="static/focus/img/50.png"></a>
+        <a href="#"><img src="static/focus/img/sp50.png"></a>
+    </div>
+</form>
+<!-- TODO: remove that on production -->
+<!--style>
+    .change_avatar_trigger{
+        text-align: center;
+        width: 170px;
+        position: absolute;
+        top: 138px;
+        height: 32px;
+        left: 0;
+        z-index: -100;
+        background-color: #F0F0F0;
+        opacity: 0.8;
+        font-weight: bold;
+        color: black;
+        line-height: 32px;
+    }
+    .user_avatar .current{
+        position: relative;
+    }
+    form.user_avatar.active .change_avatar_trigger{
+        z-index: 100;
+
+    }
+    form.user_avatar.active *{
+        cursor: pointer;
+    }
+    .avatar_chooser{
+        display: none;
+    }
+    .user_avatar img {
+        border: 1px black solid;
+    }
+</style>
+<script>
+    jQuery(function($){
+        $('.user_avatar').mouseenter(function(){
+            $('form.user_avatar').addClass('active');
+        });
+        $('.user_avatar').mouseleave(function() {
+            $('form.user_avatar').removeClass('active');
+        });
+        $('.change_avatar_trigger').click(function(){
+            $('.avatar_chooser').css("display", "block");
+        });
+    });
+</script-->
+{% include back_button.html %}

@@ -54,7 +54,7 @@ layout: base
                             <div class="controls">
                                 <select class="chzn-select" name="image" id="image" data-placeholder="Select Image" tabindex="2">
                                     <option value=""></option>
-                                    <option value="50e2761f-b93e-4277-af4e-17afef999296">mini image</option>
+                                    <option id="preselected_image" value="50e2761f-b93e-4277-af4e-17afef999296">mini image</option>
                                 </select>
                                 <span class="help-inline"><a class="btn btn-mini btn-success" href="upload_image.html"><i class="icon-plus-sign"></i></a></span>
                             </div>
@@ -169,4 +169,11 @@ layout: base
         </table>
     </div>
 </div>
+<!-- TODO: remove that in production -->
+<script>
+    var hash = window.location.hash;
+    if (hash == '#img'){
+        $("#preselected_image").attr('selected', 'selected');
+    }
+</script>
 {% include back_button.html %}
