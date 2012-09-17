@@ -1,3 +1,10 @@
 .caption{
     text-align: center;
 }
+hr{
+    margin-top: 0px;
+}
+.container .row img{
+    width: 100px;
+    height: 100px;
+}

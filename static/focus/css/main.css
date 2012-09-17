@@ -1,0 +1,22 @@
+.control-bar div{
+    margin-left: 0em;
+    margin-bottom: 5em;
+    margin-right: 5em;
+}
+
+.datepicker{
+    width: 80em;
+}
+
+.datepicker-block{
+    width: 350em;
+}
+
+.add-btn{
+    float: right;
+}
+
+.form-horizontal .help-inline{
+    vertical-align: top;
+    padding-top: 1px;
+}

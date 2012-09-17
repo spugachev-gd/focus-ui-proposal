@@ -3,3 +3,4 @@ syntax: glob
 *~
 .idea/*
 .project
+_site/

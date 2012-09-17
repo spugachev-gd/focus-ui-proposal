@@ -1,142 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>
-        Altai Private Cloud
-    </title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="shortcut icon" href="static/img/favicon.ico">
-    <link href="static/bootstrap.2.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="static/focus/css/middle.css" rel="stylesheet" type="text/css">
-    <link href="static/bootstrap.2.1.1/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
-    <link href="static/dependencies/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css">
-    <link href="static/dependencies/css/chosen.css" rel="stylesheet" type="text/css">
-    <link href="static/focus/css/back.css" rel="stylesheet" type="text/css">
-    <link href="static/focus/css/responsive.css" rel="stylesheet" type="text/css">
-
-
-    <script src="static/dependencies/js/jquery-1.8.1.min.js"></script>
-    <script src="static/dependencies/js/jquery-ui-1.8.23.custom.min.js"></script>
-    <script src="static/dependencies/js/widgets.js"></script>
-    <script src="static/dependencies/js/jquery.color.js"></script>
-    <script src="static/dependencies/js/chosen.jquery.min.js"></script>
-    <script src="static/bootstrap.2.1.1/js/bootstrap.js"></script>
-
-    <script src="static/focus/js/back.js"></script>
-
-</head>
-    <body data-spy="scroll" data-target=".subnav" data-offset="50">
-        
-    <div class="navbar navbar-inverse navbar-fixed-top" style="z-index: 1000;">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-                    <span class="icon-bar">                    </span>
-                    <span class="icon-bar">                    </span>
-                    <span class="icon-bar">                    </span>
-                </a>
-                <a class="brand" href="index.html">
-                    <img src="static/focus/img/GridDynamics-brandmark-24x24px.png">
-                    Altai Private Cloud
-                </a>
-                <div class="nav-collapse collapse" style="height: 0px;">
-                    
-                    <ul class="nav pull-right">
-                        
-                        <li>
-                            <a href="http://localhost/global_administration.html">Administration</a>
-                        </li>
-                        <li>
-                            <a href="http://localhost/logout/">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li class="active">Upload Image</li>
+</ul>
+<form method="POST" class="form-horizontal new-image well">
+    <div class="upload-view"><fieldset>
+        <div class="control-group ">
+            <label class="control-label">
+                <b>Project</b>
+            </label>
+            <div class="controls">
+                <select name="project" class="chzn-select" id="project" data-placeholder="Select Project"><option value=""></option><option value="IT">IT</option><option value="OSCORE">OSCORE</option></select>
             </div>
         </div>
-    </div>
-
-                
-    <div class="container">
-      <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li class="active">Upload Image</li>
-          </ul>
-      <form data-upload-action="/projects/3e10b438555e4745b0efac065f15a10b/images/upload/" method="POST" class="form-horizontal new-image well">
-        <div class="upload-view"><fieldset>
-  <div class="control-group ">
-        <label class="control-label">
-                <b>Project</b>
-        </label>
-        <div class="controls">
-            <select name="project" class="chzn-select" id="project" data-placeholder="Select Project"><option value=""></option><option value="IT">IT</option><option value="OSCORE">OSCORE</option></select>
+        <div class="control-group upload-type">
+            <label class="control-label"> Upload type </label>
+            <div class="controls">
+                <label class="radio inline">
+                    <input type="radio" value="solid" name="upload_type" checked="checked"> Solid
+                </label>
+                <label class="radio inline">
+                    <input type="radio" value="amazon_like" name="upload_type"> Amazon Like
+                </label>
+            </div>
+        </div>
+        <div data-error-key="name" class="control-group name">
+            <label class="control-label">
+                Name
+            </label>
+            <div class="controls">
+                <input type="text" value="" id="id_name" name="name">
+            </div>
+        </div>
+        <div data-error-key="uploader" class="control-group uploader solid">
+            <label class="control-label">File to upload</label>
+            <div class="controls">
+                <div style="padding-top: 5px; position: relative;" id="container">
+                    <input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">
+                    <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button>
+                    <div id="filelist"></div>
+                    <div id="p176e0enma1fbf126u1jj81rlg1np70_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 59px; height: 28px; overflow: hidden; z-index: -1; opacity: 0; top: 5px; left: 224px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p176e0enma1fbf126u1jj81rlg1np70_html5"></div></div>
+            </div>
+            <div id="autoupload_container" class="controls hide">
+                <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
+            </div>
+        </div>
+        <div class="control-group disk-format">
+            <label class="control-label"> Disk format </label>
+            <div class="controls">
+                <label class="radio inline">
+                    <input type="radio" checked="" value="raw" name="disk_format"> raw
+                </label>
+                <label class="radio inline">
+                    <input type="radio" value="qcow2" name="disk_format"> qcow2
+                </label>
+            </div>
+        </div>
+    </fieldset>
+        <div class="form-actions">
+            <button disabled="" type="submit" class="btn btn-primary tc-add">Add</button>
         </div>
     </div>
-  <div class="control-group upload-type">
-    <label class="control-label">
-      Upload type
-    </label>
-    <div class="controls">
-      <label class="radio inline">
-        <input type="radio" value="solid" id="id_upload_type" name="upload_type" checked="checked">
-        Solid
-      </label>
-      <label class="radio inline">
-        <input type="radio" value="amazon_like" id="id_upload_type" name="upload_type">
-        Amazon Like
-      </label>
-    </div>
-  </div>
-  <div data-error-key="name" class="control-group name">
-    <label class="control-label">
-      Name
-    </label>
-    <div class="controls">
-      <input type="text" value="" id="id_name" name="name">
-    </div>
-  </div>
-<div data-error-key="uploader" class="control-group uploader solid">
-	    <label class="control-label">File to upload</label>
-	    <div class="controls">
-	      <div style="padding-top: 5px; position: relative;" id="container">
-	        <input type="text" id="id_uploaded_file" name="uploaded_file" readonly="">
-	        <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;">Select</button>
-	        <div id="filelist"></div>
-	      <div id="p176e0enma1fbf126u1jj81rlg1np70_html5_container" style="position: absolute; background: none repeat scroll 0% 0% transparent; width: 59px; height: 28px; overflow: hidden; z-index: -1; opacity: 0; top: 5px; left: 224px;" class="plupload html5"><input type="file" accept="" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" id="p176e0enma1fbf126u1jj81rlg1np70_html5"></div></div>
-	    </div>
-        <div id="autoupload_container" class="controls hide">
-          <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
-        </div>
-	  </div>
-	  <div class="control-group disk-format">
-	    <label class="control-label">
-	      Disk format
-	    </label>
-	    <div class="controls">
-	      <label class="radio inline">
-	        <input type="radio" checked="" value="raw" id="id_disk_format" name="disk_format">
-	        raw
-	      </label>
-	      <label class="radio inline">
-	        <input type="radio" value="qcow2" id="id_disk_format" name="disk_format">
-	        qcow2
-	      </label>
-	    </div>
-	  </div>
-</fieldset>
-<div class="form-actions">
-  <button disabled="" type="submit" class="btn btn-primary tc-add">Add</button>
-</div>
-</div>
-    </form>
-    </div><!-- end content-->
-
-    <!-- back button -->
-    <div class="back_panel"><a href="javascript: history.back();"><h3><span>&larr;</span><span>&nbsp;Back</span></h3></a></div>
-    <script>
-        $(".chzn-select").chosen();
-    </script>
-    <!-- end back button -->
-</body></html>
+</form>
