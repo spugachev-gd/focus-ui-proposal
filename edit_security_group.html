@@ -1,0 +1,80 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li><a href="security_groups.html">Security Groups</a>  <span class="divider">/</span></li>
+    <li class="active">Edit Security Group</li>
+</ul>
+<form method="POST" class="form-horizontal well">
+    <fieldset>
+        <div class="control-group ">
+            <label class="control-label">
+                <b>Name</b>
+            </label>
+            <div class="controls">
+                <input type="text" value="" name="name" id="name">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">
+                <b>Description</b>
+            </label>
+            <div class="controls">
+                <input type="text" value="" name="description" id="description">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">
+                Ports:
+            </label>
+            <div class="controls">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>IP Protocol</th>
+                        <th>From Port</th>
+                        <th>To Port</th>
+                        <th>IP Range</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>TCP</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>0.0.0.0/0</td>
+                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                    </tr>
+                    <tr>
+                        <td>UDP</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>172.18.40.154/0</td>
+                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                    </tr>
+                    <tr>
+                        <td>ICMP</td>
+                        <td>100</td>
+                        <td>200</td>
+                        <td>192.168.10.0/22</td>
+                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><a class="btn btn-mini btn-success">+</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary tc-add">Create</button>
+        </div>
+    </fieldset>
+</form>
+{% include back_button.html %}

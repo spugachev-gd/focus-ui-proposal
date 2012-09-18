@@ -1,0 +1,30 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Personal Settings <span class="divider">/</span></li>
+    <li><a href="ssh.html">SSH Keys</a> <span class="divider">/</span></li>
+    <li class="active">Add New SSH Key</li>
+</ul>
+<form method="GET" action="add_new_keypair.html" class="form-horizontal well">
+    <fieldset>
+        <div class="control-group ">
+            <label class="control-label"><b>Name of keypair</b></label>
+            <div class="controls">
+                <input type="text" name="name" id="name">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">Public Key</label>
+            <div class="controls">
+                <input type="text" name="public_key" id="public_key">
+                <p class="help-block">Can be omitted. New keypair will be generated</p>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Key</button>
+        </div>
+    </fieldset>
+</form>
+{% include back_button.html %}

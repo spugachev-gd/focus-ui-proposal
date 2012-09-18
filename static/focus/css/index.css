@@ -8,3 +8,6 @@ hr{
     width: 100px;
     height: 100px;
 }
+a.thumbnail{
+    background-color: #f0f0f0;
+}
