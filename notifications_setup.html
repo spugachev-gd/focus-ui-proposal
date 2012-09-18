@@ -1,0 +1,29 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Personal settings <span class="divider">/</span></li>
+    <li><a href="notifications.html">Notifications</a> <span class="divider">/</span></li>
+    <li class="active">Setup</li>
+</ul>
+<form methid="GET" class="form-horizontal well">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label">Email</label>
+            <div class="controls">
+                <input type="text" value="spugachev@griddynamics.com" name="email" id="email">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Phone Number</label>
+            <div class="controls">
+                <input type="text" value="123456789" name="phone" id="phone">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary tc-add">Save</button>
+        </div>
+    </fieldset>
+</form>
+{% include back_button.html %}

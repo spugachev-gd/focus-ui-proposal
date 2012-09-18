@@ -1,0 +1,57 @@
+---
+layout: base
+---
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li><a href="security_groups.html">Security Groups</a>  <span class="divider">/</span></li>
+    <li class="active">Add New Security Group</li>
+</ul>
+<form method="POST" class="form-horizontal well">
+    <fieldset>
+        <div class="control-group ">
+            <label class="control-label">
+                <b>Name</b>
+            </label>
+            <div class="controls">
+                <input type="text" value="" name="name" id="name">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">
+                <b>Description</b>
+            </label>
+            <div class="controls">
+                <input type="text" value="" name="description" id="description">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">
+                Ports:
+            </label>
+            <div class="controls">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>IP Protocol</th>
+                        <th>From Port</th>
+                        <th>To Port</th>
+                        <th>IP Range</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary tc-add">Create</button>
+        </div>
+    </fieldset>
+</form>
+{% include back_button.html %}
