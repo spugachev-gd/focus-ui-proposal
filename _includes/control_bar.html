@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="span4">
+        <form class="form-search" style="margin-top: 10px;">
+            <div class="input-append">
+                <input type="text" class="span2 search-query">
+                <button class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></button>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+    <div class="span6">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <a href="#" class="btn">Save search</a>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Predefined 1</a></li>
+                    <li><a href="#">Predefined 2</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">User search 1</a></li>
+                    <li><a href="#">User search 2</a></li>
+                </ul>
+            </div>
+            <a href="#" class="btn">Change columns</a>
+            <div class="btn-group">
+                <a href="#" class="btn">Export CSV</a>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Export XML</a></li>
+                    <li><a href="#">Export JSON</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span1">
+        <div class="well" style="min-height: 10px; padding-top: 0px; padding-bottom: 1px; vertical-align: middle; width: 40px;">
+            <div class="btn-group">
+                <input type="checkbox" ng-model="selectedCheckbox">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown" style="border: 0; background: none">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">None</a></li>
+                    <li><a href="#">Whole page</a></li>
+                    <li><a href="#">On all pages</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="span11">
+        <div ng-show="selectedCheckbox" style="vertical-align: middle;">
+            <form class="form-horizontal">
+                &nbsp;
+                <select>
+                    <option>restart</option>
+                    <option>delete</option>
+                </select>
+                <button class="btn">do</button>
+            </form>
+        </div>
+    </div>
+</div>
