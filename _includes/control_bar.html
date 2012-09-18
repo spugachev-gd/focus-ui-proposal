@@ -1,66 +1,143 @@
-<div class="row">
-    <div class="span4">
-        <form class="form-search" style="margin-top: 10px;">
-            <div class="input-append">
-                <input type="text" class="span2 search-query">
-                <button class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></button>
+{% raw %}
+<script src="static/focus/js/control_bar.js"></script>
+<div class="row" class="control-bar" ng-controller="ControlBarController">
+    <div class="span12">
+        <div class="row">
+            <div class="span4">
+                <form class="form-search" style="margin-top: 10px;">
+                    <div class="input-append">
+                        <input type="text" class="span2 search-query" ng-model="query">
+                        <button class="btn dropdown-toggle" href="#" ng-click="show_query_builder= ! show_query_builder"><span class="caret"></span></button>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            <div class="span6">
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button href="#" class="btn" ng-click="show_save_search_form=true">
+                            Save search
+                        </button>
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Predefined 1</a></li>
+                            <li><a href="#">Predefined 2</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">User search 1</a></li>
+                            <li><a href="#">User search 2</a></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn" ng-click="show_change_columns_form=true">Change columns</a>
+                    <div class="btn-group">
+                        <a href="#" class="btn">Export CSV</a>
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Export XML</a></li>
+                            <li><a href="#">Export JSON</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="show_save_search_form">
+            <div class="span12">
+                <form class="form form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="id_search_name">Name of the search</label>
+                        <div class="controls">
+                            <input type="text" name="name" id="id_search_name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" ng-click="show_save_search_form=false">Save it</button>
+                            <button type="cancel" ng-click="show_save_search_form=false">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" ng-show="show_change_columns_form">
+            <div class="span12">
+                <div class="row">
+                    <div class="span4 " style="text-align: right">
+                        <select multiple="true" ng-model="selected_hidden">
+                            <option ng-repeat="x in hidden_columns">{{ x }}</option>
+                        </select>
+
+                    </div>
+                    <div class="span1">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button ng-click="hide_column()">&lt;</button>
+                                <button ng-click="show_column()">&gt;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <select multiple="true" ng-model="selected_shown">
+                            <option ng-repeat="x in shown_columns">{{ x }}</option>
+                        </select>
+                    </div>
+                    <div class="span1" style="text-align: left">
+                        <div class="btn-toolbar">
+                            <div class="btn-group-vertical">
+                                <button ng-click="column_up()">up</button>
+                                <button ng-click="column_down()">down</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span1 offset7">
+                        <button ng-click="show_change_columns_form=false">done</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="show_query_builder">
+            <div class="span12">
+                <form class="form-horizontal">
+                    <button ng-click="add_to_query('name')">Name</button>
+                    <button ng-click="add_to_query('id')">Id</button>
+                </form>
+
             </div>
 
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-    <div class="span6">
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <a href="#" class="btn">Save search</a>
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Predefined 1</a></li>
-                    <li><a href="#">Predefined 2</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">User search 1</a></li>
-                    <li><a href="#">User search 2</a></li>
-                </ul>
+
+        </div>
+        <div class="row">
+            <div class="span1">
+                <div class="well" style="min-height: 10px; padding-top: 0px; padding-bottom: 1px; vertical-align: middle; width: 40px;">
+                    <div class="btn-group">
+                        <input type="checkbox" ng-model="selectedCheckbox">
+                        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown" style="border: 0; background: none">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">None</a></li>
+                            <li><a href="#">Whole page</a></li>
+                            <li><a href="#">On all pages</a></li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
-            <a href="#" class="btn">Change columns</a>
-            <div class="btn-group">
-                <a href="#" class="btn">Export CSV</a>
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Export XML</a></li>
-                    <li><a href="#">Export JSON</a></li>
-                </ul>
+            <div class="span11">
+                <div ng-show="selectedCheckbox" style="vertical-align: middle;">
+                    <form class="form-horizontal">
+                        &nbsp;
+                        <select>
+                            <option>restart</option>
+                            <option>delete</option>
+                        </select>
+                        <button class="btn">do</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="span1">
-        <div class="well" style="min-height: 10px; padding-top: 0px; padding-bottom: 1px; vertical-align: middle; width: 40px;">
-            <div class="btn-group">
-                <input type="checkbox" ng-model="selectedCheckbox">
-                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown" style="border: 0; background: none">
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">None</a></li>
-                    <li><a href="#">Whole page</a></li>
-                    <li><a href="#">On all pages</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="span11">
-        <div ng-show="selectedCheckbox" style="vertical-align: middle;">
-            <form class="form-horizontal">
-                &nbsp;
-                <select>
-                    <option>restart</option>
-                    <option>delete</option>
-                </select>
-                <button class="btn">do</button>
-            </form>
-        </div>
-    </div>
-</div>
+{% endraw %}
