@@ -7,10 +7,12 @@ layout: base
 </ul>
 
 {% include control_bar.html %}
-<a class="btn btn-primary" href="manage_images.html">Search</a>
-
 <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">×</button>
     Use search to find images you are interested in.
 </div>
+<!-- TODO: REMOVE ON PRODUCTION -->
+<script>
+    $('.form-search').attr('action', 'manage_images.html');
+</script>
 {% include back_button.html %}
