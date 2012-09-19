@@ -7,7 +7,7 @@
                 <form class="form-search" style="margin-top: 10px;">
                     <div class="input-append">
                         <input type="text" class="span2 search-query" ng-model="query">
-                        <button class="btn dropdown-toggle" href="#" ng-click="show_query_builder= ! show_query_builder"><span class="caret"></span></button>
+                        <a class="btn dropdown-toggle" href="#" ng-click="show_query_builder = ! show_query_builder"><span class="caret"></span></a>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Search</button>
@@ -21,11 +21,11 @@
                         </button>
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Predefined 1</a></li>
-                            <li><a href="#">Predefined 2</a></li>
+                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">Predefined 1<i class="icon-remove" ng-click="delete()"></i></a></li>
+                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">Predefined 2<i class="icon-remove" ng-click="delete()"></i></a></li>
                             <li class="divider"></li>
-                            <li><a href="#">User search 1</a></li>
-                            <li><a href="#">User search 2</a></li>
+                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">User search 1<i class="icon-remove" ng-click="delete()"></i></a></li>
+                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">User search 2<i class="icon-remove" ng-click="delete()"></i></a></li>
                         </ul>
                     </div>
                     <a href="#" class="btn" ng-click="show_change_columns_form=true">Change columns</a>
@@ -98,10 +98,26 @@
             </div>
         </div>
         <div class="row" ng-show="show_query_builder">
-            <div class="span12">
-                <form class="form-horizontal">
-                    <button ng-click="add_to_query('name')">Name</button>
-                    <button ng-click="add_to_query('id')">Id</button>
+            <div class="span4">
+                <form class="form-horizontal ">
+                    <div class="control-group">
+                        <label class="control-label">Name</label>
+                        <div class="controls">
+
+                            <input type="input" ng-model="query_fields.name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Id</label>
+                        <div class="controls">
+                            <input type="input" ng-model="query_fields.id">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <a href="#" class="btn" ng-click="change_field()">Search</a>
+                        </div>
+                    </div>
                 </form>
 
             </div>
