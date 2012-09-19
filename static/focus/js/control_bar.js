@@ -1,5 +1,12 @@
-function ControlBarController($scope) {
-    $scope.query = '';
+function DeletableLi($scope){
+    $scope.show = true;
+    $scope.delete = function(){
+        $scope.show = false;
+    }
+}
+function ControlBarController($scope, $log) {
+    $scope.$log = $log;
+
     $scope.show_save_search_form = false;
     $scope.show_change_columns_form = false;
     $scope.show_query_builder = false;
@@ -53,5 +60,30 @@ function ControlBarController($scope) {
     }
     $scope.add_to_query = function(wha){
         $scope.query = $scope.query + ' ' + wha + ':'
+    }
+
+    $scope.query = '';
+    $scope.query_fields = {'name': '', 'id': ''};
+
+    $scope.change_field = function(){
+        $log.info($scope.query_fields)
+        for (var key in $scope.query_fields){
+            var val = $scope.query_fields[key];
+            if (val){
+                var pattern = "((?:\\s+" + key + ":)|(?:^" + key + ":))";
+                var match = RegExp(pattern).exec($scope.query)
+                if (match){
+                    var pattern = "(?:" + pattern + ")\\S+"
+                    $log.info(pattern)
+                    $scope.query = $scope.query.replace(RegExp(pattern), match[1] + val);
+                } else {
+                    $scope.query += " " + key + ":" + val;
+                }
+            } else {
+
+            }
+
+        }
+        $scope.show_query_builder = false;
     }
 }
