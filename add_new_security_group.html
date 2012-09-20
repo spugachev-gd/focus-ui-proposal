@@ -3,6 +3,7 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Projects <span class="divider">/</span></li>
     <li><a href="security_groups.html">Security Groups</a>  <span class="divider">/</span></li>
     <li class="active">Add New Security Group</li>
 </ul>
@@ -10,24 +11,20 @@ layout: base
     <fieldset>
         <div class="control-group ">
             <label class="control-label">
-                <b>Name</b>
+                <b>Name:</b>
             </label>
             <div class="controls">
-                <input type="text" value="" name="name" id="name">
+                <input type="text" name="name" id="name">
             </div>
         </div>
         <div class="control-group ">
-            <label class="control-label">
-                <b>Description</b>
-            </label>
+            <label class="control-label">Description:</label>
             <div class="controls">
-                <input type="text" value="" name="description" id="description">
+                <textarea name="description" id="description"></textarea>
             </div>
         </div>
         <div class="control-group ">
-            <label class="control-label">
-                Ports:
-            </label>
+            <label class="control-label"><b>Ports:</b></label>
             <div class="controls">
                 <table class="table table-bordered table-condensed">
                     <thead>
@@ -36,6 +33,7 @@ layout: base
                         <th>From Port</th>
                         <th>To Port</th>
                         <th>IP Range</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,13 +42,15 @@ layout: base
                         <td><input type="text"></td>
                         <td><input type="text"></td>
                         <td><input type="text"></td>
+                        <td><a class="btn btn-mini btn-success"><i class="icon-plus-sign icon-white"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary tc-add">Create</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a class="btn" href="javascript: history.back();">Cancel</a>
         </div>
     </fieldset>
 </form>

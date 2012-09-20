@@ -3,31 +3,29 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Projects <span class="divider">/</span></li>
     <li><a href="security_groups.html">Security Groups</a>  <span class="divider">/</span></li>
-    <li class="active">Edit Security Group</li>
+    <li class="active">"OSCORE"</li>
+    <li class="pull-right"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Add New Security Group</a></li>
 </ul>
 <form method="POST" class="form-horizontal well">
     <fieldset>
         <div class="control-group ">
             <label class="control-label">
-                <b>Name</b>
+                <b>Name:</b>
             </label>
             <div class="controls">
-                <input type="text" value="" name="name" id="name">
+                <input type="text" value="OSCORE" name="name" id="name">
             </div>
         </div>
         <div class="control-group ">
-            <label class="control-label">
-                <b>Description</b>
-            </label>
+            <label class="control-label">Description:</label>
             <div class="controls">
-                <input type="text" value="" name="description" id="description">
+                <textarea name="description" id="description">default descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault description</textarea>
             </div>
         </div>
         <div class="control-group ">
-            <label class="control-label">
-                Ports:
-            </label>
+            <label class="control-label"><b>Ports:</b></label>
             <div class="controls">
                 <table class="table table-bordered table-condensed">
                     <thead>
@@ -45,35 +43,37 @@ layout: base
                         <td>1</td>
                         <td>2</td>
                         <td>0.0.0.0/0</td>
-                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                        <td><a class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a></td>
                     </tr>
                     <tr>
                         <td>UDP</td>
                         <td>10</td>
                         <td>20</td>
                         <td>172.18.40.154/0</td>
-                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                        <td><a class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a></td>
                     </tr>
                     <tr>
                         <td>ICMP</td>
                         <td>100</td>
                         <td>200</td>
                         <td>192.168.10.0/22</td>
-                        <td><a class="btn btn-mini btn-danger">x</a></td>
+                        <td><a class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a></td>
                     </tr>
                     <tr>
                         <td><input type="text"></td>
                         <td><input type="text"></td>
                         <td><input type="text"></td>
                         <td><input type="text"></td>
-                        <td><a class="btn btn-mini btn-success">+</a></td>
+                        <td><a class="btn btn-mini btn-success"><i class="icon-plus-sign icon-white"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary tc-add">Create</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn" href="javascript: history.back();">Cancel</a>
+            <a href="#" class="btn btn-danger pull-right">Delete</a>
         </div>
     </fieldset>
 </form>

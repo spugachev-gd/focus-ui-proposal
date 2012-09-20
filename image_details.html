@@ -3,13 +3,12 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="manage_images_clear.html">Manage Images</a> <span class="divider">/</span></li>
+    <li>Images <span class="divider">/</span></li>
+    <li><a href="manage_images_clear.html">Manage</a> <span class="divider">/</span></li>
     <li class="active">"mini_image.img"</li>
+    <li class="pull-right"><a class="btn btn-mini btn-success" href="upload_image.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Upload Image</a></li>
 </ul>
 <div>
-    <div class="btn-group span4" style="margin: 0px 0px 20px 0px;">
-        <a href="#" class="btn btn-success">Download</a>
-    </div>
     <div class="span1 pull-right" style="margin: 0px 0px 20px 0px;">
         <a href="#" class="btn btn-danger">Delete</a>
     </div>
@@ -21,19 +20,19 @@ layout: base
     </tr>
     <tr>
         <td>Name</td>
-        <td>mini_image</td>
+        <td>mini_image.img</td>
     </tr>
     <tr>
         <td>Disk Format</td>
         <td>qcow2</td>
     </tr>
     <tr>
-        <td>Container Format</td>
-        <td>bare</td>
+        <td>Global</td>
+        <td><i class="icon icon-check"></i></td>
     </tr>
     <tr>
-        <td>Size</td>
-        <td>20971520b</td>
+        <td>Size(bytes)</td>
+        <td>20971520</td>
     </tr>
     <tr>
         <td>Uploaded</td>
@@ -50,7 +49,13 @@ layout: base
     <tr>
         <td>User</td>
         <td>
-            <a href="/global/users/3775a71296e04cf1b2d57a32fc4b0222/"> openstack-core@griddynamics.com </a>
+            <a href="user_details.html">openstack-core@griddynamics.com</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Download URL</td>
+        <td>
+            <a href="#">http://griddynamics.com/images/mini_img.img?download</a>
         </td>
     </tr>
 </table>
