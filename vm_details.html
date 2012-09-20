@@ -3,8 +3,10 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="manage_vms_clear.html">Manage VMs</a> <span class="divider">/</span></li>
-    <li class="active">Test VM Name</li>
+    <li>Virtual Machines <span class="divider">/</span></li>
+    <li><a href="manage_vms_clear.html">Manage</a> <span class="divider">/</span></li>
+    <li class="active">"Test VM Name"</li>
+    <li class="pull-right"><a class="btn btn-mini btn-success" href="spawn_vm.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Spawn VM</a></li>
 </ul>
 <div>
     <div class="btn-group span4" style="margin: 0px 0px 20px 0px;">
@@ -27,16 +29,20 @@ layout: base
         <td>47d4ae6e-cbe1-444e-877d-c4dc9cb696c4</td>
     </tr>
     <tr>
-        <td>Network IP</td>
-        <td>VLAN 321: 192.168.100.3</td>
+        <td>VLAN</td>
+        <td>321</td>
+    </tr>
+    <tr>
+        <td>IP</td>
+        <td>192.168.100.3</td>
     </tr>
     <tr>
         <td>Created</td>
-        <td>09/06/2012 08:32:29</td>
+        <td>08:32&nbsp;09/06/2012</td>
     </tr>
     <tr>
         <td>Project</td>
-        <td>qwert</td>
+        <td><a href="project_details.html">OSCORE</a></td>
     </tr>
     <tr>
         <td>User</td>
@@ -53,11 +59,19 @@ layout: base
     </tr>
     <tr>
         <td width="200px">Id</td>
-        <td><a href="image_details.html">50e2761f-b93e-4277-af4e-17afef999296</a></td>
+        <td>50e2761f-b93e-4277-af4e-17afef999296</td>
     </tr>
     <tr>
         <td>Name</td>
-        <td>sdf</td>
+        <td><a href="image_details.html">mini_image.img</a></td>
+    </tr>
+    <tr>
+        <td>Size(bytes)</td>
+        <td>20971520</td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td>Amazon Like</td>
     </tr>
 </table>
 <table class="table table-striped table-bordered table-condensed">
@@ -74,30 +88,22 @@ layout: base
     </tr>
     <tr>
         <td>Name</td>
-        <td>m1.tiny</td>
+        <td><a href="flavor_details.html">m1.tiny</a></td>
     </tr>
     <tr>
-        <td>Ram</td>
+        <td>RAM(MB)</td>
         <td>512</td>
     </tr>
     <tr>
-        <td>Disk</td>
+        <td>Disk(Gb)</td>
         <td>0</td>
     </tr>
     <tr>
-        <td>Ephemeral</td>
+        <td>Additional Disk(Gb)</td>
         <td>0</td>
     </tr>
     <tr>
-        <td>Human id</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>RXTX factor</td>
-        <td>1.0</td>
-    </tr>
-    <tr>
-        <td>vcpus</td>
+        <td>Virtual CPUs</td>
         <td>1</td>
     </tr>
     </thead>
