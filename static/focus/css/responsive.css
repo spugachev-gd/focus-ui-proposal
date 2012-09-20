@@ -23,8 +23,10 @@
         margin-left: 20px;
     }
 }
-@media (max-width: 486px){
-    li.pull-right{
-        float: none;
+/* for ssh.html */
+@media (max-width: 768px){
+    .hide-under-768px {
+        display: none;
     }
 }
+/* end for */
