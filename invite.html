@@ -3,18 +3,19 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Projects <span class="divider">/</span></li>
     <li class="active">Invite</li>
 </ul>
-<form autocomplete="off" method="POST" class="form-horizontal well">
-    <fieldset>
-        <div class="row">
-            <div class="span5">
-                <div class="control-group ">
+<div class="row">
+    <div class="span6">
+        <form autocomplete="off" method="POST" class="form-horizontal well">
+            <fieldset>
+                <div class="control-group">
                     <label class="control-label">
                         <b>Project</b>
                     </label>
                     <div class="controls">
-                        <select name="project" class="chzn-select" id="project" data-placeholder="Select Project" tabindex="1">
+                        <select name="project" multiple class="chzn-select" id="project" data-placeholder="Select Project" tabindex="1">
                             <option value=""></option>
                             <option value="IT">IT</option>
                             <option value="OSCORE">OSCORE</option>
@@ -29,29 +30,20 @@ layout: base
                         <input type="email" name="email" id="email" tabindex="2">
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label">
-                        <b>Role</b>
-                    </label>
-                    <div class="controls">
-                        <select name="role" id="role" tabindex="3">
-                            <option value="Member">Member</option>
-                            <option value="Admin">Global Admin</option>
-                        </select>
-                    </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit" tabindex="9">Invite</button>
+                    <a href="javascript: history.back();" class="btn" tabindex="9">Cancel</a>
                 </div>
-            </div>
-            <div class="span4">
-                <h3>Allowed domains:</h3>
-                <ul>
-                    <li>gmail.com</li>
-                    <li>griddynamics.com</li>
-                    <li>mail.ru</li>
-                </ul>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button class="btn btn-primary" type="submit" tabindex="9">Invite</button>
-        </div>
-    </fieldset>
-</form>
+            </fieldset>
+        </form>
+    </div>
+    <div class="span5">
+        <h3>Allowed domains:</h3>
+        <ul>
+            <li>gmail.com</li>
+            <li>griddynamics.com</li>
+            <li>mail.ru</li>
+        </ul>
+    </div>
+</div>
+{% include back_button.html %}

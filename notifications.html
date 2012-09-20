@@ -6,11 +6,11 @@ layout: base
     <li>Personal settings <span class="divider">/</span></li>
     <li class="active">Notifications</li>
 </ul>
-<table class="table">
+<table class="table table-condensed">
     <thead>
         <tr>
-            <td> Action</td>
-            <td> Notification</td>
+            <th> Action</th>
+            <th> Notification</th>
         </tr>
     </thead>
     <tbody>
@@ -49,14 +49,7 @@ layout: base
                 <label class="checkbox"><input type="checkbox">&nbsp;SMS</label>
             </td>
         </tr>
-        <tr>
-            <td> You were removed from the project</td>
-            <td>
-                <label class="checkbox"><input type="checkbox" checked>&nbsp;Email</label>
-                <label class="checkbox"><input type="checkbox">&nbsp;SMS</label>
-            </td>
-        </tr>
     </tbody>
 </table>
-<button class="btn btn-primary">Apply</button> <a class="btn btn-primary" href="notifications_setup.html">Set Up Email And SMS</a>
+<button class="btn btn-primary">Apply</button> <a href="notifications_setup.html">Set Up</a>
 {% include back_button.html %}

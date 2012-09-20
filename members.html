@@ -3,48 +3,46 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Projects <span class="divider">/</span></li>
     <li class="active">Members</li>
+    <li class="pull-right"><a class="btn btn-success btn-mini" href="invite.html"><i class="icon-plus icon-white"></i>Invite</a></li>
 </ul>
 {% include control_bar.html %}
 <table class="table table-striped table-bordered table-condensed">
     <thead>
-    <tr>
-        <th>Email</th>
-        <th>Userame</th>
-        <th>Project</th>
-        <th>Roles</th>
-    </tr>
-    <tr>
-        <td>dmaslennikov@griddynamics.com</td>
-        <td>dmaslennikov</td>
-        <td>OSCORE, IT</td>
-        <td>Member, Global Admin</td>
-    </tr>
-    <tr>
-        <td>spugachev@griddynamics.com</td>
-        <td>spugachev</td>
-        <td>OSCORE, IT</td>
-        <td>Member</td>
-    </tr>
-    <tr>
-        <td>apugachev@griddynamics.com</td>
-        <td>apugachev</td>
-        <td>IT</td>
-        <td>Member, Global Admin</td>
-    </tr>
-    <tr>
-        <td>nsavin@griddynamics.com</td>
-        <td>nsavin</td>
-        <td>OSCORE</td>
-        <td>Member, Global Admin</td>
-    </tr>
-    <tr>
-        <td>aababilov@griddynamics.com</td>
-        <td>aababilov</td>
-        <td>OSCORE, IT</td>
-        <td>Member</td>
-    </tr>
+        <tr>
+            <th>Email</th>
+            <th>Real Name</th>
+            <th>Project</th>
+        </tr>
     </thead>
+    <tbody>
+        <tr>
+            <td><a href="user_details.html">dmaslennikov@griddynamics.com</a></td>
+            <td>Dmitriy Maslennikov</td>
+            <td>OSCORE, IT</td>
+        </tr>
+        <tr>
+            <td><a href="user_details.html">spugachev@griddynamics.com</a></td>
+            <td>Stanislav Pugachev</td>
+            <td>OSCORE, IT</td>
+        </tr>
+        <tr>
+            <td><a href="user_details.html">apugachev@griddynamics.com</a></td>
+            <td>Alexander Pugachev</td>
+            <td>IT</td>
+        </tr>
+        <tr>
+            <td><a href="user_details.html">nsavin@griddynamics.com</a></td>
+            <td>Nikita Savin</td>
+            <td>OSCORE</td>
+        </tr>
+        <tr>
+            <td><a href="user_details.html">aababilov@griddynamics.com</a></td>
+            <td>Alessio Ababilov</td>
+            <td>OSCORE, IT</td>
+        </tr>
+    </tbody>
 </table>
 {% include pagination.html %}
 {% include back_button.html %}

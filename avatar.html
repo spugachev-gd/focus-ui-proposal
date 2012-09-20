@@ -6,36 +6,32 @@ layout: base
     <li>Personal Settings <span class="divider">/</span></li>
     <li class="active">Avatar</li>
 </ul>
-<form method="POST" class="form-horizontal user_avatar">
-    <div class="span2" style="position: relative; margin-right: 20px;">
+<div class="row">
+    <div class="span6">
+        <form method="POST" class="form-horizontal well">
+            <div class="control-group">
+                <label class="control-label">Gavatar Profile:</label>
+                <div class="controls">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn" type="submit" href="javascript: history.back();">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="span5">
+        <h3>Current Avatar:</h3>
         <img class="current" src="static/focus/img/170.png">
     </div>
-    <div class="avatar_chooser">
-        <a class="btn btn-primary btn-large">Upload new avatar</a><br><br>
-        Or select your avatar:<hr style="margin-top:0px;">
-        <div class="span1" style="margin-left: 0px;">
-            <a href="#" class="use_avatar" big="static/focus/img/170.png"><img src="static/focus/img/50.png"></a><br><a class="remove_avatar" href="#">remove</a>
-        </div>
-        <div class="span1" style="margin-left: 0px;">
-            <a href="#" class="use_avatar" big="static/focus/img/sp170.png"><img src="static/focus/img/sp50.png"></a>
-        </div>
-    </div>
-</form>
+</div>
 <!-- TODO: remove that on production -->
 <style>
-    form img{
+    img.current{
         border: 1px black solid;
     }
 </style>
-<script>
-    jQuery(function($){
-        $('.use_avatar').click(function(){
-            $('.current').attr('src', $(this).attr('big'));
-        });
-        $('.remove_avatar').click(function(){
-            $(this).parent().hide()
-            $('.current').attr('src', 'static/focus/img/sp170.png');
-        });
-    });
-</script>
 {% include back_button.html %}
