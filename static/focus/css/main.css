@@ -1,24 +1,22 @@
-.control-bar div{
-    margin-left: 0em;
-    margin-bottom: 5em;
-    margin-right: 5em;
-}
-
 .datepicker{
-    width: 80em;
+    width: 5.2em;
 }
-
-.datepicker-block{
-    width: 350em;
-}
-
 .add-btn{
     float: right;
     margin-bottom: 5px;
 }
-
 .form-horizontal .help-inline{
     vertical-align: top;
     padding-top: 1px;
 }
 .nobr  { white-space:nowrap; }
+
+hr{
+    margin-top: 0px;
+}
+.spaceup{
+    margin-top: 1em;
+}
+.form-inline div.chzn-container{
+    top: 10px;
+}
