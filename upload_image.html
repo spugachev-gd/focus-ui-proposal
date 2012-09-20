@@ -1,27 +1,156 @@
 ---
-layout: upload_image_base
+layout: base
 ---
-<div data-error-key="uploader" class="control-group uploader solid">
-    <label class="control-label">Local File / URL*</label>
-    <div class="controls">
-        <div style="padding-top: 5px; position: relative;" id="container">
-            <input type="text" id="id_uploaded_file" name="uploaded_file" tabindex="4">
-            <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
-            <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
-        </div>
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li>Images <span class="divider">/</span></li>
+    <li class="active">Upload</li>
+</ul>
+{% include hidden_back_button.html %}
+{% literal %}
+<div class="row" ng-controller="UploadImageController">
+    <div class="span7">
+        <form method="POST" class="form-horizontal new-image well">
+            <div class="upload-view">
+                <fieldset>
+                    <div class="control-group ">
+                        <label class="control-label">
+                            <b>Project</b>
+                        </label>
+                        <div class="controls">
+                            <select name="project" class="chzn-select" id="project" data-placeholder="Select Project" tabindex="1">
+                                <option value=""></option>
+                                <option value="IT">IT</option>
+                                <option value="OSCORE">OSCORE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group upload-type">
+                        <label class="control-label"> Upload type </label>
+                        <div class="controls">
+                            <label class="radio inline">
+                                <input type="radio" value="solid" name="upload_type" tabindex="2" ng-model="type"> Solid
+                            </label>
+                            <label class="radio inline">
+                                <input type="radio" value="amazon_like" name="upload_type" tabindex="2" ng-model="type"> Amazon Like
+                            </label>
+                        </div>
+                    </div>
+                    <!-- begin show for Solid type -->
+                    <div data-error-key="name" class="control-group name" ng-show="type == 'solid'">
+                        <label class="control-label"> Name </label>
+                        <div class="controls">
+                            <input type="text" id="id_name" name="name" tabindex="3" value="{{ solid_name }}">
+                        </div>
+                    </div>
+                    <div data-error-key="uploader" class="control-group uploader solid" ng-show="type == 'solid'">
+                        <label class="control-label">Local File / URL*</label>
+                        <div class="controls">
+                            <div style="padding-top: 5px; position: relative;" id="container">
+                                <input type="text" id="id_uploaded_file" name="uploaded_file" tabindex="4" value="{{ solid_url }}">
+                                <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
+                                <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
+                            </div>
+                        </div>
+                        <div id="autoupload_container" class="controls hide">
+                            <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
+                        </div>
+                    </div>
+                    <div class="control-group disk-format" ng-show="type == 'solid'">
+                        <label class="control-label"> Disk format </label>
+                        <div class="controls">
+                            <label class="radio inline">
+                                <input type="radio" checked="" value="raw" name="disk_format" tabindex="6">raw
+                            </label>
+                            <label class="radio inline">
+                                <input type="radio" value="qcow2" name="disk_format" tabindex="6">qcow2
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end show for Solid type -->
+                    <!-- begin show for Amazon-like type -->
+                    <div data-error-key="name" class="control-group name">
+                        <label class="control-label"> Name </label>
+                        <div class="controls">
+                            <input type="text" name="name" tabindex="3" value="{{ amazon_name }}">
+                        </div>
+                    </div>
+                    <div data-error-key="kernel" class="control-group uploader kernel from_file" ng-show="type == 'amazon_like'">
+                        <label class="control-label">Kernel</label>
+                        <div class="controls">
+                            <div style="padding-top: 5px; position: relative;" id="kernel_container">
+                                <select name="kernel" id="id_kernel" tabindex="5" ng-model="kernel_selection" class="chzn-select" data-placeholder="Select Kernel">
+                                    <option></option>
+                                    <option value="-1">Upload new kernel</option>
+                                    <option>Some kernel</option>
+                                </select>
+                                <div style="padding-top: 5px; position: relative;" id="kernel_uploader" ng-show="kernel_selection=='-1'">
+                                    <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*"  value="{{ amazon_kernel_url }}">
+                                    <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
+                                    <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-error-key="initrd" class="control-group uploader initrd from_file" ng-show="type == 'amazon_like'">
+                        <label class="control-label">Initrd</label>
+                        <div class="controls">
+                            <div style="padding-top: 5px; position: relative;" id="initrd_container">
+                                <select  name="initrd" id="id_initrd" tabindex="6" ng-model="initrd_selection" class="chzn-select" data-placeholder="Select Initrd">
+                                    <option></option>
+                                    <option value="-1">Upload new initrd</option>
+                                    <option>Some initrd</option>
+                                </select>
+                                <div style="padding-top: 5px; position: relative;" ng-show="initrd_selection=='-1'">
+                                    <input type="text" name="uploaded_file" tabindex="4" placeholder="Local File/URL*" value="{{ amazon_initrd_url }}">
+                                    <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
+                                    <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-error-key="filesystem" class="control-group uploader filesystem from_file" ng-show="type == 'amazon_like'">
+                        <label class="control-label">Filesystem</label>
+                        <div class="controls">
+                            <div style="padding-top: 5px; position: relative;">
+                                <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*" value="{{ amazon_rootfs_url }}">
+                                <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
+                                <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
+                            </div>
+                        </div>
+                        <div class="controls hide inline">
+                            <input type="checkbox" name="autoupload"> Auto submit form after file upload
+                        </div>
+                    </div>
+                    <!-- end show for Amazon-like type -->
+
+                </fieldset>
+                <div class="form-actions">
+                    <button disabled="" type="submit" class="btn btn-primary" tabindex="10">Add</button>
+                    <a href="javascript: history.back();" class="btn" tabindex="10">Cancel</a>
+                </div>
+            </div>
+        </form>
     </div>
-    <div id="autoupload_container" class="controls hide">
-        <input type="checkbox" id="autoupload" name="autoupload"> Auto submit form after file upload
+    <div class="span5" ng-show="type == 'solid'">
+        <h4>Popular Images</h4>
+        <ul class="recommended_images" >
+            <li><a name="Ubuntu" title='http://ubuntu.com/image?download' ng-click="set_solid($event)">Ubuntu</a></li>
+        </ul>
+    </div>
+    <div class="span5" ng-show="type == 'amazon_like'">
+        <h4>Popular Images</h4>
+        <ul class="recommended_images" >
+            <li><a name="Centos" ng-click="set_amazon($event)"
+                   data-kernel="http://centos.org/kernel?download"
+                   data-initrd="http://centos.org/initrd?download"
+                   data-rootfs="http://centos.org/rootfs?download">Centos</a></li>
+        </ul>
     </div>
 </div>
-<div class="control-group disk-format">
-    <label class="control-label"> Disk format </label>
-    <div class="controls">
-        <label class="radio inline">
-            <input type="radio" checked="" value="raw" name="disk_format" tabindex="6">raw
-        </label>
-        <label class="radio inline">
-            <input type="radio" value="qcow2" name="disk_format" tabindex="6">qcow2
-        </label>
-    </div>
-</div>
+<hr>
+* <i>paste image URL or select file from local disk, then press <button class="btn btn-success btn-mini"><i class="icon-white icon-circle-arrow-up"></i></button></i>
+{% endliteral %}
+{% include back_button.html %}
+
+
