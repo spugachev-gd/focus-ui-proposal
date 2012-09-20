@@ -5,21 +5,21 @@ layout: base
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
     <li>Personal Settings <span class="divider">/</span></li>
     <li class="active">SSH Keys</li>
-    <li class="pull-right"><a class="btn btn-success btn-mini" href="add_new_keypair.html"><i class="icon-plus icon-white"></i>Add&nbsp;New&nbsp;Keypair</a></li>
+    <li class="pull-right"><a class="btn btn-mini btn-success nobr" href="add_new_keypair.html"><i class="icon-plus-sign icon-white"></i>Add New Keypair</a></li>
 </ul>
 <table class="table table-striped table-bordered table-condensed">
     <thead>
     <tr>
         <th>Key Name</th>
-        <th class="hide-when-small">Fingerprint</th>
+        <th class="hide-under-768px">Fingerprint</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>12345</td>
-        <td class="hide-when-small">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
-        <td>
+        <td class="hide-under-768px">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
+        <td class="nobr">
             <div class="modal hide">
                 <div class="modal-header">
                     <a data-dismiss="modal" class="close">×</a>
@@ -56,7 +56,7 @@ layout: base
     </tr>
     <tr>
         <td>12345</td>
-        <td class="hide-when-small">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
+        <td class="hide-under-768px">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
         <td>
             <div class="modal hide">
                 <div class="modal-header">
@@ -93,7 +93,7 @@ layout: base
     </tr>
     <tr>
         <td>12345</td>
-        <td class="hide-when-small">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
+        <td class="hide-under-768px">83:4a:ee:1d:05:95:05:fd:b7:60:cc:e4:ad:7b:46:89</td>
         <td>
             <div id="show_key_12345" class="modal hide">
                 <div class="modal-header">
@@ -117,7 +117,7 @@ layout: base
                 <div class="modal-body">
                     <p>Sure to delete "12345"?</p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer ">
                     <form action="/projects/6/keypairs/delete/12345/" method="post">
                         <div style="display:none;"><input type="hidden" value="20120907183046##afd8be3ec76c674196837f0ed75a0dde601727ab" name="csrf_token" id="csrf_token"></div>
                         <button class="btn">Delete</button>

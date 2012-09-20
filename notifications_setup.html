@@ -7,7 +7,7 @@ layout: base
     <li><a href="notifications.html">Notifications</a> <span class="divider">/</span></li>
     <li class="active">Addresses</li>
 </ul>
-<form methid="GET" class="form-horizontal well">
+<form methid="GET" class="form-horizontal well" action="notifications.html">
     <fieldset>
         <div class="control-group">
             <label class="control-label">Email</label>
@@ -16,14 +16,14 @@ layout: base
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Email Gate for SMS</label>
+            <label class="control-label">Email to SMS Gate</label>
             <div class="controls">
-                <input type="text" value="spugachev+sms@griddynamics.com" name="phone" id="phone">
+                <input type="text" value="spugachev@griddynamics.com" name="phone" id="phone">
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="javascript: history.back();" class="btn">Cancel</a>
+            <button type="submit" class="btn btn-primary tc-add">Save</button>
+            <a href="javascript: history.back()" class="btn">Cancel</a>
         </div>
     </fieldset>
 </form>
