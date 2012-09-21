@@ -3,7 +3,8 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li class="active">Spawn Virtual Machine</li>
+    <li><a href="manage_images_clear.html">Virtual Machines</a> <span class="divider">/</span></li>
+    <li class="active">Start VM</li>
 </ul>
 {% include hidden_back_button.html %}
 <div class="row">
@@ -31,7 +32,7 @@ layout: base
                                     <option value=""></option>
                                     <option id="preselected_image" value="50e2761f-b93e-4277-af4e-17afef999296">mini image</option>
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini btn-success" href="upload_image.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="upload_image.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -77,7 +78,7 @@ layout: base
                                     <option value=""></option>
                                     <option value="first private key">first private key</option>
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_keypair.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_keypair.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -88,7 +89,7 @@ layout: base
                                     <option value="">ssh</option>
                                     <option value="">web</option>
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@ layout: base
         <h3>Image Details</h3>
         <table cellspacing="0" cellpadding="0" width="700"><tr><td width="25%">ID:</td><td>50e2761f-b93e-4277-af4e-17afef999296</td></tr><tr><td>Disk Format:</td><td>qcow2</td></tr><tr><td>Size:</td><td>20MB/2000000b</td></tr></table>
         <h3 style="margin-top: 20px;">Flavor Details</h3>
-        <table cellspacing="0" cellpadding="0" width="700"><tr><td width="25%">ID:</td><td>1</td></tr><tr><td>VCPUs:</td><td>1</td></tr><tr><td>RAM:</td><td>512 MiB</td></tr><tr><td>Disk:</td><td>0 GiB</td></tr></table>
+        <table cellspacing="0" cellpadding="0" width="700"><tr><td width="25%">ID:</td><td>1</td></tr><tr><td>Virtual CPUs:</td><td>1</td></tr><tr><td>RAM:</td><td>512 MiB</td></tr><tr><td>Disk:</td><td>0 GiB</td></tr></table>
         <h3 style="margin-top: 20px;">SSH Key Details</h3>
         <table cellspacing="0" cellpadding="0" width="700"><tr><td width="25%">Fingerprint:</td><td>39:20:f2:f4:0e:46:6c:81:73:36:16:d4:3b:8f:b5:71</td></tr></table>
         <h3 style="margin-top: 20px;">Security Groups Details</h3>
@@ -123,23 +124,23 @@ layout: base
         <table width="700" class="table">
             <tr>
                 <td><b>Summary:</b></td>
-                <td><b>6.8</b>&nbsp;$/month</td>
+                <td>$&nbsp;<b>6.8</b>/month</td>
             </tr>
             <tr>
                 <td width="25%">Flavor</td>
-                <td><b>2</b>&nbsp;$/month</td>
+                <td>$&nbsp;<b>2</b>/month</td>
             </tr>
             <tr>
-                <td>VCPUs</td>
-                <td><b>1.3</b>&nbsp;$/month</td>
+                <td>Virtual CPUs</td>
+                <td>$&nbsp;<b>1.3</b>/month</td>
             </tr>
             <tr>
                 <td>RAM</td>
-                <td><b>3</b>&nbsp;$/month</td>
+                <td>$&nbsp;<b>3</b>/month</td>
             </tr>
             <tr>
                 <td>Disk</td>
-                <td><b>0.5</b>&nbsp;$/month</td>
+                <td>$&nbsp;<b>0.5</b>/month</td>
             </tr>
         </table>
     </div>
