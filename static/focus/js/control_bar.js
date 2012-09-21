@@ -17,17 +17,7 @@ function ControlBarController($scope, $log) {
     $scope.selected_shown = null;
     $scope.selected_hidden = null;
     $scope.hide_column = function(){
-        if ($scope.selected_shown){
-            var r = []
-            for (i = 0; i < $scope.shown_columns.length; i++){
-                if ($scope.selected_shown.indexOf($scope.shown_columns[i]) == -1){
-                    r.push($scope.shown_columns[i])
-                } else {
-                    $scope.hidden_columns.push($scope.shown_columns[i])
-                }
-            }
-            $scope.shown_columns = r;
-            $scope.selected_shown = null
+
         }
     }
     $scope.show_column = function(){

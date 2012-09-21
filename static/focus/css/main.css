@@ -25,3 +25,10 @@ table caption{
     font-weight: bold;
     text-align: left;
 }
+.btn-straight {
+    border-radius: 0 !important;
+}
+
+.searchable-table-container input.search {
+    width: 40em;
+}
