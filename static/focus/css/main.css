@@ -20,13 +20,17 @@ hr{
 .form-inline div.chzn-container{
     top: 10px;
 }
+
+.chzn-container-single .chzn-single, .chzn-choices{
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
 table caption{
     font-size: 16px;
     font-weight: bold;
     text-align: left;
-}
-.btn-straight {
-    border-radius: 0 !important;
 }
 
 .searchable-table-container input.search {
