@@ -1,7 +1,7 @@
 $(function() {
-    $(".datepicker").datepicker();
     $(".chzn-select").chosen({allow_single_deselect: true});
     $(".help-tooltip").tooltip();
+    $(".daterange").daterangepicker();
 });
 
 function UploadImageController($scope, $log){
@@ -220,6 +220,10 @@ function ChangePasswordController($scope){
 
     $scope.wha = function(){
         return $scope.new_password == $scope.repeat_password;
+    }
+
+    $scope.password_match = function(){
+        return $scope.wha() && ($scope.new_password != '');
     }
 
 }

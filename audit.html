@@ -10,7 +10,9 @@ layout: base
 <div class="row spaceup">
     <div class="span12">
         <form class="form-inline form">
-            From <input class="datepicker" name="start" type="text" /> To <input class="datepicker" name="end" type="text" />
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="daterange"/>
+            </div>
             <div class="input-append">
                 <input type="text" class="span2 search" ng-model="query">
                 <a class="btn">Search</a>

@@ -22,7 +22,7 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button class="btn">Save</button>
+                    <button class="btn">Search</button>
                 </div>
 
             </div>
@@ -90,15 +90,5 @@
             <a class="btn dropdown-toggle  btn-straight" ng-click="saved_searches_shown = ! saved_searches_shown" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
         </div>
     </div>
-    <button class="btn" ng-click="columns_selector_shown = ! columns_selector_shown"   style="margin-left: 5em;">Change columns</button>
-    <div class="btn-group">
-        <a href="#" class="btn">Export CSV</a>
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Export XML</a></li>
-            <li><a href="#">Export JSON</a></li>
-        </ul>
-    </div>
 </form>
-<div ng-show="selected_area_shown"> some selected, blabla </div>
 {% endliteral %}

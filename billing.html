@@ -48,22 +48,17 @@ layout: base
 <div class="row spaceup">
     <div class="span12">
         <form class="form-inline form">
-            From <input class="datepicker" name="start" type="text" /> To <input class="datepicker" name="end" type="text" />
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="daterange"/>
+            </div>
             <select multiple name="project" class="chzn-select" id="project" data-placeholder="Select Resource" tabindex="1">
                 <option></option>
                 <option>VMs</option>
                 <option>Images</option>
             </select>
             <button class="btn btn-primary">Report</button>
-            <div class="btn-group">
-                <a href="#" class="btn">Export CSV</a>
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Export XML</a></li>
-                    <li><a href="#">Export JSON</a></li>
-                </ul>
-            </div>
         </form>
+        {% include table_controls.html %}
     </div>
 </div>
 <div class="table-view">
