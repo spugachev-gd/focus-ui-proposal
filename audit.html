@@ -7,7 +7,23 @@ layout: base
     <li class="active">Audit</li>
 </ul>
 {% include hidden_back_button.html %}
-{% include control_bar.html %}
+<div class="row spaceup">
+    <div class="span12">
+        <form class="form-inline form">
+            From <input class="datepicker" name="start" type="text" /> To <input class="datepicker" name="end" type="text" />
+            <div class="input-append">
+                <input type="text" class="span2 search" ng-model="query">
+                <a class="btn">Search</a>
+            </div>
+            <select multiple name="who" class="chzn-select span7" id="who" data-placeholder="User" tabindex="1">
+                <option></option>
+                <option>apugachev@griddynamics.com</option>
+                <option>spugachev@griddynamics.com</option>
+                <option>nsavin@griddynamics.com</option>
+            </select>
+        </form>
+    </div>
+</div>
 <table class="table table-striped table-bordered table-condensed">
     <thead>
         <tr>
