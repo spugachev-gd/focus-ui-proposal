@@ -3,7 +3,7 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="manage_images_clear.html">Virtual Machines</a> <span class="divider">/</span></li>
+    <li><a href="manage_vms_clear.html">Virtual Machines</a> <span class="divider">/</span></li>
     <li class="active">Start VM</li>
 </ul>
 {% include hidden_back_button.html %}
@@ -48,7 +48,6 @@ layout: base
                                     <option value="4">m1.large</option>
                                     <option value="5">m1.xlarge</option>
                                 </select>
-                                <!--span class="help-inline"><a class="btn btn-mini btn-success" href="add_flavor.html"><i class="icon-plus-sign"></i></a></span-->
                             </div>
                         </div>
                         <div class="control-group ">
@@ -96,6 +95,7 @@ layout: base
                 </div>
                 <div class="form-actions">
                     <button class="btn btn-primary" type="submit" tabindex="9"> Spawn it</button>
+                    <a class="btn" tabindex="9" href="javascript: history.back();">Cancel</a>
                 </div>
             </fieldset>
         </form>

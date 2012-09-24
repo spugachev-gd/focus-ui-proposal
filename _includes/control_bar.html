@@ -80,17 +80,14 @@
         </table>
     </div>
 </div>
-<form class="form-inline" action="manage_vms.html">
+<form class="form-inline" id="search_form">
     <div class="input-append">
         <input type="text" class="span2 search" ng-model="query">
         <a class="btn dropdown-toggle" ng-click="builder_shown= ! builder_shown"><span class="caret"></span></a>
     </div>
     <div class="input-append">
         <div class="btn-group">
-            <button class="btn btn-straight" ng-click="doSearch()" type="submit">
-                Search
-            </button>
-
+            <button class="btn btn-straight" type="submit" id="do_search_button">Search</button>
             <a class="btn dropdown-toggle  btn-straight" ng-click="saved_searches_shown = ! saved_searches_shown"><span class="caret"></span></a>
         </div>
     </div>

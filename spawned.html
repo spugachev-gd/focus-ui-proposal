@@ -3,12 +3,10 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li class="active">My Virtual Machine Name</li>
+    <li><a href="manage_vms_clear.html">Virtual Machines</a> <span class="divider">/</span></li>
+    <li class="active">Test VM Name</li>
 </ul>
 {% include hidden_back_button.html %}
-<div class="alert alert-info">
-    <button type="button" class="close" data-dismiss="alert">×</button>Password: asd12312asdaw21312
-</div>
 <div class="row">
     <div class="btn-group span3"  style="margin: 0px 0px 20px 30px;">
         <a href="vm_details.html" class="btn btn-success">Details</a>
@@ -27,6 +25,14 @@ layout: base
         </td>
     </tr>
     <tr>
+        <td>Name</td>
+        <td>Test VM Name</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>asd12312asdaw21312</td>
+    </tr>
+    <tr>
         <td width="200px">Id</td>
         <td>47d4ae6e-cbe1-444e-877d-c4dc9cb696c4</td>
     </tr>
@@ -40,7 +46,7 @@ layout: base
     </tr>
     <tr>
         <td>Project</td>
-        <td>qwert</td>
+        <td><a href="project_details.html">qwert</a></td>
     </tr>
     <tr>
         <td>User</td>
@@ -61,11 +67,19 @@ layout: base
     </tr>
     <tr>
         <td width="200px">Id</td>
-        <td><a href="image_details.html">50e2761f-b93e-4277-af4e-17afef999296</a></td>
+        <td>50e2761f-b93e-4277-af4e-17afef999296</td>
     </tr>
     <tr>
         <td>Name</td>
-        <td>mini_image_log.img</td>
+        <td><a href="image_details.html">mini_image_log.img</a></td>
+    </tr>
+    <tr>
+        <td>Size(bytes)</td>
+        <td>20971520</td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td>Amazon Like</td>
     </tr>
 </table>
 <table class="table table-striped table-bordered table-condensed">
@@ -82,32 +96,23 @@ layout: base
     </tr>
     <tr>
         <td>Name</td>
-        <td>m1.tiny</td>
+        <td><a href="flavor_details.html">m1.tiny</a></td>
     </tr>
     <tr>
-        <td>Ram</td>
+        <td>RAM(MB)</td>
         <td>512</td>
     </tr>
     <tr>
-        <td>Disk</td>
+        <td>Disk(Gb)</td>
         <td>0</td>
     </tr>
     <tr>
-        <td>Ephemeral</td>
+        <td>Additional Disk(Gb)</td>
         <td>0</td>
     </tr>
     <tr>
-        <td>Human id</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>RXTX factor</td>
-        <td>1.0</td>
-    </tr>
-    <tr>
-        <td>vcpus</td>
+        <td>Virtual CPUs</td>
         <td>1</td>
     </tr>
-    </thead>
 </table>
 {% include back_button.html %}

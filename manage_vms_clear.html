@@ -15,5 +15,10 @@ layout: base
 {% include back_button.html %}
 <!-- TODO: REMOVE ON PRODUCTION -->
 <script>
-    $('.form-search').attr('action', 'manage_vms.html');
+    jQuery(function($){
+        $("#search_form").attr('action', 'manage_vms.html');
+        $("#do_search_button").click(function(){
+            $("#search_form").submit();
+        });
+    });
 </script>
