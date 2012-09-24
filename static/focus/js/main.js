@@ -213,3 +213,15 @@ function SearchableTableController($scope){
         }
     }
 }
+
+function ChangePasswordController($scope){
+    $scope.new_password = '';
+    $scope.repeat_password = '';
+    $scope.doIt = function(){
+        alert($scope.new_password)
+    }
+    $scope.wha = function(){
+        return $scope.new_password == $scope.repeat_password;
+    }
+
+}
