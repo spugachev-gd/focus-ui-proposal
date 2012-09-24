@@ -36,7 +36,6 @@
                 <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
             </select>
             <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
-
                 <button class="btn"
                         style="display: inline-block; position: absolute; top: 2em; left: 3em"
                         ng-click="selectedUp()">
@@ -80,18 +79,15 @@
         </table>
     </div>
 </div>
-<form class="form-inline ">
+<form class="form-inline" id="search_form">
     <div class="input-append">
         <input type="text" class="span2 search" ng-model="query">
         <a class="btn dropdown-toggle" ng-click="builder_shown= ! builder_shown"><span class="caret"></span></a>
     </div>
     <div class="input-append">
         <div class="btn-group">
-            <button class="btn" style="border-radius: 3px 0px 0px 3px" ng-click="doSearch()">
-                Search
-            </button>
-
-            <a class="btn dropdown-toggle" ng-click="saved_searches_shown = ! saved_searches_shown" style="border-radius: 0px 3px 3px 0px" ><span class="caret"></span></a>
+            <button class="btn btn-straight" type="submit" id="do_search_button">Search</button>
+            <a class="btn dropdown-toggle  btn-straight" ng-click="saved_searches_shown = ! saved_searches_shown" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
         </div>
     </div>
     <button class="btn" ng-click="columns_selector_shown = ! columns_selector_shown"   style="margin-left: 5em;">Change columns</button>
@@ -104,132 +100,5 @@
         </ul>
     </div>
 </form>
-<!--script src="static/focus/js/control_bar.js"></script>
-<div class="row" class="control-bar" ng-controller="ControlBarController">
-    <div class="span12">
-        <div class="row">
-            <div class="span4">
-                <form class="form-search" style="margin-top: 10px;">
-                    <div class="input-append">
-                        <input type="text" class="span2 search-query" ng-model="query">
-                        <a class="btn dropdown-toggle" href="#" ng-click="show_query_builder = ! show_query_builder"><span class="caret"></span></a>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-            </div>
-            <div class="span6">
-                <div class="btn-toolbar">
-                    <div class="btn-group">
-                        <button href="#" class="btn" ng-click="show_save_search_form=true">
-                            Save search
-                        </button>
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">Predefined 1<i class="icon-remove" ng-click="delete()"></i></a></li>
-                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">Predefined 2<i class="icon-remove" ng-click="delete()"></i></a></li>
-                            <li class="divider"></li>
-                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">User search 1<i class="icon-remove" ng-click="delete()"></i></a></li>
-                            <li ng-controller="DeletableLi" ng-show="show"><a href="#">User search 2<i class="icon-remove" ng-click="delete()"></i></a></li>
-                        </ul>
-                    </div>
-                    <a href="#" class="btn" ng-click="show_change_columns_form=true">Change columns</a>
-                    <div class="btn-group">
-                        <a href="#" class="btn">Export CSV</a>
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Export XML</a></li>
-                            <li><a href="#">Export JSON</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" ng-show="show_save_search_form">
-            <div class="span12">
-                <form class="form form-horizontal">
-                    <div class="control-group">
-                        <label class="control-label" for="id_search_name">Name of the search</label>
-                        <div class="controls">
-                            <input type="text" name="name" id="id_search_name">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" ng-click="show_save_search_form=false">Save it</button>
-                            <button type="cancel" ng-click="show_save_search_form=false">Cancel</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row" ng-show="show_change_columns_form">
-            <div class="span12">
-                <div class="row">
-                    <div class="span4 " style="text-align: right">
-                        <select multiple="true" ng-model="selected_hidden">
-                            <option ng-repeat="x in hidden_columns">{{ x }}</option>
-                        </select>
-
-                    </div>
-                    <div class="span1">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <button ng-click="hide_column()">&lt;</button>
-                                <button ng-click="show_column()">&gt;</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span3">
-                        <select multiple="true" ng-model="selected_shown">
-                            <option ng-repeat="x in shown_columns">{{ x }}</option>
-                        </select>
-                    </div>
-                    <div class="span1" style="text-align: left">
-                        <div class="btn-toolbar">
-                            <div class="btn-group-vertical">
-                                <button ng-click="column_up()">up</button>
-                                <button ng-click="column_down()">down</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span1 offset7">
-                        <button ng-click="show_change_columns_form=false">done</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="row" ng-show="show_query_builder">
-            <div class="span4">
-                <form class="form-horizontal ">
-                    <div class="control-group">
-                        <label class="control-label">Name</label>
-                        <div class="controls">
-
-                            <input type="input" ng-model="query_fields.name">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Id</label>
-                        <div class="controls">
-                            <input type="input" ng-model="query_fields.id">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <a href="#" class="btn" ng-click="change_field()">Search</a>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div-->
-<div ng-show="selected_area_shown">
-    some selected, blabla
-</div>
+<div ng-show="selected_area_shown"> some selected, blabla </div>
 {% endliteral %}
