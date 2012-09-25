@@ -85,133 +85,7 @@ function SearchableTableController($scope){
         $scope.saved_searches_shown = false;
     }
 
-    $scope.selectedUp = function(){
-        function getIndex(x){
-            var index =  -1;
-            for (var i=0; i<$scope.shown_columns.length; i++){
-                var v = $scope.shown_columns[i];
-                if (v.key == x){
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-        function up_one(i){
-            var t = $scope.shown_columns[i-1];
-            $scope.shown_columns[i-1] =  $scope.shown_columns[i];
-            $scope.shown_columns[i] = t;
-        }
-        if ($scope.selected_shown.length){
-            var indexes = [];
-            for (var i=0; i<$scope.selected_shown.length; i++){
-                var index = getIndex($scope.selected_shown[i]);
-                if (index > 0){
-                    indexes.push(index);
-                } else {
-                    indexes = [];
-                    break;
-                }
-            }
-            if (indexes.length){
-                for(var i=0; i<indexes.length;i++){
-                    up_one(indexes[i]);
-                }
-            }
-        }
-    }
 
-    $scope.selectedShow = function(){
-        function getIndex(x){
-            var index =  -1;
-            for (var i=0; i<$scope.shown_columns.length; i++){
-                var v = $scope.shown_columns[i];
-                if (v.key == x){
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-        if ($scope.selected_hidden){
-            var indexes = [];
-            for (var i=0; i<$scope.selected_shown.length; i++){
-                var index = getIndex($scope.selected_shown[i]);
-                if (index > -1){
-                    indexes.push(index);
-                }
-            }
-            if (indexes.length){
-                for(var i=0; i<indexes.length;i++){
-                    $scope.shown_columns.push($scope.hidden_columns.splice(i, 1));
-
-                }
-            }
-        }
-    }
-    $scope.selectedHide = function(){
-        function getIndex(x){
-            var index =  -1;
-            for (var i=0; i<$scope.shown_columns.length; i++){
-                var v = $scope.shown_columns[i];
-                if (v.key == x){
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-        if ($scope.selected_shown){
-            var indexes = [];
-            for (var i=0; i<$scope.selected_shown.length; i++){
-                var index = getIndex($scope.selected_shown[i]);
-                if (index > -1){
-                    indexes.push(index);
-                }
-            }
-            if (indexes.length){
-                for(var i=0; i<indexes.length;i++){
-                    $scope.hidden_columns.push($scope.shown_columns.splice(indexes[i], 1));
-                }
-            }
-        }
-        console.log($scope.hidden_columns)
-    }
-    $scope.selectedDown = function(){
-        function getIndex(x){
-            var index =  -1;
-            for (var i=0; i<$scope.shown_columns.length; i++){
-                var v = $scope.shown_columns[i];
-                if (v.key == x){
-                    index = i;
-                    break;
-                }
-            }
-            return index;
-        }
-        function down_one(i){
-            var t = $scope.shown_columns[i+1];
-            $scope.shown_columns[i+1] =  $scope.shown_columns[i];
-            $scope.shown_columns[i] = t;
-        }
-        if ($scope.selected_shown.length){
-            var indexes = [];
-            for (var i=0; i<$scope.selected_shown.length; i++){
-                var index = getIndex($scope.selected_shown[i]);
-                if (index > 0 && index < $scope.shown_columns.length - 1){
-                    indexes.push(index);
-                } else {
-                    indexes = [];
-                    break;
-                }
-            }
-            if (indexes.length){
-                for(var i=0; i<indexes.length;i++){
-                    down_one(indexes[i]);
-                }
-            }
-        }
-    }
 }
 
 function ChangePasswordController($scope){
@@ -225,5 +99,7 @@ function ChangePasswordController($scope){
     $scope.password_match = function(){
         return $scope.wha() && ($scope.new_password != '');
     }
-
+    $scope.$on('hideAllWindows', function(){
+        console.log('catched')
+    });
 }

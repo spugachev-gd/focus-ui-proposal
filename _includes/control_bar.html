@@ -7,9 +7,46 @@
         -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; color: rgb(51, 51, 51); top: 2em
     }
 </style>
+
+<script src="static/focus/js/angular/ControlBarController.js"></script>
+<div ng-controller="ControlBarController">
+    <form class="form-inline" id="search_form">
+        <div class="input-append">
+            <input type="text" class="span2 search" ng-model="query">
+            <a class="btn dropdown-toggle" ng-click="toggleShown('builder')"><span class="caret"></span></a>
+        </div>
+        <div class="input-append">
+            <div class="btn-group">
+                <button class="btn btn-straight" type="submit" id="do_search_button">Search</button>
+                <a class="btn dropdown-toggle  btn-straight" ng-click="toggleShown('saved_searches')" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <a href="#" class="btn">Per Page</a>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">10</a></li>
+                <li><a href="#">20</a></li>
+                <li><a href="#">50</a></li>
+                <li><a href="#">100</a></li>
+            </ul>
+        </div>
+        <a class="btn" ng-click="toggleShown('columns')">Change columns</a>
+        <div class="btn-group">
+            <a href="#" class="btn">Export CSV</a>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Export XML</a></li>
+                <li><a href="#">Export JSON</a></li>
+            </ul>
+        </div>
+    </form>
+
+
 <div  style="position: relative;">
-    <div class="alert control-bar-form" ng-show="builder_shown">
-        <button type="button" class="close" ng-click="builder_shown= false">×</button>
+    <div class="alert control-bar-form" ng-show="shown.builder">
+        <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
         <h7>Query Builder</h7>
         <form class="form-horizontal form-inline">
             <div class="control-group" ng-repeat="x in shown_columns">
@@ -28,42 +65,10 @@
             </div>
         </form>
     </div>
-    <div class="alert control-bar-form" ng-show="columns_selector_shown">
-        <button type="button" class="close" ng-click="columns_selector_shown = false">×</button>
-        <h5>Change Columns</h5>
-        <form class="form-inline">
-            <select multiple="true"  style="height: 10em" ng-model="selected_shown">
-                <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
-            </select>
-            <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
-                <button class="btn"
-                        style="display: inline-block; position: absolute; top: 2em; left: 3em"
-                        ng-click="selectedUp()">
-                    <i class="icon-arrow-up"></i>
-                </button>
-                <button class="btn"
-                        style="display: inline-block; position: absolute; top: 4em; left: 1em"
-                        ng-click="selectedShow()">
-                    <i class="icon-arrow-left"></i>
-                </button>
-                <button class="btn"
-                        style="display: inline-block; position: absolute; top: 4em; left: 5em"
-                        ng-click="selectedHide()">
-                    <i class="icon-arrow-right"></i>
-                </button>
-                <button class="btn"
-                        style="position: absolute; top: 6em; left: 3em"
-                        ng-click="selectedDown()">
-                    <i class="icon-arrow-down"></i>
-                </button>
-            </div>
-            <select multiple="true"  style="height: 10em" ng-model="selected_hidden">
-                <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
-            </select>
-        </form>
-    </div>
-    <div class="alert control-bar-form" ng-show="saved_searches_shown">
-        <button type="button" class="close" ng-click="saved_searches_shown = false">×</button>
+</div>
+    <div  style="position: relative;">
+    <div class="alert control-bar-form" ng-show="shown.saved_searches">
+        <button type="button" class="close" ng-click="toggleShown('saved_searches')">×</button>
         <h5>Saved Searches</h5>
         <form class="form-inline">
             <input type="text" ng-model="new_search_name" placeholder="Search Name">
@@ -71,24 +76,51 @@
         </form>
         <table class="table table-condensed table-bordered table-striped">
             <tbody>
-                <tr ng-repeat="x in saved_searches">
-                    <td><a ng-click="applySearch(x.query)">{{ x.name }}</a></td>
-                    <td style="text-align: right; border-left: none;"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
-                </tr>
+            <tr ng-repeat="x in saved_searches">
+                <td><a ng-click="applySearch(x.query)">{{ x.name }}</a></td>
+                <td style="text-align: right; border-left: none;"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
-</div>
-<form class="form-inline" id="search_form">
-    <div class="input-append">
-        <input type="text" class="span2 search" ng-model="query">
-        <a class="btn dropdown-toggle" ng-click="builder_shown= ! builder_shown"><span class="caret"></span></a>
     </div>
-    <div class="input-append">
-        <div class="btn-group">
-            <button class="btn btn-straight" type="submit" id="do_search_button">Search</button>
-            <a class="btn dropdown-toggle  btn-straight" ng-click="saved_searches_shown = ! saved_searches_shown" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
+    <div  style="position: relative;" ng-controller="ChangeColumnWindowController">
+        <script src="static/focus/js/angular/ChangeColumnWindowController.js"></script>
+        <div class="alert control-bar-form" ng-show="shown.columns">
+            <button type="button" class="close" ng-click="toggleShown('columns')">×</button>
+            <h5>Change Columns</h5>
+            <form class="form-inline">
+                <select multiple="true"  style="height: 10em" ng-model="selected_shown">
+                    <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                </select>
+                <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
+                    <button class="btn"
+                            style="display: inline-block; position: absolute; top: 2em; left: 3em"
+                            ng-click="selectedUp()">
+                        <i class="icon-arrow-up"></i>
+                    </button>
+                    <button class="btn"
+                            style="display: inline-block; position: absolute; top: 4em; left: 1em"
+                            ng-click="selectedShow()">
+                        <i class="icon-arrow-left"></i>
+                    </button>
+                    <button class="btn"
+                            style="display: inline-block; position: absolute; top: 4em; left: 5em"
+                            ng-click="selectedHide()">
+                        <i class="icon-arrow-right"></i>
+                    </button>
+                    <button class="btn"
+                            style="position: absolute; top: 6em; left: 3em"
+                            ng-click="selectedDown()">
+                        <i class="icon-arrow-down"></i>
+                    </button>
+                </div>
+                <select multiple="true"  style="height: 10em" ng-model="selected_hidden">
+                    <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                </select>
+            </form>
         </div>
     </div>
-</form>
+</div>
+
 {% endliteral %}
