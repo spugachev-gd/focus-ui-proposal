@@ -3,7 +3,7 @@ layout: base
 ---
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li>Images <span class="divider">/</span></li>
+    <li><a href="manage_images_clear.html">Images</a> <span class="divider">/</span></li>
     <li class="active">Upload</li>
 </ul>
 {% include hidden_back_button.html %}
@@ -26,13 +26,13 @@ layout: base
                         </div>
                     </div>
                     <div class="control-group upload-type">
-                        <label class="control-label"> Upload type </label>
+                        <label class="control-label"><b>Upload type</b></label>
                         <div class="controls">
                             <label class="radio inline">
-                                <input type="radio" value="solid" name="upload_type" tabindex="2" ng-model="type"> Solid
+                                <input type="radio" value="solid" name="upload_type" tabindex="2" ng-model="type">Solid
                             </label>
                             <label class="radio inline">
-                                <input type="radio" value="amazon_like" name="upload_type" tabindex="2" ng-model="type"> Amazon Like
+                                <input type="radio" value="amazon_like" name="upload_type" tabindex="2" ng-model="type">Amazon Like
                             </label>
                         </div>
                     </div>
@@ -44,7 +44,7 @@ layout: base
                         </div>
                     </div>
                     <div data-error-key="uploader" class="control-group uploader solid" ng-show="type == 'solid'">
-                        <label class="control-label">Local File / URL*</label>
+                        <label class="control-label"><b>Local File / URL*</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;" id="container">
                                 <input type="text" id="id_uploaded_file" name="uploaded_file" tabindex="4" value="{{ solid_url }}">
@@ -76,7 +76,7 @@ layout: base
                         </div>
                     </div>
                     <div data-error-key="kernel" class="control-group uploader kernel from_file" ng-show="type == 'amazon_like'">
-                        <label class="control-label">Kernel</label>
+                        <label class="control-label"><b>Kernel</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;" id="kernel_container">
                                 <select name="kernel" id="id_kernel" tabindex="5" ng-model="kernel_selection" class="chzn-select" data-placeholder="Select Kernel">
@@ -93,7 +93,7 @@ layout: base
                         </div>
                     </div>
                     <div data-error-key="initrd" class="control-group uploader initrd from_file" ng-show="type == 'amazon_like'">
-                        <label class="control-label">Initrd</label>
+                        <label class="control-label"><b>Initrd</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;" id="initrd_container">
                                 <select  name="initrd" id="id_initrd" tabindex="6" ng-model="initrd_selection" class="chzn-select" data-placeholder="Select Initrd">
@@ -110,7 +110,7 @@ layout: base
                         </div>
                     </div>
                     <div data-error-key="filesystem" class="control-group uploader filesystem from_file" ng-show="type == 'amazon_like'">
-                        <label class="control-label">Filesystem</label>
+                        <label class="control-label"><b>Filesystem</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;">
                                 <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*" value="{{ amazon_rootfs_url }}">

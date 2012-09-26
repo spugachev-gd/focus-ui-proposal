@@ -23,7 +23,7 @@ function SearchableTableController($scope){
         return $scope.fields_selections.indexOf(_key) != -1;
     }
     $scope.update_fields_selections = function(){
-        
+
     }
 
     $scope.columns_selector_shown = false;
