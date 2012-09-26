@@ -69,7 +69,7 @@ layout: base
                     </div>
                     <!-- end show for Solid type -->
                     <!-- begin show for Amazon-like type -->
-                    <div data-error-key="name" class="control-group name">
+                    <div data-error-key="name" class="control-group name" ng-show="type == 'amazon_like'">
                         <label class="control-label"> Name </label>
                         <div class="controls">
                             <input type="text" name="name" tabindex="3" value="{{ amazon_name }}">
@@ -123,7 +123,6 @@ layout: base
                         </div>
                     </div>
                     <!-- end show for Amazon-like type -->
-
                 </fieldset>
                 <div class="form-actions">
                     <button disabled="" type="submit" class="btn btn-primary" tabindex="10">Add</button>
@@ -150,6 +149,7 @@ layout: base
 </div>
 <hr>
 * <i>paste image URL or select file from local disk, then press <button class="btn btn-success btn-mini"><i class="icon-white icon-circle-arrow-up"></i></button></i>
+<script src="static/focus/js/angular/UploadImageController.js"></script>
 {% endliteral %}
 {% include back_button.html %}
 

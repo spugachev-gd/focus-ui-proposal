@@ -13,15 +13,14 @@
     <form class="form-inline" id="search_form">
         <div class="input-append">
             <input type="text" class="span2 search" ng-model="query">
-            <a class="btn dropdown-toggle" ng-click="toggleShown('builder')"><span class="caret"></span></a>
+            <a class="btn dropdown-toggle builder_lever" ng-click="toggleShown('builder')"><span class="caret"></span></a>
         </div>
         <div class="input-append">
             <div class="btn-group">
-                <button class="btn btn-straight" type="submit" id="do_search_button">Search</button>
+                <button class="btn btn-straight saved_searches_lever" type="submit" id="do_search_button">Search</button>
                 <a class="btn dropdown-toggle  btn-straight" ng-click="toggleShown('saved_searches')" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
             </div>
         </div>
-
         <div class="btn-group">
             <a href="#" class="btn">Per Page</a>
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
@@ -32,7 +31,7 @@
                 <li><a href="#">100</a></li>
             </ul>
         </div>
-        <a class="btn" ng-click="toggleShown('columns')">Change columns</a>
+        <a class="btn columns_lever" ng-click="toggleShown('columns')">Change columns</a>
         <div class="btn-group">
             <a href="#" class="btn">Export CSV</a>
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
@@ -42,51 +41,56 @@
             </ul>
         </div>
     </form>
-
-
-<div  style="position: relative;">
-    <div class="alert control-bar-form" ng-show="shown.builder">
-        <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
-        <h7>Query Builder</h7>
-        <form class="form-horizontal form-inline">
-            <div class="control-group" ng-repeat="x in shown_columns">
-                <label class="control-label">
-                    {{ x.title }}
-                </label>
-                <div class="controls">
-                    <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" ng-change="build_query()">
+    <!-- ------------- BUILDER ------------------- -->
+    <div style="position: absolute;"  class="builder_window">
+        <script src="static/focus/js/angular/SearchableTableController.js"></script>
+        <div class="alert control-bar-form" ng-show="shown.builder">
+            <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
+            <h7>Query Builder</h7>
+            <br>Add Field:|{{ fields_selections }}|
+            <select ng-change="update_fields_selections()" ng-model="fields_selections_lever">
+                <option value="{{ x.key }}" ng-repeat="x in shown_columns">{{ x.title }}</option>
+            </select>
+            <form class="form-horizontal form-inline">
+                <div class="control-group" ng-repeat="x in shown_columns" ng-show="is_visible(x.key)">
+                    <label class="control-label">
+                        {{ x.title }}
+                    </label>
+                    <div class="controls">
+                        <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" ng-change="build_query()">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <button class="btn">Search</button>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn">Search</button>
+                    </div>
                 </div>
-
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-    <div  style="position: relative;">
-    <div class="alert control-bar-form" ng-show="shown.saved_searches">
-        <button type="button" class="close" ng-click="toggleShown('saved_searches')">×</button>
-        <h5>Saved Searches</h5>
-        <form class="form-inline">
-            <input type="text" ng-model="new_search_name" placeholder="Search Name">
-            <button class="btn btn-primary"  ng-click="newSearch()">Save New</button>
-        </form>
-        <table class="table table-condensed table-bordered table-striped">
-            <tbody>
-            <tr ng-repeat="x in saved_searches">
-                <td><a ng-click="applySearch(x.query)">{{ x.name }}</a></td>
-                <td style="text-align: right; border-left: none;"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
-            </tr>
-            </tbody>
-        </table>
+    <!-- ------------- SAVED SEARCHES ------------------- -->
+    <div style="position: absolute;"  class="saved_searches_window">
+        <div class="alert control-bar-form nobr" ng-show="shown.saved_searches">
+            <button type="button" class="close" ng-click="toggleShown('saved_searches')">×</button>
+            <h5>Saved Searches</h5>
+            <form class="form-inline">
+                <input type="text" ng-model="new_search_name" placeholder="Search Name">
+                <button class="btn btn-primary"  ng-click="newSearch()">Save New</button>
+            </form>
+            <table class="table table-condensed table-bordered table-striped">
+                <tbody>
+                <tr ng-repeat="x in saved_searches">
+                    <td><a ng-click="applySearch(x.query)">{{ x.name }}</a></td>
+                    <td style="text-align: right; border-left: none;"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    </div>
-    <div  style="position: relative;" ng-controller="ChangeColumnWindowController">
+    <!-- ------------- CHANGE COLUMNS ------------------- -->
+    <div  style="position: absolute;" class="columns_window" ng-controller="ChangeColumnWindowController">
         <script src="static/focus/js/angular/ChangeColumnWindowController.js"></script>
-        <div class="alert control-bar-form" ng-show="shown.columns">
+        <div class="alert control-bar-form nobr" ng-show="shown.columns">
             <button type="button" class="close" ng-click="toggleShown('columns')">×</button>
             <h5>Change Columns</h5>
             <form class="form-inline">
@@ -122,5 +126,4 @@
         </div>
     </div>
 </div>
-
 {% endliteral %}
