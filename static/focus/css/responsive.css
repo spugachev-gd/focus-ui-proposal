@@ -1,3 +1,9 @@
+@media (max-width: 1350px) {
+    .container{
+        margin-left: 90px;
+    }
+}
+
 @media (max-width: 1200px) {
     .table input{
         width: 80%;
