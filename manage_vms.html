@@ -27,16 +27,16 @@ layout: base
 <div class="searchable-table-container" ng-controller="SearchableTableController"
      ng-init="
      shown_columns = [
-        {key: 'name', title: 'Name'},
-        {key: 'id', title: 'Id'},
-        {key: 'cost', title: 'Cost Per Day'},
-        {key: 'vlan', title: 'VLAN'},
-        {key: 'ip', title: 'IP'},
-        {key: 'created', title: 'Created'},
-        {key: 'project', title: 'Project'},
-        {key: 'user', title: 'User'},
-        {key: 'image', title: 'Image'},
-        {key: 'flavor', title: 'Flavor'}
+        {key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'},
+        {key: 'id', title: 'Id', type: 'text', placeholder: 'Enter Id', help: ''},
+        {key: 'cost', title: 'Cost Per Day', type: 'money', placeholder: 'Enter Cost', help: ''},
+        {key: 'vlan', title: 'VLAN', type: 'text', placeholder: 'Enter VLAN', help: ''},
+        {key: 'ip', title: 'IP', type: 'ip', placeholder: 'Enter IP', help: ''},
+        {key: 'created', title: 'Created', type: 'daterange', placeholder: 'Enter DateRange', help: ''},
+        {key: 'project', title: 'Project', type: 'select', range: ['OSCORE', 'IT'], placeholder: 'Enter Name', help: ''},
+        {key: 'user', title: 'User', type: 'text', placeholder: 'Enter Name', help: ''},
+        {key: 'image', title: 'Image', type: 'text', placeholder: 'Enter Name', help: ''},
+        {key: 'flavor', title: 'Flavor', type: 'select', range: ['m1.small', 'm1.tiny'], placeholder: 'Enter Name', help: ''}
         ];
      hidden_columns = [];
      saved_searches = [

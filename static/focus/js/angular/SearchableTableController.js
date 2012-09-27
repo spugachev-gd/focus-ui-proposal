@@ -16,15 +16,32 @@ function SearchableTableController($scope){
     $scope.build_query = function(){
         $scope.query = $scope.query_parts.toString();
     }
+    console.log($scope.shown_columns)
 
-
-    $scope.fields_selections = ['id', 'cost', 'ip'];
-    $scope.is_visible = function(_key){
-        return $scope.fields_selections.indexOf(_key) != -1;
+    $scope.already_selected_controls = []
+    $scope.visibleControls = function(){
+        return $scope.shown_columns.filter(
+            function(i){
+                return -1 == $scope.already_selected_controls.findIndex(
+                    function(j){
+                        return j.key == i.key
+                        }
+                )
+            }
+        )
     }
     $scope.update_fields_selections = function(){
+        if (this.foo){
+            this.already_selected_controls.push(this.foo)
+        }
 
     }
+    $scope.unselectControl = function(key){
+        delete($scope.query_parts[key])
+        $scope.build_query()
+        $scope.already_selected_controls = $scope.already_selected_controls.filter(function(x){return x.key != key})
+    }
+
 
     $scope.columns_selector_shown = false;
     $scope.change_columns = function(){
