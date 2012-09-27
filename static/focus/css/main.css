@@ -48,3 +48,56 @@ table caption{
 .searchable-table-container input.search {
     width: 40em;
 }
+
+.widget-box {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #CDCDCD;
+    clear: both;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    position: relative;
+}
+.widget-title{
+    background-color: #EFEFEF;
+    background-image: -moz-linear-gradient(center top , #FDFDFD 0%, #EAEAEA 100%);
+    border-bottom: 1px solid #CDCDCD;
+    height: 36px;
+}
+.widget-content {
+    padding: 12px 15px;
+}
+
+.widget-title h5 {
+    color: #666666;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 12px 7px;
+    text-shadow: 0 1px 0 #FFFFFF;
+    line-height: 18px;
+    margin: 0;
+}
+.widget-title span.icon {
+    border-right: 1px solid #CDCDCD;
+    float: left;
+    opacity: 0.7;
+    padding: 11px 10px 8px 11px;
+}
+.widget-content .table-bordered {
+    border: 0 none;
+}
+.widget-content .table {
+    margin-bottom: 0;
+}
+.widget-content .table td {
+    border-top: none;
+}
+
+.widget-content .table .update{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -4px;
+    color: #BBBBBB;
+    /*text-align: center;*/
+}
