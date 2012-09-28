@@ -105,42 +105,53 @@
         </div>
     </div>
     <!-- ------------- CHANGE COLUMNS ------------------- -->
-    <div  style="position: absolute;" class="columns_window" ng-controller="ChangeColumnWindowController">
+    <div  style="position: absolute" class="columns_window" ng-controller="ChangeColumnWindowController">
         <script src="static/focus/js/angular/ChangeColumnWindowController.js"></script>
         <div class="alert control-bar-form nobr" ng-show="shown.columns">
             <button type="button" class="close" ng-click="toggleShown('columns')">×</button>
             <h5>Change Columns</h5>
             <form class="form-inline">
-                Available
-                <select multiple="true"  style="height: 10em" ng-model="selected_hidden">
-                    <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
-                </select>
-                <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
-                    <button class="btn"
-                            style="display: inline-block; position: absolute; top: 2em; left: 3em"
-                            ng-click="selectedUp()">
-                        <i class="icon-arrow-up"></i>
-                    </button>
-                    <button class="btn"
-                            style="display: inline-block; position: absolute; top: 4em; left: 1em"
-                            ng-click="selectedShow()">
-                        <i class="icon-arrow-left"></i>
-                    </button>
-                    <button class="btn"
-                            style="display: inline-block; position: absolute; top: 4em; left: 5em"
-                            ng-click="selectedHide()">
-                        <i class="icon-arrow-right"></i>
-                    </button>
-                    <button class="btn"
-                            style="position: absolute; top: 6em; left: 3em"
-                            ng-click="selectedDown()">
-                        <i class="icon-arrow-down"></i>
-                    </button>
+                <div class="row" >
+                    <div class="span1">
+                        Available<br>
+                        <select multiple="true"  style="height: 10em;width: 100px;" ng-model="selected_hidden">
+                            <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                        </select>
+
+                    </div>
+                    <div class="span2" style="text-align: center;">
+                       <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
+                            <button class="btn"
+                                    style="display: inline-block; position: absolute; top: 2em; left: 3em"
+                                    ng-click="selectedUp()">
+                                <i class="icon-arrow-up"></i>
+                            </button>
+                            <button class="btn"
+                                    style="display: inline-block; position: absolute; top: 4em; left: 1em"
+                                    ng-click="selectedHide()">
+                                <i class="icon-arrow-left"></i>
+                            </button>
+                            <button class="btn"
+                                    style="display: inline-block; position: absolute; top: 4em; left: 5em"
+                                    ng-click="selectedShow()">
+                                <i class="icon-arrow-right"></i>
+                            </button>
+                            <button class="btn"
+                                    style="position: absolute; top: 6em; left: 3em"
+                                    ng-click="selectedDown()">
+                                <i class="icon-arrow-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="span1">
+
+                        Visible<br>
+                        <select multiple="true"  style="height: 10em;width: 100px;" ng-model="selected_shown">
+                            <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                        </select>
+                    </div>
                 </div>
-                Visible
-                <select multiple="true"  style="height: 10em" ng-model="selected_shown">
-                    <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
-                </select>
+
             </form>
         </div>
     </div>

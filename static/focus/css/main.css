@@ -48,3 +48,6 @@ table caption{
 .builder_window .dropdown-menu {
     top: auto !important;
 }
+.columns_window {
+    width: 800px
+}
