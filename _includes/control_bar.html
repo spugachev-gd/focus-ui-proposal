@@ -111,8 +111,9 @@
             <button type="button" class="close" ng-click="toggleShown('columns')">×</button>
             <h5>Change Columns</h5>
             <form class="form-inline">
-                <select multiple="true"  style="height: 10em" ng-model="selected_shown">
-                    <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                Available
+                <select multiple="true"  style="height: 10em" ng-model="selected_hidden">
+                    <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
                 </select>
                 <div style="vertical-align: top;display: inline-block; position: relative; width: 9em;">
                     <button class="btn"
@@ -136,8 +137,9 @@
                         <i class="icon-arrow-down"></i>
                     </button>
                 </div>
-                <select multiple="true"  style="height: 10em" ng-model="selected_hidden">
-                    <option ng-repeat="x in hidden_columns" value="{{ x.key }}" >{{ x.title }}</option>
+                Visible
+                <select multiple="true"  style="height: 10em" ng-model="selected_shown">
+                    <option ng-repeat="x in shown_columns" value="{{ x.key }}" >{{ x.title }}</option>
                 </select>
             </form>
         </div>
