@@ -1,0 +1,9 @@
+.administration .navbar-inner{
+    background-color: #bd362f;
+    background-image: -moz-linear-gradient(center top , #bd362f, #ee362f);
+    background-repeat: repeat-x;
+}
+.administration .navbar-inner .brand,
+.administration .navbar .nav > li > a {
+    color: #000000;
+}
