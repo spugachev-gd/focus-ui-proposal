@@ -1,9 +1,41 @@
-.administration .navbar-inner{
-    background-color: #bd362f;
-    background-image: -moz-linear-gradient(center top , #bd362f, #ee362f);
-    background-repeat: repeat-x;
+.banana-container {
+    border: 1px grey solid;
+    width: 100px;
+    height: 100px;
+    overflow: hidden
 }
-.administration .navbar-inner .brand,
-.administration .navbar .nav > li > a {
-    color: #000000;
+.banana-header {
+    border-bottom: 1px grey solid;
+    padding: 5px;
+}
+.banana-content{
+    padding: 10px;
+}
+.banana-header span b {
+    cursor: move;
+}
+.banana-acceptor {
+    width: 200px;
+    height: 200px;
+}
+
+.banana-area {
+    width: 100%;
+    border: 1px green solid;
+}
+.banana-shop {
+    border: 1px yellow solid;
+    margin: 20px;
+    solid: 10px;
+    }
+.banana-acceptor .banana-container{
+    border: 1px red solid;
+    width: 100%;
+    height: 100%;
+}
+.dashed{
+    border: 1px dashed grey;
+}
+.bananaPlaced{
+    border: 1px green solid;
 }

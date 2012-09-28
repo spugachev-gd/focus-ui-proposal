@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MockupModule">
+<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>
@@ -8,15 +8,44 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
 
-    {% include header_css.html %}
-    {% include header_js.html %}
+    {% include administration_header_css.html %}
+    {% include administration_header_js.html %}
 </head>
-<body data-spy="scroll" data-target=".subnav" data-offset="50" class="administration">
+<body>
 {% include administration_header_navbar.html %}
-<div class="container">
-    {{ content }}
+<style type="text/css">
+    .scrollspy-example {
+        height: 200px;
+        overflow: auto;
+        position: relative;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span1 sidemenu">
+            <ul class="nav nav-list affix-top" style="position: fixed">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">&nbsp;&nbsp;Limits</a></li>
+                <li><a href="#">Flavors</a></li>
+                <li><a href="#">Monitoring</a></li>
+                <li><a href="#">&nbsp;&nbsp;Notifications</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#">&nbsp;&nbsp;Tariffs</a></li>
+                <li><a href="#">Audit</a></li>
+                <li><a href="#">DNS</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">&nbsp;&nbsp;Auth settings</a></li>
+                <li><a href="#">&nbsp;&nbsp;Invitations</a></li>
+                <li><a href="#">Customization</a></li>
+            </ul>
+        </div>
+        <div class="span11">
+            {{ content }}
+        </div>
+    </div>
 </div>
 </body>
 </html>
