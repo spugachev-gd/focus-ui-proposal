@@ -46,13 +46,17 @@
         <script src="static/focus/js/angular/SearchableTableController.js"></script>
         <div class="alert control-bar-form" ng-show="shown.builder">
             <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
-            <h7>Query Builder</h7>
-            <br>Add Field:
+            <h5>Query Builder</h5>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">Add Field<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li ng-repeat="x in visibleControls()"><a ng-click="addField(x.key)">{{ x.title }}</a></li>
+            </ul>
+            <!--<br>Add Field:
             <select ng-change="update_fields_selections()"
                     ng-model="foo"
                     ng-options="x.title for x in visibleControls()">
                 <option value="">Select Column</option>
-            </select>
+            </select>-->
             <form class="form-horizontal form-inline">
                 <div class="control-group" ng-repeat="x in already_selected_controls">
                     <label class="control-label">
@@ -60,8 +64,17 @@
                         <a href="#" rel="tooltip"  ng-show="x.help != ''"   data-original-title="{{ x.help }}"><i class="icon-question-sign"></i></a>
                     </label>
                     <div class="controls" ng-switch on="x.type">
-                        <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" ng-change="build_query()" placeholder="{{ x.placeholder }}">
-                        <a ng-click="unselectControl(x.key)"><i class="icon-remove-sign"></i></a>
+                        <div ng-switch-when="ip">
+                            IP
+                        </div>
+                        <div ng-switch-when="money">
+                            <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" ng-change="build_query()">
+                            <a ng-click="unselectControl(x.key)"><i class="icon-remove-sign"></i></a>
+                        </div>
+                        <div ng-switch-default>
+                            <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" ng-change="build_query()">
+                            <a ng-click="unselectControl(x.key)"><i class="icon-remove-sign"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="control-group">

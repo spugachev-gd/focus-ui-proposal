@@ -23,6 +23,6 @@ function ControlBarController($scope){
             if (name == 'builder'){
                 $("."+ name +"_window").css('left', window_parent_position['left'] - 414);
             }
-        }
+      }
     }
 }

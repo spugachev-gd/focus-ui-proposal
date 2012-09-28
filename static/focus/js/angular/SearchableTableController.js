@@ -16,11 +16,10 @@ function SearchableTableController($scope){
     $scope.build_query = function(){
         $scope.query = $scope.query_parts.toString();
     }
-    console.log($scope.shown_columns)
 
     $scope.already_selected_controls = []
     $scope.visibleControls = function(){
-        return $scope.shown_columns.filter(
+        return $scope.shown_columns.union($scope.hidden_columns).filter(
             function(i){
                 return -1 == $scope.already_selected_controls.findIndex(
                     function(j){
@@ -30,9 +29,23 @@ function SearchableTableController($scope){
             }
         )
     }
+    $scope.addField = function(key){
+        if (key){
+            var foo = $scope.shown_columns.union($scope.hidden_columns).filter(function(x){return x.key == key})[0]
+            $scope.already_selected_controls.push(foo)
+            // timeout because browser rerenders page a little bit later after the model is changed
+            setTimeout(function(){
+                $('a[rel=tooltip]').tooltip();
+            }, 500);
+        }
+    }
     $scope.update_fields_selections = function(){
         if (this.foo){
             this.already_selected_controls.push(this.foo)
+            // timeout because browser rerenders page a little bit later after the model is changed
+            setTimeout(function(){
+                $('a[rel=tooltip]').tooltip();
+            }, 500);
         }
 
     }

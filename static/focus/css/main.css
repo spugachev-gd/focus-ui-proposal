@@ -45,3 +45,6 @@ table caption{
 .container{
     margin-left: 90px;
 }
+.builder_window .dropdown-menu {
+    top: auto !important;
+}

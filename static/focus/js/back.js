@@ -1,6 +1,5 @@
 jQuery(function($){
     $('.back_panel').mouseenter(function() {
-        console.log("test");
         $('.back_panel').stop().animate({
             "opacity": "1"
             //,"width": "150px"
