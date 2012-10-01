@@ -11,8 +11,11 @@ jQuery(function($){
     $('.banana-acceptor').droppable({
         hoverClass: 'dashed',
         drop: function(event, ui){
-            $(this).html(ui.draggable);
+            $(this).html(ui.draggable.clone());
             ui.draggable.css('top', '0px').css('left', '0px')
         }
+    })
+    $(document).on('click', '.banana-acceptor .banana-header .close', function(){
+        var h = $(this).parent().parent().remove();
     })
 });

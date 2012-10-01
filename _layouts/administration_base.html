@@ -15,16 +15,9 @@
 </head>
 <body>
 {% include administration_header_navbar.html %}
-<style type="text/css">
-    .scrollspy-example {
-        height: 200px;
-        overflow: auto;
-        position: relative;
-    }
-</style>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span1 sidemenu">
+<div class="container">
+    <div class="row">
+        <div class="span2 sidemenu">
             <ul class="nav nav-list affix-top" style="position: fixed">
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="#">Projects</a></li>
@@ -42,7 +35,7 @@
                 <li><a href="#">Customization</a></li>
             </ul>
         </div>
-        <div class="span11">
+        <div class="span10">
             {{ content }}
         </div>
     </div>
