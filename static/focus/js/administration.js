@@ -1,5 +1,20 @@
+function big(x){
+    x.__small_top = x.css('top')
+    x.__small_left = x.css('left')
+    x.css('top', '0px').css('left', '0px')
+}
+function small(x){
+    x.css('top', x.__small_top).css('left', x.__small_left)
+}
+
 jQuery(function($){
-    var path = /([^/]+\.html)/.exec(window.location.pathname)[1];
+    var path;
+    try {
+        path = /([^/]+\.html)/.exec(window.location.pathname)[1];
+    } catch(e) {
+        path = 'index.html'
+    }
+
     $('.sidemenu a[href="'+ path +'"]').parent().addClass('active');
 
 
@@ -11,11 +26,16 @@ jQuery(function($){
     $('.banana-acceptor').droppable({
         hoverClass: 'dashed',
         drop: function(event, ui){
-            $(this).html(ui.draggable.clone());
-            ui.draggable.css('top', '0px').css('left', '0px')
+            var x = ui.draggable.clone(true)
+            ui.draggable.remove()
+            $(this).html(x);
+            big(x)
         }
     })
     $(document).on('click', '.banana-acceptor .banana-header .close', function(){
-        var h = $(this).parent().parent().remove();
+        var x = $(this).parent().parent().clone(true);
+        $(this).parent().parent().remove();
+        small(x);
+        $('.banana-shop').append(x)
     })
 });
