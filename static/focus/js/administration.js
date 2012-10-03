@@ -6,7 +6,15 @@ function big(x){
 function small(x){
     x.css('top', x.__small_top).css('left', x.__small_left)
 }
-
+function makeDraggable(x){
+    x.draggable({
+        handle: '.banana-header span b',
+        grid: [50, 20],
+        containment: $('.banana-area')
+    });
+    x.removeClass('ui-draggable-dragging')
+    console.log(x)
+}
 jQuery(function($){
     var path;
     try {
@@ -18,11 +26,8 @@ jQuery(function($){
     $('.sidemenu a[href="'+ path +'"]').parent().addClass('active');
 
 
-    $(".banana-container").draggable({
-        handle: '.banana-header span b',
-        grid: [50, 20],
-        containment: $('.banana-area')
-    });
+    makeDraggable($(".banana-container"))
+    console.log($(".banana-container"))
     $('.banana-acceptor').droppable({
         hoverClass: 'dashed',
         drop: function(event, ui){
@@ -37,5 +42,7 @@ jQuery(function($){
         $(this).parent().parent().remove();
         small(x);
         $('.banana-shop').append(x)
+        makeDraggable(x)
+        console.log(x)
     })
 });

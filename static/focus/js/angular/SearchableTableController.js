@@ -35,8 +35,33 @@ function SearchableTableController($scope){
             $scope.already_selected_controls.push(foo)
             // timeout because browser rerenders page a little bit later after the model is changed
             setTimeout(function(){
-                $('a[rel=tooltip]').tooltip();
-            }, 500);
+                { // text
+                    $('a[rel=tooltip]').tooltip();
+                }
+                { // money range
+                    var $x = $('.money_range_slider');
+
+                    if ($x.size()){
+                        var $a = $($x.attr('data-amount-container-selector'))
+                        var $v = $($x.attr('data-value-input-selector'))
+                        $x.slider({
+                            range: true,
+                            min: $x.attr('data-range-options-min'),
+                            max:  $x.attr('data-range-options-max'),
+                            values: [$x.attr('data-range-options-min'), $x.attr('data-range-options-max')],
+                            slide: function(event, ui){
+                                $a.html('$' + ui.values[0] + '-$' + ui.values[1])
+                                //$v.val(ui.values[0] + '-' + ui.values[1])
+                                $scope.query_parts[key] = ui.values[0] + '-' + ui.values[1]
+                                console.log($scope.query_parts)
+                                console.log($scope)
+                            }
+                        })
+                    }
+                }
+            }, 40);
+
+
         }
     }
     $scope.update_fields_selections = function(){
@@ -95,3 +120,4 @@ function SearchableTableController($scope){
         $scope.saved_searches_shown = false;
     }
 }
+
