@@ -12,3 +12,19 @@ a.thumbnail{
 .cb-ip-widget input[type=text] {
     width: 1.75em;
 }
+.container .row .link-group li img {
+    width: 20px;
+    height: 20px;
+}
+.link-group {
+    margin: 10px;
+    /*margin-top: 20px;*/
+    padding: 30px;
+
+}
+.link-group li {
+    list-style-type: none;
+}
+.quick-links ul {
+    margin-top: 20px;
+}

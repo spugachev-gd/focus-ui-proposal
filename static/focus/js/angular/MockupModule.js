@@ -69,5 +69,54 @@ angular.module('MockupModule', []).
         return directiveDefinitionObject;
     }).
     directive('cbIntrangeWidget', function factory(){
-        var directiveDefinitionObject = {}
+        var directiveDefinitionObject = {
+            template: ' \
+                <div> \
+                    <input type="text" \
+                        name="{{ x.key }}" \
+                        value="" \
+                        ng-model="query_parts[x.key]" \
+                        ng-change="build_query()"> \
+                </div> \
+                <div class="">Cost Range: <span class="amount" style="font-weight: bold; color:#f6931f;"></span></div> \
+                <div class="slider"></div>',
+            link: function link(scope, element, attrs){
+                console.log('scope', scope)
+                console.log('element', element)
+                console.log('attrs', attrs)
+                var options = scope.$eval(attrs.cbIntrangeOptions)
+                console.log('options', options)
+
+
+                var $x = $(element);
+                var $a = $x.find('.amount')
+                var $s = $x.find('.slider')
+                console.log('$a', $a)
+                console.log('$s', $s)
+                $x.slider({
+                    range: true,
+                    min: options.min,
+                    max: options.max,
+                    values: [options.min, options.max],
+                    slide: function slide(event, ui){
+
+                        $a.html(options.amount_template.replace('%min%', ui.values[0]).replace('%max%', ui.values[1]))
+                        var amount = ui.values[0] + '-' + ui.values[1]
+                        var expression = scope.$eval(attrs.cbIntrangeWidget) + '="' + amount + '"'
+                        console.log(expression)
+                        scope.$eval(expression)
+
+                    }
+                })
+                if ($x.size()){
+                    var $a = $($x.attr('data-amount-container-selector'))
+                    var $v = $($x.attr('data-value-input-selector'))
+
+                }
+
+
+            }
+
+        }
+        return directiveDefinitionObject;
     })

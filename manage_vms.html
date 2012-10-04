@@ -29,7 +29,7 @@ layout: base
      shown_columns = [
         {key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'},
         {key: 'id', title: 'Id', type: 'text', placeholder: 'Enter Id', help: ''},
-        {key: 'cost', title: 'Cost Per Day', type: 'numrange', type_options: {min: 0, max: 500, amount_template: '$%value%'}, placeholder: 'Enter Cost', help: ''},
+        {key: 'cost', title: 'Cost Per Day', type: 'intrange', type_options: {min: 0, max: 500, amount_template: '$%value%'}, placeholder: 'Enter Cost', help: ''},
         {key: 'vlan', title: 'VLAN', type: 'select', type_options: {options: ['2508', '1101']}, placeholder: 'Enter VLAN', help: ''},
         {key: 'ip', title: 'IP', type: 'ip', placeholder: 'Enter IP', help: ''},
         {key: 'created', title: 'Created', type: 'daterange', placeholder: 'Enter DateRange', help: ''},
