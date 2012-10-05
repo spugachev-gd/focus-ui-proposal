@@ -119,4 +119,103 @@ angular.module('MockupModule', []).
 
         }
         return directiveDefinitionObject;
+    }).
+    directive('cbPasswordStrength', function(){
+        function isMixedCaseAlphanumeric(x){
+            return /[a-z]/.exec(x) && /[A-Z]/.exec(x) && /[0-9]/.exec(x)
+        }
+        function isLongEnough(x){
+            return x.length >= 6;
+        }
+        function measureEntropy(x){
+            // http://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength
+            var HvsL = [
+                [6, 32],
+                [7, 40],
+                [11, 64],
+                [14, 80],
+                [17, 96],
+                [22, 128],
+                [27, 160],
+                [33, 192],
+                [38, 224],
+                [43, 256],
+                [65, 384],
+                [86, 512],
+                [172, 1024]
+            ]
+            var H = HvsL[0][1];
+            var L = x.length;
+            for (var i=0; i<HvsL.length; i++){
+                if (L >= HvsL[i][0]){
+                    H = HvsL[i][1]
+                } else {
+                    break
+                }
+            }
+            console.log([H, HvsL[HvsL.length-1][1]])
+            return [H, HvsL[HvsL.length-1][1]];
+        }
+
+        var directiveDefinitionObject = {
+            template: '<div class="progress" style="width: {{ barWidth }}px;"> \
+                <div class="bar bar-danger" style="width: {{ danger }}%;"></div> \
+            <div class="bar bar-warning" style="width: {{ warning}}%;"></div> \
+            <div class="bar bar-success" style="width: {{ success }}%;"></div> \
+        </div>\
+        <div ng_show="error_message">{{ error_message }}</div>',
+            link: function link(scope, element, attrs){
+                scope.barWidth = 128;
+                scope.danger = 0;
+                scope.warning = 0;
+                scope.success = 0;
+
+                scope.$watch(attrs.cbPasswordStrength, function cbPasswordStrength(value){
+                    var dangerWidth = 20,
+                        warningWidth = 36,
+                        successWidth = 44;
+                    if (!(isMixedCaseAlphanumeric(value) && isLongEnough(value))){
+                        scope.error_message = 'Password must be mixed-case alphanumeric 6 chars minimum.'
+                        scope.danger = 0;
+                        scope.warning = 0;
+                        scope.success = 0;
+                    } else {
+                        var x = measureEntropy(value);
+
+
+                        var H = x[0],
+                            maxEntropy = x[1];
+                        // log2(x) = ln(x) / log(2)
+                        // logarithmic curve is more smooth
+                        H =  Math.log(x[0]) / Math.LN2;
+                        maxEntropy = Math.log(x[1]) / Math.LN2;
+
+                        // x / barWidth = H / maxEntropy; w = x / bw * 100 => w = H / me * 100
+                        var w = Math.ceil((H  / maxEntropy) * 100);
+
+                        console.log(H, maxEntropy, w)
+                        scope.danger = 0;
+                        scope.warning = 0;
+                        scope.success = 0;
+                        if (w < dangerWidth){
+                            scope.danger = w;
+                        } else {
+                            scope.danger = dangerWidth;
+                        }
+                        if ((w >= dangerWidth) && (w <= (dangerWidth + warningWidth))){
+                            scope.warning = w - dangerWidth;
+                        } else if (w > dangerWidth + warningWidth){
+                            scope.warning = warningWidth;
+                        }
+                        if (w >= (dangerWidth + warningWidth) && w < (dangerWidth + warningWidth + successWidth)) {
+                            scope.success = w - (dangerWidth + warningWidth)
+                        } else if (w == 100){
+                            scope.success = successWidth;
+                        }
+                        scope.error_message = ''
+                    }
+                })
+            }
+        };
+        return directiveDefinitionObject
     })
