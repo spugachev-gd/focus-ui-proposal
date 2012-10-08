@@ -40,16 +40,19 @@ layout: base
                     <div data-error-key="name" class="control-group name" ng-show="type == 'solid'">
                         <label class="control-label"> Name </label>
                         <div class="controls">
-                            <input type="text" id="id_name" name="name" tabindex="3" value="{{ solid_name }}">
+                            <input type="text" id="id_name" name="name" tabindex="3" ng-model="solid_name">
                         </div>
                     </div>
                     <div data-error-key="uploader" class="control-group uploader solid" ng-show="type == 'solid'">
                         <label class="control-label"><b>Local File / URL*</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;" id="container">
-                                <input type="text" id="id_uploaded_file" name="uploaded_file" tabindex="4" value="{{ solid_url }}">
+                                <input type="text" id="id_uploaded_file" name="uploaded_file" tabindex="4" ng-model="solid_url">
                                 <button id="id_uploaded_file_button" class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
-                                <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
+                                <button
+                                        class="btn btn-success"
+                                        ng-click="canSubmit = true"
+                                        cb-disabled="((solid_url == '') || (solid_url == undefined) && (solid_name == '') || (solid_name == undefined))"><i class="icon-white icon-circle-arrow-up"></i></button>
                             </div>
                         </div>
                         <div id="autoupload_container" class="controls hide">
@@ -72,7 +75,7 @@ layout: base
                     <div data-error-key="name" class="control-group name" ng-show="type == 'amazon_like'">
                         <label class="control-label"> Name </label>
                         <div class="controls">
-                            <input type="text" name="name" tabindex="3" value="{{ amazon_name }}">
+                            <input type="text" name="name" tabindex="3" ng-model="amazon_name">
                         </div>
                     </div>
                     <div data-error-key="kernel" class="control-group uploader kernel from_file" ng-show="type == 'amazon_like'">
@@ -85,7 +88,7 @@ layout: base
                                     <option>Some kernel</option>
                                 </select>
                                 <div style="padding-top: 5px; position: relative;" id="kernel_uploader" ng-show="kernel_selection=='-1'">
-                                    <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*"  value="{{ amazon_kernel_url }}">
+                                    <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*"  ng-model="amazon_kernel_url">
                                     <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
                                     <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
                                 </div>
@@ -102,7 +105,7 @@ layout: base
                                     <option>Some initrd</option>
                                 </select>
                                 <div style="padding-top: 5px; position: relative;" ng-show="initrd_selection=='-1'">
-                                    <input type="text" name="uploaded_file" tabindex="4" placeholder="Local File/URL*" value="{{ amazon_initrd_url }}">
+                                    <input type="text" name="uploaded_file" tabindex="4" placeholder="Local File/URL*" ng-model="amazon_initrd_url">
                                     <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
                                     <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
                                 </div>
@@ -113,7 +116,7 @@ layout: base
                         <label class="control-label"><b>Filesystem</b></label>
                         <div class="controls">
                             <div style="padding-top: 5px; position: relative;">
-                                <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*" value="{{ amazon_rootfs_url }}">
+                                <input type="text"  name="uploaded_file" tabindex="4" placeholder="Local File/URL*" ng-model="amazon_rootfs_url">
                                 <button class="btn" style="position: relative; z-index: 0;" tabindex="5">Select</button>
                                 <button class="btn btn-success"><i class="icon-white icon-circle-arrow-up"></i></button>
                             </div>
@@ -125,8 +128,8 @@ layout: base
                     <!-- end show for Amazon-like type -->
                 </fieldset>
                 <div class="form-actions">
-                    <button disabled="" type="submit" class="btn btn-primary" tabindex="10">Add</button>
-                    <a href="javascript: history.back();" class="btn" tabindex="10">Cancel</a>
+                    <button cb-disabled="!canSubmit" type="button" class="btn btn-primary" tabindex="10" ng-click="doSubmit()" >Add</button>
+                    <a href="javascript: history.back()" class="btn" tabindex="10">Cancel</a>
                 </div>
             </div>
         </form>

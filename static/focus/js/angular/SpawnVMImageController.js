@@ -1,4 +1,3 @@
-
 /**
  * Created with PyCharm.
  * User: peroksid
@@ -16,6 +15,7 @@ function SpawnVMImageController($scope){
             't': 'mini image'
         }
     ]
+    console.log(window.localStorage)
     if (window.localStorage['additional_image_name']){
         $scope.images.push(
             {
@@ -23,9 +23,9 @@ function SpawnVMImageController($scope){
                 't': window.localStorage['additional_image_name']
             })
         $scope.image_selected =  window.localStorage['additional_image_name']
+        $(window).unload(function(){
+            window.localStorage.removeItem('additional_image_name')
+        })
     }
-
 }
-$(window).unload(function(){
-    window.localStorage.clear()
-})
+

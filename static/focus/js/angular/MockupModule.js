@@ -218,4 +218,29 @@ angular.module('MockupModule', []).
             }
         };
         return directiveDefinitionObject
+    }).
+    directive('cbDisabled', function factory(){
+        return function link(scope, element, attrs){
+            console.log('attrs.cbDisabled', attrs.cbDisabled)
+            scope.$watch(attrs.cbDisabled, function(value){
+                console.log('watched!')
+                if (value){
+                    $(element).attr('disabled', 'true')
+                } else {
+                    $(element).removeAttr('disabled')
+                }
+            })
+        }
+    }).directive('chosen',function(){
+        var linker = function(scope,element,attr) {
+            scope.$watch('recipientsList',function(){
+                element.trigger('liszt:updated');
+            })
+            element.chosen();
+        };
+
+        return {
+            restrict:'A',
+            link: linker
+        }
     })

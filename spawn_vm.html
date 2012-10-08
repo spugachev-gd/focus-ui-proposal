@@ -7,6 +7,7 @@ layout: base
     <li class="active">Start VM</li>
 </ul>
 {% include hidden_back_button.html %}
+{% literal %}
 <div class="row">
     <div class="span6">
         <form method="GET" action="spawned.html" class="form-horizontal well">
@@ -27,10 +28,16 @@ layout: base
                         </div>
                         <div class="control-group">
                             <label class="control-label"> <b>Image</b> </label>
-                            <div class="controls">
-                                <select class="chzn-select" name="image" id="image" data-placeholder="Select Image" tabindex="2">
-                                    <option value=""></option>
-                                    <option id="preselected_image" value="50e2761f-b93e-4277-af4e-17afef999296">mini image</option>
+                            <div class="controls" ng-controller="SpawnVMImageController">
+                                <select class="chzn-select"
+                                        name="image"
+                                        id="image"
+                                        data-placeholder="Select Image"
+                                        tabindex="2"
+                                        ng-options="x.v as x.t for x in images"
+                                        ng-model="image_selected"
+                                        chosen
+                                       >
                                 </select>
                                 <span class="help-inline"><a class="btn btn-mini" href="upload_image.html"><i class="icon-plus-sign"></i></a></span>
                             </div>
@@ -150,4 +157,5 @@ layout: base
         $("#preselected_image").attr('selected', 'selected');
     }
 </script>
+{% endliteral %}
 {% include back_button.html %}
