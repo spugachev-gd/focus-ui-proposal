@@ -29,14 +29,14 @@ layout: base
      shown_columns = [
         {key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'},
         {key: 'id', title: 'Id', type: 'text', placeholder: 'Enter Id', help: ''},
-        {key: 'cost', title: 'Cost Per Day', type: 'intrange', type_options: {min: 0, max: 500, amount_template: '$%value%'}, placeholder: 'Enter Cost', help: ''},
-        {key: 'vlan', title: 'VLAN', type: 'select', type_options: {options: ['2508', '1101']}, placeholder: 'Enter VLAN', help: ''},
+        {key: 'cost', title: 'Cost Per Day', type: 'intrange', type_options: {min: 0, max: 500, amount_template: '$%min%-$%max%'}, placeholder: 'Enter Cost', help: ''},
+        {key: 'vlan', title: 'VLAN', type: 'select', type_options: {options: [{k: '2501', v: '2501'}, {k: '1102', v: '1102'}]}, placeholder: 'Enter VLAN', help: ''},
         {key: 'ip', title: 'IP', type: 'ip', placeholder: 'Enter IP', help: ''},
         {key: 'created', title: 'Created', type: 'daterange', placeholder: 'Enter DateRange', help: ''},
-        {key: 'project', title: 'Project', type: 'select', type_options: {options: ['OSCORE', 'IT']}, placeholder: 'Enter Name', help: ''},
+        {key: 'project', title: 'Project', type: 'select', type_options: {options: [{k: 'OSCORE', v: 'OSCORE'}, {k: 'IT', v: 'IT'}]}, placeholder: 'Enter Name', help: ''},
         {key: 'user', title: 'User', type: 'text', placeholder: 'Enter Name', help: ''},
         {key: 'image', title: 'Image', type: 'text', placeholder: 'Enter Name', help: ''},
-        {key: 'flavor', title: 'Flavor', type: 'select', range: ['m1.small', 'm1.tiny'], placeholder: 'Enter Name', help: ''}
+        {key: 'flavor', title: 'Flavor', type: 'select', type_options: {options: [{k: 'm1.small', v: 'm1.small'}, {k: 'm1.tiny', v: 'm1.tiny'}]}, placeholder: 'Enter Name', help: ''}
         ];
      hidden_columns = [];
      saved_searches = [

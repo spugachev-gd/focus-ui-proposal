@@ -3,18 +3,15 @@ function SearchableTableController($scope){
 
     $scope.builder_shown = false
     $scope.query_parts = {};
-    $scope.query_parts.toString = function(){
-        var r = []
-        for (i in this){
-            if (i != 'toString'){
-                r.push(i + ':' + this[i])
-            }
-        }
-        return r.join(' ')
-    }
 
     $scope.build_query = function(){
-        $scope.query = $scope.query_parts.toString();
+        var r = []
+        for (i in $scope.query_parts){
+            if (i != 'toString'){
+                r.push(i + ':' + $scope.query_parts[i])
+            }
+        }
+        $scope.query = r.join(' ')
     }
 
     $scope.already_selected_controls = []
