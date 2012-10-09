@@ -3,7 +3,16 @@ var module = angular.module('MockupModule', [])
 module.filter('maybe_link', function(){
     return function(x){
         if (x.length == 2){
-            return '<a href="' + x[0] + '">' + x[1] +'</a>';
+            if (x[0].endsWith('.html')){
+                return '<a href="' + x[0] + '">' + x[1] +'</a>';
+            } else if (x[0] == 'boolean') {
+                if (x[1] == true){
+                    return '<i class="icon icon-check"></i>'
+                } else {
+                    return ''
+                }
+            }
+
         } else {
             return x[0];
         }
@@ -222,7 +231,9 @@ module.directive('chosen',function(){
         scope.$watch('recipientsList',function(){
             element.trigger('liszt:updated');
         })
+        $(element).attr('data-placeholder', scope.x.placeholder)
         element.chosen();
+
     };
 
     return {
@@ -232,7 +243,7 @@ module.directive('chosen',function(){
 })
 module.directive('cbDaterange', function factory(){
     return {
-        template: '<input type="text"  ng-model="value" class="daterange">',
+        template: '<input type="text"  ng-model="value" class="daterange" placeholder="{{ x.placeholder }}">',
         link: function link(scope, element, attrs)
         {
             function updateValue(value, now){

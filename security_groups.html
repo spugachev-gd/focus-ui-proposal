@@ -8,18 +8,42 @@ layout: base
     <li class="pull-right"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Add New Security Group</a></li>
 </ul>
 {% include hidden_back_button.html %}
+<div class="searchable-table-container" ng-controller="SearchableTableController"
+     ng-init="shown_columns = [
+        {key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'},
+        {key: 'project', title: 'Project', type: 'select', type_options: {options: [{k: 'OSCORE', v: 'OSCORE'}, {k: 'IT', v: 'IT'}]}, placeholder: 'Enter Name', help: ''},
+        {key: 'description', title: 'Description', type: 'text'}];
+     hidden_columns = [];
+     saved_searches = [
+        {name: 'test', query: 'name:test'},
+        {name: 'complex', query: 'name:complex really complex search'}
+        ];
+     mockup_data = {
+        name: ['edit_security_group.html', 'default'],
+        project: ['project_details.html', 'OSCORE'],
+        description: ['default descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault description']
+     }">
 {% include control_bar.html %}
+    {% literal %}
 <table class="table table-striped table-bordered table-condensed">
     <thead>
-    <tr>
+<!--    <tr>
         <th><input type="checkbox"></th>
         <th>Name</th>
         <th>Project</th>
         <th>Description</th>
-    </tr>
+    </tr>-->
+<tr>
+    <th><input type="checkbox"></th>
+    <th ng-repeat="x in shown_columns" class="nobr">{{ x.title }}</th>
+</tr>
     </thead>
     <tbody>
     <tr>
+        <td><input type="checkbox"></td>
+        <td ng-repeat="x in shown_columns" ng-bind-html-unsafe="mockup_data[x.key] | maybe_link"></td>
+    </tr>
+<!--    <tr>
         <td><input type="checkbox"></td>
         <td><a href="edit_security_group.html">default</a></td>
         <td>OSCORE</td>
@@ -37,7 +61,9 @@ layout: base
         <td>IT</td>
         <td>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</td>
     </tr>
-    </tbody>
+    </tbody>-->
 </table>
+    {% endliteral %}
 {% include pagination.html %}
+</div>
 {% include back_button.html %}

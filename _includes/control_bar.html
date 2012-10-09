@@ -43,7 +43,7 @@
     </form>
     <!-- ------------- BUILDER ------------------- -->
     <div style="position: absolute; width: 500px;"  class="builder_window">
-        <script src="static/focus/js/angular/SearchableTableController.js"></script>
+
         <div class="alert control-bar-form" ng-show="shown.builder">
             <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
             <h5>Query Builder</h5>
@@ -78,7 +78,7 @@
                                 <div cb-intrange-widget="query_parts[x.key]" cb-intrange-options="x.type_options" style="margin-right: 15px;"></div>
                             </div>
                             <div ng-switch-when="text">
-                                <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]">
+                                <input type="text" name="{{ x.key }}" value="" ng-model="query_parts[x.key]" placeholder="{{ x.placeholder }}">
                             </div>
 
                         </div>
