@@ -4,7 +4,11 @@
         position: absolute;   z-index: 100; background-color: rgb(255, 255, 255);
         border: 1px solid rgb(204, 204, 204);
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-        -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; color: rgb(51, 51, 51); top: 2em
+        -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; color: rgb(51, 51, 51); top: 2em;
+        padding-right: 14px;
+    }
+    .control-bar-form .close {
+        right: -7px;
     }
 </style>
 
@@ -94,7 +98,7 @@
         </div>
     </div>
     <!-- ------------- SAVED SEARCHES ------------------- -->
-    <div style="position: absolute;"  class="saved_searches_window">
+    <div style="position: absolute;"  class="saved_searches_window" >
         <div class="alert control-bar-form nobr" ng-show="shown.saved_searches">
             <button type="button" class="close" ng-click="toggleShown('saved_searches')">×</button>
             <h5>Saved Searches</h5>
