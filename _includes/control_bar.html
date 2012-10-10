@@ -13,7 +13,10 @@
 </style>
 
 <script src="static/focus/js/angular/ControlBarController.js"></script>
-<div ng-controller="ControlBarController">
+<div ng-controller="ControlBarController" ng-init="saved_searches = [
+        {name: 'test', query: 'name:test'},
+        {name: 'complex really complex search with a very-very long name indeed requiring an ellipsis', query: 'complex really complex search with a very-very long name indeed requiring an ellipsis'}
+        ];">
     <form class="form-inline" id="search_form">
         <div class="input-append">
             <input type="text" class="span2 search" ng-model="query">
@@ -109,8 +112,12 @@
             <table class="table table-condensed table-bordered table-striped">
                 <tbody>
                 <tr ng-repeat="x in saved_searches">
-                    <td><a ng-click="applySearch(x.query)">{{ x.name }}</a></td>
-                    <td style="text-align: right; border-left: none;"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
+                    <td>
+                        <div style="overflow: hidden;text-overflow: ellipsis; width: 276px;">
+                            <a ng-click="applySearch(x.query)">{{ x.name }}</a>
+                        </div>
+                    </td>
+                    <td style="text-align: right; border-left: none;" width="50"><a class="btn btn-danger btn-mini" ng-click="deleteSearch(x.name)">delete</a></td>
                 </tr>
                 </tbody>
             </table>
