@@ -68,34 +68,7 @@ function SearchableTableController($scope){
     $scope.select_all_selectable = function(){}
     $scope.unselect_all_selectable = function(){}
 
-    $scope.saved_searches_shown = false;
 
-    $scope.newSearch = function(){
-        if ($scope.new_search_name){
-            $scope.saved_searches.push({name: $scope.new_search_name, query: $scope.query})
-            $scope.new_search_name = '';
-        }
-    }
-    $scope.applySearch = function(query){
-        $scope.query = query;
-    }
-    $scope.deleteSearch = function(name){
-        var r = [];
-        for (var i=0; i<$scope.saved_searches.length; i++){
-            var s = $scope.saved_searches[i];
-            if (s.name != name){
-                r.push(s)
-            } else if($scope.query == s.query) {
-                $scope.query = '';
-            }
-        }
-        $scope.saved_searches = r;
-    }
-    $scope.doSearch = function(){
-        $scope.builder_shown = false;
-        $scope.columns_selector_shown = false;
-        $scope.saved_searches_shown = false;
-    }
 
     $scope.selectedNumber = 0
     $scope.checkedAll = function checkedAll(){
