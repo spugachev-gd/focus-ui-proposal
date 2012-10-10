@@ -96,5 +96,17 @@ function SearchableTableController($scope){
         $scope.columns_selector_shown = false;
         $scope.saved_searches_shown = false;
     }
+
+    $scope.selectedNumber = 0
+    $scope.checkedAll = function checkedAll(){
+        $scope.all_selected = false
+        $scope.$broadcast('all_checked_changed')
+    }
+    $scope.$on('was_selected', function(){
+        $scope.selectedNumber += 1
+    })
+    $scope.$on('was_unselected', function(){
+        $scope.selectedNumber -= 1
+    })
 }
 

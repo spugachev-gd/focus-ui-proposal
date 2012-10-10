@@ -42,19 +42,26 @@ layout: base
 {% include control_bar.html %}
     {% literal %}
     <div class="alert alert-info" ng-show="mockup_rows==undefined">{{ empty_message }}</div>
-
+    <div class="alert alert-warning" ng-show="all_checked_checkbox">
+        <div ng-show="!all_selected">
+            {{ selectedNumber }} selected on this page. To select all 100500 on all pages <a ng-click="all_selected=true">click here</a>
+        </div>
+        <div ng-show="all_selected">
+            {{ 100500 + selectedNumber }} selected on all pages. To restrict selection to this pag only <a ng-click="all_selected=false">click here</a>
+        </div>
+    </div>
 <div  ng-hide="mockup_rows == undefined">
     <table class="table table-striped table-bordered table-condensed">
         <thead>
         <tr>
-            <th><input type="checkbox"></th>
+            <th><input type="checkbox" ng-model="all_checked_checkbox" ng-change="checkedAll()"></th>
             <th ng-repeat="x in shown_columns" class="nobr">{{ x.title }}</th>
             <th>&nbsp;</th>
         </tr>
         </thead>
     <tbody>
-    <tr ng-repeat="i in mockup_rows">
-        <td><input type="checkbox"></td>
+    <tr ng-repeat="i in mockup_rows" ng-controller="CheckOneController">
+        <td><input type="checkbox" ng-model="checked_all" ng-change="changeObserved()"></td>
         <td ng-repeat="x in shown_columns" ng-bind-html-unsafe="mockup_data[x.key] | maybe_link"></td>
         <td width="120"><a href="spawn_vm.html#img" class="btn btn-mini btn-primary nobr">&nbsp;spawn vm</a>&nbsp;<a href="#" class="btn btn-mini btn-danger">&nbsp;delete</a></td>
     </tr>
