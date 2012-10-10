@@ -10,6 +10,25 @@
     .control-bar-form .close {
         right: -7px;
     }
+    #search_form div.chzn-container {
+        top: 0 !important;
+        width: 60px !important;
+    }
+    #search_form div.chzn-container a.chzn-single{
+        height: 28px;
+        border-radius: 4px;
+        border-top-color: rgba(0, 0, 0, 0.148438);
+        border-right-color: rgba(0, 0, 0, 0.148438);
+        border-bottom-color: rgba(0, 0, 0, 0.246094);
+        border-left-color: rgba(0, 0, 0, 0.148438);
+        color: #333;
+    }
+    #search_form div.chzn-container a.chzn-single > span{
+        padding-top: 3px;
+    }
+    #search_form div.chzn-container a.chzn-single > div > b{
+        margin-top: 2px;
+    }
 </style>
 
 <script src="static/focus/js/angular/ControlBarController.js"></script>
@@ -28,15 +47,14 @@
                 <a class="btn dropdown-toggle  btn-straight" ng-click="toggleShown('saved_searches')" style="border-radius: 0px 3px 3px 0px"><span class="caret"></span></a>
             </div>
         </div>
-        <div class="btn-group" ng-hide="mockup_rows==undefined">
-            <a href="#" class="btn">Per Page</a>
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">10</a></li>
-                <li><a href="#">20</a></li>
-                <li><a href="#">50</a></li>
-                <li><a href="#">100</a></li>
-            </ul>
+        <div class="btn-group per-page" ng-hide="mockup_rows==undefined">
+            <select class="chzn-select">
+                <option selected>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+
         </div>
         <a class="btn columns_lever" ng-click="toggleShown('columns')" ng-hide="mockup_rows==undefined">Change columns</a>
         <div class="btn-group" ng-hide="mockup_rows==undefined">
