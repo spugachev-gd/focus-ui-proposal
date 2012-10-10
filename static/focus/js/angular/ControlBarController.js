@@ -1,4 +1,4 @@
-function ControlBarController($scope){
+function ControlBarController($scope, $rootScope){
     $scope.shown = {
         'columns': false,
         'builder': false,
@@ -24,5 +24,8 @@ function ControlBarController($scope){
                 $("."+ name +"_window").css('left', window_parent_position['left'] - 414);
             }
       }
+    }
+    $scope.bringMockupRows = function bringMockupRows(rows){
+        $rootScope['mockup_rows'] = rows
     }
 }

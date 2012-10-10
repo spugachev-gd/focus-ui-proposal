@@ -228,12 +228,13 @@ module.directive('cbDisabled', function factory(){
 })
 module.directive('chosen',function(){
     var linker = function(scope, element ,attrs) {
-        scope.$watch('recipientsList',function(){
-            element.trigger('liszt:updated');
-        })
-        $(element).attr('data-placeholder', scope.x.placeholder)
-        element.chosen();
-
+        if (scope.x != undefined){
+            scope.$watch('recipientsList',function(){
+                element.trigger('liszt:updated');
+            })
+            $(element).attr('data-placeholder', scope.x.placeholder)
+            element.chosen();
+        }
     };
 
     return {

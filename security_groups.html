@@ -22,10 +22,15 @@ layout: base
         name: ['edit_security_group.html', 'default'],
         project: ['project_details.html', 'OSCORE'],
         description: ['default descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault descriptiondefault description']
-     }">
+     };
+     empty_message = 'Use search to find security groups you are interested in.'
+     ">
 {% include control_bar.html %}
     {% literal %}
-<table class="table table-striped table-bordered table-condensed">
+    <div class="alert alert-info" ng-show="mockup_rows==undefined">{{ empty_message }}</div>
+
+    <div  ng-hide="mockup_rows == undefined">
+        <table class="table table-striped table-bordered table-condensed">
     <thead>
 <!--    <tr>
         <th><input type="checkbox"></th>
@@ -39,7 +44,7 @@ layout: base
 </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr ng-repeat="i in mockup_rows">
         <td><input type="checkbox"></td>
         <td ng-repeat="x in shown_columns" ng-bind-html-unsafe="mockup_data[x.key] | maybe_link"></td>
     </tr>
@@ -60,10 +65,11 @@ layout: base
         <td><a href="edit_security_group.html">test</a></td>
         <td>IT</td>
         <td>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</td>
-    </tr>
-    </tbody>-->
-</table>
-    {% endliteral %}
-{% include pagination.html %}
+    </tr>-->
+    </tbody>
+        </table>
+        {% endliteral %}
+        {% include pagination.html %}
+    </div>
 </div>
 {% include back_button.html %}
