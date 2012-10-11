@@ -215,9 +215,7 @@ module.directive('cbPasswordStrength', function(){
 })
 module.directive('cbDisabled', function factory(){
     return function link(scope, element, attrs){
-        console.log('attrs.cbDisabled', attrs.cbDisabled)
         scope.$watch(attrs.cbDisabled, function(value){
-            console.log('watched!')
             if (value){
                 $(element).attr('disabled', 'true')
             } else {
@@ -228,13 +226,15 @@ module.directive('cbDisabled', function factory(){
 })
 module.directive('chosen',function(){
     var linker = function(scope, element ,attrs) {
-        if (scope.x != undefined){
-            scope.$watch('recipientsList',function(){
-                element.trigger('liszt:updated');
-            })
+        scope.$watch('recipientsList',function(){
+            element.trigger('liszt:updated');
+        })
+        if (scope.x){
             $(element).attr('data-placeholder', scope.x.placeholder)
-            element.chosen();
         }
+
+        element.chosen();
+        console.log(element)
     };
 
     return {
