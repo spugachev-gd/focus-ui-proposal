@@ -283,3 +283,13 @@ module.directive('cbDaterange', function factory(){
         }
     }
 })
+
+module.directive('ngSecgroupbehaviour', function factory(){
+    return function link(scope, element, attrs){
+        scope.$watch(attrs.ngSecgroupbehaviour, function(value){
+            if (!scope.done){
+                $(element).val(value)
+            }
+        })
+    }
+})

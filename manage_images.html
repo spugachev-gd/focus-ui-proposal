@@ -59,7 +59,7 @@ layout: base
     <tr ng-repeat="i in mockup_rows" ng-controller="CheckOneController">
         <td><input type="checkbox" ng-model="checked_all" ng-change="changeObserved()"></td>
         <td ng-repeat="x in shown_columns" ng-bind-html-unsafe="mockup_data[x.key] | maybe_link"></td>
-            <td width="120"><a href="spawn_vm.html#img" class="btn btn-mini btn-primary nobr"><i class="icon-plus-sign icon-white"></i> VM</a>&nbsp;<a href="#" class="btn btn-mini btn-danger"><i class="icon-minus-sign icon-white"></i></a></td>
+            <td width="120"><a href="spawn_vm.html#img" class="btn btn-mini btn-primary nobr"><i class="icon-plus-sign icon-white"></i> VM</a>&nbsp;<a href="#" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></a></td>
     </tr>
         <!--<tr>
             <td><input type="checkbox" checked></td>
