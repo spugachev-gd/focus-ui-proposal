@@ -41,11 +41,17 @@
     .hide-under-768px {
         display: none;
     }
+    .td-hide-under-768px {
+        display:none;
+    }
     .show-under-768px {
         display: block;
     }
 }
 @media (min-width: 768px){
+    .td-hide-under-768px {
+        display:table-cell;
+    }
     .hide-under-768px {
         display: block;
     }
