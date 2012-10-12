@@ -17,12 +17,20 @@ layout: base
                 <input type="text" class="span2 search" ng-model="query">
                 <a class="btn">Search</a>
             </div>
-            <select multiple name="who" class="chzn-select span7" id="who" data-placeholder="User" tabindex="1">
+            <select multiple name="who" class="chzn-select span5" id="who" data-placeholder="User" tabindex="1">
                 <option></option>
                 <option>apugachev@griddynamics.com</option>
                 <option>spugachev@griddynamics.com</option>
                 <option>nsavin@griddynamics.com</option>
             </select>
+            <div class="btn-group" >
+                <a href="#" class="btn">Export CSV</a>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Export XML</a></li>
+                    <li><a href="#">Export JSON</a></li>
+                </ul>
+            </div>
         </form>
     </div>
 </div>

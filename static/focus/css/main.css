@@ -155,3 +155,9 @@ table caption{
 .tiled-list__item  .title, .tiled-list__item  .actions {
     padding-top: 0;
 }
+.form-search .chzn-container {
+    top: 12px;
+}
+.form-inline .chzn-container {
+    top: 12px !important;
+}
