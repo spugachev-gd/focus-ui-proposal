@@ -1,23 +1,32 @@
 var module = angular.module('MockupModule', [])
 
-module.filter('maybe_link', function(){
-    return function(x){
-        if (x.length == 2){
-            if (x[0].endsWith('.html')){
-                return '<a href="' + x[0] + '">' + x[1] +'</a>';
-            } else if (x[0] == 'boolean') {
-                if (x[1] == true){
-                    return '<i class="icon icon-check"></i>'
-                } else {
-                    return ''
-                }
+function doMaybeLink(x){
+    if (x.length == 2){
+        if (x[0].endsWith('.html')){
+            return '<a href="' + x[0] + '">' + x[1] +'</a>';
+        } else if (x[0] == 'boolean') {
+            if (x[1] == true){
+                return '<i class="icon icon-check"></i>'
+            } else {
+                return ''
             }
-
-        } else {
-            return x[0];
         }
+
+    } else {
+        return x[0];
+    }
+}
+
+module.filter('maybe_link', function(){
+    return doMaybeLink
+})
+
+module.filter('maybe_link_array', function(){
+    return function(x){
+        return doMaybeLink(x[1])
     }
 })
+
 module.directive('cbIpWidget', function factory(){
     var directiveDefinitionObject = {
         template: ' \
@@ -148,7 +157,6 @@ module.directive('cbPasswordStrength', function(){
                 break
             }
         }
-        console.log([H, HvsL[HvsL.length-1][1]])
         return [H, HvsL[HvsL.length-1][1]];
     }
 
@@ -234,7 +242,6 @@ module.directive('chosen',function(){
         }
 
         element.chosen();
-        console.log(element)
     };
 
     return {
