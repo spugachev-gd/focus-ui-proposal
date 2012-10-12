@@ -27,11 +27,11 @@ function FilterableTableController($scope){
     $scope.results = $scope.mockup_data;
     $scope.doFiltering = function(){
         $scope.results = $scope.mockup_data;
-        if ($scope.main || $scope.project){
+        if ($scope.main || ($scope.project && $scope.project.length)){
             var matchers = []
             if ($scope.main){
                 matchers.push(function mainMatcher(n){
-                    return ['name', 'description'].some(function(m){
+                    return $scope.filters[0][1].some(function(m){// name and descrition OR email and real name
                         return getStr(getEntry(n, m)).has($scope.main)
                     })
                 })

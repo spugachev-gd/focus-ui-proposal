@@ -1,58 +1,72 @@
 ---
 layout: base
 ---
+<style type="text/css">
+    .form-search .chzn-container {
+        top: 12px;
+    }
+</style>
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
     <li>Projects <span class="divider">/</span></li>
-    <li class="active">Members</li>
-    <li class="pull-right"><a class="btn btn-success btn-mini" href="invite.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Invite</a></li>
+    <li class="active">Security Groups</li>
+    <li class="pull-right"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i>&nbsp;Add New Security Group</a></li>
 </ul>
 {% include hidden_back_button.html %}
-<div class="row spaceup">
-    <div class="span12">
-        <form class="form-inline form">
+<div ng-init="
+     foo = 'bar';
+     mockup_data = [
+     [
+        ['email', ['user_details.html', 'dmaslennikov@griddynamics.com']],
+        ['real_name', ['Dmitry Maslennikov']],
+        ['project', ['project_details.html', 'OSCORE']]
+     ],
+     [
+        ['email', ['user_details.html', 'spugachev@griddynamics.com']],
+        ['real_name', ['Dmitry Maslennikov']],
+        ['project', ['project_details.html', 'IT']]
+     ]
+     ];
+     empty_message = 'No matching members found.';
+     filters = [
+       ['main', ['real_name', 'email'], 'Search by Email or Real Name'],
+       ['project', 'project', 'Filter by Project']
+     ]
+     ">
+    <div class="filterable-table-container" ng-controller="FilterableTableController">
+        <form class="form-search">
             <div class="input-append">
-                <input type="text" class="span2 search" ng-model="query">
-                <a class="btn">Search</a>
+                <input type="text" class="span3 search-query" placeholder="Search by Name or Description" ng-model="main">
+                <button class="btn" ng-click="doFiltering()">Search</button>
             </div>
+            <select class="chzn-select" data-placeholder="Filter by Project" ng-model="project" ng-change="doFiltering()" multiple>
+                <option></option>
+                <option>IT</option>
+                <option>OSCORE</option>
+            </select>
         </form>
+        {% literal %}
+        <div class="alert alert-info" ng-show="results.length == 0">{{ empty_message }}</div>
+
+        <div  ng-hide="results.length == 0">
+            <table class="table table-striped table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Real Name</th>
+                    <th>Project&nbsp;<span class="help-tooltip" title="only projects you are involved in"><i class="icon-question-sign"></i></span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="i in results">
+                    <td ng-repeat="j in i" ng-bind-html-unsafe="j | maybe_link_array"></td>
+                </tr>
+                </tbody>
+            </table>
+            {% endliteral %}
+            {% include pagination.html %}
+        </div>
     </div>
 </div>
-<table class="table table-striped table-bordered table-condensed">
-    <thead>
-        <tr>
-            <th>Email</th>
-            <th>Real Name</th>
-            <th>Project&nbsp;<span class="help-tooltip" title="only projects you are involved in"><i class="icon-question-sign"></i></span></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="user_details.html">dmaslennikov@griddynamics.com</a></td>
-            <td>Dmitry Maslennikov</td>
-            <td><a href="project_details.html">OSCORE</a>, <a href="project_details.html">IT</a></td>
-        </tr>
-        <tr>
-            <td><a href="user_details.html">spugachev@griddynamics.com</a></td>
-            <td>Stanislav Pugachev</td>
-            <td><a href="project_details.html">OSCORE</a>, <a href="project_details.html">IT</a></td>
-        </tr>
-        <tr>
-            <td><a href="user_details.html">apugachev@griddynamics.com</a></td>
-            <td>Alexander Pugachev</td>
-            <td><a href="project_details.html">IT</a></td>
-        </tr>
-        <tr>
-            <td><a href="user_details.html">nsavin@griddynamics.com</a></td>
-            <td>Nikita Savin</td>
-            <td><a href="project_details.html">OSCORE</a></td>
-        </tr>
-        <tr>
-            <td><a href="user_details.html">aababilov@griddynamics.com</a></td>
-            <td>Alessio Ababilov</td>
-            <td><a href="project_details.html">OSCORE</a>, <a href="project_details.html">IT</a></td>
-        </tr>
-    </tbody>
-</table>
-{% include pagination.html %}
+
 {% include back_button.html %}
