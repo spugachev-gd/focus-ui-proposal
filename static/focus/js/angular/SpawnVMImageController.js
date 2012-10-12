@@ -15,7 +15,6 @@ function SpawnVMImageController($scope){
             't': 'mini image'
         }
     ]
-    console.log(window.localStorage)
     if (window.localStorage['additional_image_name']){
         $scope.images.push(
             {

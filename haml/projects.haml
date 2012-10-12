@@ -1,0 +1,60 @@
+:plain
+  ---
+  layout: base
+  ---
+%ul.breadcrumb
+  %li
+    %a(href="index.html") Home
+    %span.divider /
+  %li.active
+    Types
+%div.tiled-list
+  %div.row
+    %div.span6(style="overflow: hidden")
+      %table.tiled-list__item
+        %tr
+          %td.name OSCORE
+          %td.value
+            %a(href="members.html") 300
+          %td.value $6.4
+          %td.value
+            %a(href="manage_vms.html") 350
+          %td.value
+            %a(href="manage_images.html") 10
+          %td.value 321
+          %td.value 192.168.1.0/23
+        %tr
+          %td.actions
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?project=OSCORE")
+              %i(class="icon-plus-sign icon-white")
+              VM
+          %td.title Users
+          %td.title Cost
+          %td.title VMs
+          %td.title Images
+          %td.title VLAN
+          %td.title Network
+    %div.span6(style="overflow: hidden")
+      %table.tiled-list__item
+        %tr
+          %td.name IT
+          %td.value
+            %a(href="members.html") 300
+          %td.value $6.4
+          %td.value
+            %a(href="manage_vms.html") 350
+          %td.value
+            %a(href="manage_images.html") 10
+          %td.value 321
+          %td.value 192.168.1.0/23
+        %tr
+          %td.actions
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?project=IT")
+              %i(class="icon-plus-sign icon-white")
+              VM
+          %td.title Users
+          %td.title Cost
+          %td.title VMs
+          %td.title Images
+          %td.title VLAN
+          %td.title Network

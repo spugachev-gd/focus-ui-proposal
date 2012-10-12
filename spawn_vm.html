@@ -18,11 +18,16 @@ layout: base
                             <label class="control-label">
                                 <b>Project</b>
                             </label>
-                            <div class="controls">
-                                <select name="project" class="chzn-select" id="project" data-placeholder="Select Project" tabindex="1">
-                                    <option value=""></option>
-                                    <option value="IT">IT</option>
-                                    <option value="OSCORE">OSCORE</option>
+                            <div class="controls" ng-controller="SpawnVMProjectController">
+                                <select
+                                        name="project"
+                                        class="chzn-select"
+                                        id="project"
+                                        data-placeholder="Select Project"
+                                        tabindex="1"
+                                        ng-model="selected_project"
+                                        ng-options="x for x in projects"
+                                        chosen>
                                 </select>
                             </div>
                         </div>

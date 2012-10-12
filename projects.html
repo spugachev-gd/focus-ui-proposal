@@ -1,185 +1,82 @@
 ---
 layout: base
 ---
-<ul class="breadcrumb">
-    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li class="active">Projects</li>
+<ul class='breadcrumb'>
+  <li>
+    <a href='index.html'>Home</a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>
+    Types
+  </li>
 </ul>
-{% include hidden_back_button.html %}
-<div class="row-fluid">
-    <div class="span6">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-file"></i>
-                </span>
-                <h5><a href="project_details.html">OSCORE</a></h5>
-            </div>
-            <div class="widget-content">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td><span class="update">Total Users</span></td>
-                            <td><span class="update"><a href="members.html">300</a></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="update">Total Virtual Machines</span></td>
-                            <td><span class="update"><a href="manage_vms.html">350</a></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="update">Total Images</span></td>
-                            <td><span class="update"><a href="manage_images.html">10</a></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="update">VLAN</span></td>
-                            <td><span class="update">321</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="update">Network</span></td>
-                            <td><span class="update">192.168.1.0/23</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-file"></i>
-                </span>
-                <h5><a href="project_details.html">OSCORE</a></h5>
-            </div>
-            <div class="widget-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td><span class="update">Total Users</span></td>
-                        <td><span class="update"><a href="members.html">300</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Virtual Machines</span></td>
-                        <td><span class="update"><a href="manage_vms.html">350</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Images</span></td>
-                        <td><span class="update"><a href="manage_images.html">10</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">VLAN</span></td>
-                        <td><span class="update">321</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Network</span></td>
-                        <td><span class="update">192.168.1.0/23</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-file"></i>
-                </span>
-                <h5><a href="project_details.html">OSCORE</a></h5>
-            </div>
-            <div class="widget-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td><span class="update">Total Users</span></td>
-                        <td><span class="update"><a href="members.html">300</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Virtual Machines</span></td>
-                        <td><span class="update"><a href="manage_vms.html">350</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Images</span></td>
-                        <td><span class="update"><a href="manage_images.html">10</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">VLAN</span></td>
-                        <td><span class="update">321</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Network</span></td>
-                        <td><span class="update">192.168.1.0/23</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class='tiled-list'>
+  <div class='row'>
+    <div class='span6' style='overflow: hidden'>
+      <table class='tiled-list__item'>
+        <tr>
+          <td class='name'>OSCORE</td>
+          <td class='value'>
+            <a href='members.html'>300</a>
+          </td>
+          <td class='value'>$6.4</td>
+          <td class='value'>
+            <a href='manage_vms.html'>350</a>
+          </td>
+          <td class='value'>
+            <a href='manage_images.html'>10</a>
+          </td>
+          <td class='value'>321</td>
+          <td class='value'>192.168.1.0/23</td>
+        </tr>
+        <tr>
+          <td class='actions'>
+            <a class='btn btn-mini btn-success' href='spawn_vm.html?project=OSCORE'>
+              <i class='icon-plus-sign icon-white'></i>
+              VM
+            </a>
+          </td>
+          <td class='title'>Users</td>
+          <td class='title'>Cost</td>
+          <td class='title'>VMs</td>
+          <td class='title'>Images</td>
+          <td class='title'>VLAN</td>
+          <td class='title'>Network</td>
+        </tr>
+      </table>
     </div>
-    <div class="span6">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-file"></i>
-                </span>
-                <h5><a href="project_details.html">IT</a></h5>
-            </div>
-            <div class="widget-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td><span class="update">Total Users</span></td>
-                        <td><span class="update"><a href="members.html">128</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Virtual Machines</span></td>
-                        <td><span class="update"><a href="manage_vms.html">256</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Images</span></td>
-                        <td><span class="update"><a href="manage_images.html">20</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">VLAN</span></td>
-                        <td><span class="update">421</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Network</span></td>
-                        <td><span class="update">172.121.1.0/23</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-file"></i>
-                </span>
-                <h5><a href="project_details.html">IT</a></h5>
-            </div>
-            <div class="widget-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td><span class="update">Total Users</span></td>
-                        <td><span class="update"><a href="members.html">128</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Virtual Machines</span></td>
-                        <td><span class="update"><a href="manage_vms.html">256</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Total Images</span></td>
-                        <td><span class="update"><a href="manage_images.html">20</a></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">VLAN</span></td>
-                        <td><span class="update">421</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="update">Network</span></td>
-                        <td><span class="update">172.121.1.0/23</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <div class='span6' style='overflow: hidden'>
+      <table class='tiled-list__item'>
+        <tr>
+          <td class='name'>IT</td>
+          <td class='value'>
+            <a href='members.html'>300</a>
+          </td>
+          <td class='value'>$6.4</td>
+          <td class='value'>
+            <a href='manage_vms.html'>350</a>
+          </td>
+          <td class='value'>
+            <a href='manage_images.html'>10</a>
+          </td>
+          <td class='value'>321</td>
+          <td class='value'>192.168.1.0/23</td>
+        </tr>
+        <tr>
+          <td class='actions'>
+            <a class='btn btn-mini btn-success' href='spawn_vm.html?project=IT'>
+              <i class='icon-plus-sign icon-white'></i>
+              VM
+            </a>
+          </td>
+          <td class='title'>Users</td>
+          <td class='title'>Cost</td>
+          <td class='title'>VMs</td>
+          <td class='title'>Images</td>
+          <td class='title'>VLAN</td>
+          <td class='title'>Network</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </div>
-{% include back_button.html %}
