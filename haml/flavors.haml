@@ -11,10 +11,10 @@
     %span.divider /
   %li.active
     Types
-%div.vm-type-list
+%div.tiled-list
   %div.row
     %div.span6(style="overflow: hidden")
-      %table.vm-type-list__item
+      %table.tiled-list__item
         %tr
           %td.name m1.tiny
           %td.value 256&nbsp;MB
@@ -24,7 +24,7 @@
           %td.value 2
         %tr
           %td.actions
-            %a(class="btn btn-mini btn-success")
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?type=1")
               %i(class="icon-plus-sign icon-white")
               VM
           %td.title RAM
@@ -33,9 +33,9 @@
           %td.title Additional&nbsp;Disk
           %td.title Virtual&nbsp;CPUs
     %div.span6(style="overflow: hidden")
-      %table.vm-type-list__item
+      %table.tiled-list__item
         %tr
-          %td.name m1.tiny
+          %td.name m1.small
           %td.value 256&nbsp;MB
           %td.value $6.4
           %td.value 300&nbsp;GB
@@ -43,7 +43,7 @@
           %td.value 2
         %tr
           %td.actions
-            %a(class="btn btn-mini btn-success")
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?type=2")
               %i(class="icon-plus-sign icon-white")
               VM
           %td.title RAM
@@ -53,9 +53,9 @@
           %td.title Virtual&nbsp;CPUs
   %div.row
     %div.span6(style="overflow: hidden")
-      %table.vm-type-list__item
+      %table.tiled-list__item
         %tr
-          %td.name m1.tiny
+          %td.name m1.medium
           %td.value 256&nbsp;MB
           %td.value $6.4
           %td.value 300&nbsp;GB
@@ -63,7 +63,7 @@
           %td.value 2
         %tr
           %td.actions
-            %a(class="btn btn-mini btn-success")
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?type=3")
               %i(class="icon-plus-sign icon-white")
               VM
           %td.title RAM
@@ -72,9 +72,9 @@
           %td.title Additional&nbsp;Disk
           %td.title Virtual&nbsp;CPUs
     %div.span6(style="overflow: hidden")
-      %table.vm-type-list__item
+      %table.tiled-list__item
         %tr
-          %td.name m1.tiny
+          %td.name m1.large
           %td.value 256&nbsp;MB
           %td.value $6.4
           %td.value 300&nbsp;GB
@@ -82,7 +82,27 @@
           %td.value 2
         %tr
           %td.actions
-            %a(class="btn btn-mini btn-success")
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?type=4")
+              %i(class="icon-plus-sign icon-white")
+              VM
+          %td.title RAM
+          %td.title Cost
+          %td.title Disk
+          %td.title Additional&nbsp;Disk
+          %td.title Virtual&nbsp;CPUs
+  %div.row
+    %div.span6(style="overflow: hidden"  href="spawn_vm.html?type=5")
+      %table.tiled-list__item
+        %tr
+          %td.name m1.xlarge
+          %td.value 256&nbsp;MB
+          %td.value $6.4
+          %td.value 300&nbsp;GB
+          %td.value 300&nbsp;GB
+          %td.value 2
+        %tr
+          %td.actions
+            %a(class="btn btn-mini btn-success" href="spawn_vm.html?type=5")
               %i(class="icon-plus-sign icon-white")
               VM
           %td.title RAM
