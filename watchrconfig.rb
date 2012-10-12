@@ -1,8 +1,6 @@
-watch('haml\/(.*\.haml)') {
+watch('haml.*/([^/]+\.haml)'){
   |md|
-  output = md[1].gsub(/\.haml$/, '.html')
-  cmd = "haml #{md[0]} #{output}"
+  cmd = "haml #{md[0]} #{md[1].gsub(/\.haml$/, '.html')}"
   puts cmd
   system(cmd)
-  system("haml #{md[0]}")
 }
