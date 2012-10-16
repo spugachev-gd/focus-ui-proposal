@@ -1,10 +1,51 @@
 :plain
   ---
   layout: base
+  link_groups:
+    - key: Virtual&nbsp;Machines
+      links:
+      - href: spawn_vm.html
+        title: Spawn
+      - href: manage_vms.html
+        title: Manage
+      - href: flavors.html
+        title: Types&nbsp;of
+    - key: Images
+      links:
+      - href: upload_image.html
+        title: Register
+      - href: manage_images.html
+        title: Manage
+    - key: Projects
+      links:
+      - href: projects.html
+        title: Summary
+      - href: security_groups.html
+        title: Security Groups
+      - href: billing.html
+        title: Billing
+      - href: members.html
+        title: Members
+      - href: audit.html
+        title: Audit
+      - href: invite.html
+        title: Invite
+    - key: Personal&nbsp;Settings
+      links: 
+      - href: ssh.html
+        title: SSH Keys
+      - href: credentials.html
+        title: Credentials
+      - href: notifications.html
+        title: Notifications
+      - href: avatar.html
+        title: Avatar
+      - href: change_password.html
+        title: Change&nbsp;Password
   ---
 %div.row
   %div.span12.quick-links
-    %ul.thumbnails
+    %ul.thumbnails(style="list-style: none;")
       %li.span2
         %a.thumbnail(href="spawn_vm.html")
           %img(alt="Spawn VM" src="static/focus/img/thumbs/spawn_vm.png")
@@ -35,84 +76,39 @@
           %img(alt="Members" src="static/focus/img/thumbs/members.png")
           %div.caption
             %h5.nobr Members
-
-%div.row
-  %div.span4
-    %div.link-group.thumbnail
-      %h4 Virtual Machines
-      %ul
-        %li
-          %a(href="spawn_vm.html")
-            %img(alt="Spawn" src="static/focus/img/thumbs/spawn_vm.png")
-          %a(href="spawn_vm.html") Spawn
-        %li
-          %a(href="manage_vms.html")
-            %img(alt="Manage" src="static/focus/img/thumbs/manage.png")
-          %a(href="manage_vms.html") Manage
-        %li
-          %a(href="flavors.html")
-            %img(alt="Types" src="static/focus/img/thumbs/flavors.png")
-          %a(href="flavors.html") Types
-    %div.link-group.thumbnail
-      %h4 Images
-      %ul
-        %li
-          %a(href="upload_image.html")
-            %img(alt="Register" src="static/focus/img/thumbs/upload.png")
-          %a(href="upload_image.html") Register
-        %li
-          %a(href="manage_images.html")
-            %img(alt="Manage" src="static/focus/img/thumbs/manage.png")
-          %a(href="manage_images.html") Manage
-  %div.span4
-    %div.link-group.thumbnail
-      %h4 Projects
-      %ul
-        %li
-          %a(href="projects.html")
-            %img(alt="Summary" src="static/focus/img/thumbs/summary.png")
-          %a(href="projects.html") Summary
-        %li
-          %a(href="security_groups.html")
-            %img(alt="Security Groups" src="static/focus/img/thumbs/security_groups.png")
-          %a(href="security_groups.html") Security Groups
-        %li
-          %a(href="billing.html")
-            %img(alt="Billing" src="static/focus/img/thumbs/billing.png")
-          %a(href="billing.html") Billing
-        %li
-          %a(href="members.html")
-            %img(alt="Members" src="static/focus/img/thumbs/members.png")
-          %a(href="members.html") Members
-        %li
-          %a(href="audit.html")
-            %img(alt="Audit" src="static/focus/img/thumbs/audit.png")
-          %a(href="audit.html") Audit
-        %li
-          %a(href="invite.html")
-            %img(alt="Invite" src="static/focus/img/thumbs/invite.png")
-          %a(href="invite.html") Invite
-  %div.span4
-    %div.link-group.thumbnail
-      %h4 Personal settings
-      %ul
-        %li
-          %a(href="ssh.html")
-            %img(alt="SSH Keys" src="static/focus/img/thumbs/terminal.png")
-          %a(href="ssh.html") SSH Keys
-        %li
-          %a(href="credentials.html")
-            %img(alt="Credentials" src="static/focus/img/thumbs/credentials.jpg")
-          %a(href="credentials.html") Credentials
-        %li
-          %a(href="notifications.html")
-            %img(alt="Notifications" src="static/focus/img/thumbs/notifications.png")
-          %a(href="notifications.html") Notifications
-        %li
-          %a(href="avatar.html")
-            %img(alt="Avatar" src="static/focus/img/thumbs/avatar.png")
-          %a(href="avatar.html") Avatar
-        %li
-          %a(href="change_password.html")
-            %img(alt="Change Password" src="static/focus/img/thumbs/change_password.png")
-          %a(href="change_password.html") Change Password
+%hr
+%div.row(style="vertical-align: top")
+  {% for i in page.link_groups %}
+  %div.span3.nobr
+    %div.hide-under-980px
+      %table
+        %tr
+          %td
+            {{ i.key }}
+          %td
+            %table.curly_brace
+              %tr
+                %td.a &nbsp;
+              %tr
+                %td &nbsp;
+              %tr
+                %td.c &nbsp;
+              %tr
+                %td &nbsp;
+              %tr
+                %td.e &nbsp;
+          %td.links_group
+            %ul
+              {% for a in i.links %}
+              %li 
+                %a(href="{{ a.href }}") {{ a.title }}
+              {% endfor %}
+    %div.show-under-980px.row
+      %h5.span1
+        {{ i.key }}
+    %div.show-under-980px.row
+      {% for a in i.links %}
+      %a.thumbnail.span1(href="{{ a.href }}" style="text-align: center; width: 140px;height: 80px; line-height: 80px; float: left")
+        {{ a.title }}
+      {% endfor %}
+  {% endfor %}

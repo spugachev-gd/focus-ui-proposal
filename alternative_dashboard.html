@@ -1,9 +1,50 @@
 ---
 layout: base
+link_groups:
+  - key: Virtual&nbsp;Machines
+    links:
+    - href: spawn_vm.html
+      title: Spawn
+    - href: manage_vms.html
+      title: Manage
+    - href: flavors.html
+      title: Types&nbsp;of
+  - key: Images
+    links:
+    - href: upload_image.html
+      title: Register
+    - href: manage_images.html
+      title: Manage
+  - key: Projects
+    links:
+    - href: projects.html
+      title: Summary
+    - href: security_groups.html
+      title: Security Groups
+    - href: billing.html
+      title: Billing
+    - href: members.html
+      title: Members
+    - href: audit.html
+      title: Audit
+    - href: invite.html
+      title: Invite
+  - key: Personal&nbsp;Settings
+    links: 
+    - href: ssh.html
+      title: SSH Keys
+    - href: credentials.html
+      title: Credentials
+    - href: notifications.html
+      title: Notifications
+    - href: avatar.html
+      title: Avatar
+    - href: change_password.html
+      title: Change&nbsp;Password
 ---
 <div class='row'>
   <div class='span12 quick-links'>
-    <ul class='thumbnails'>
+    <ul class='thumbnails' style='list-style: none;'>
       <li class='span2'>
         <a class='thumbnail' href='spawn_vm.html'>
           <img alt='Spawn VM' src='static/focus/img/thumbs/spawn_vm.png' />
@@ -55,127 +96,59 @@ layout: base
     </ul>
   </div>
 </div>
-<div class='row'>
-  <div class='span4'>
-    <div class='link-group thumbnail'>
-      <h4>Virtual Machines</h4>
-      <ul>
-        <li>
-          <a href='spawn_vm.html'>
-            <img alt='Spawn' src='static/focus/img/thumbs/spawn_vm.png' />
-          </a>
-          <a href='spawn_vm.html'>Spawn</a>
-        </li>
-        <li>
-          <a href='manage_vms.html'>
-            <img alt='Manage' src='static/focus/img/thumbs/manage.png' />
-          </a>
-          <a href='manage_vms.html'>Manage</a>
-        </li>
-        <li>
-          <a href='flavors.html'>
-            <img alt='Types' src='static/focus/img/thumbs/flavors.png' />
-          </a>
-          <a href='flavors.html'>Types</a>
-        </li>
-      </ul>
+<hr />
+<div class='row' style='vertical-align: top'>
+  {% for i in page.link_groups %}
+  <div class='span3 nobr'>
+    <div class='hide-under-980px'>
+      <table>
+        <tr>
+          <td>
+            {{ i.key }}
+          </td>
+          <td>
+            <table class='curly_brace'>
+              <tr>
+                <td class='a'>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td class='c'>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td class='e'>&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+          <td class='links_group'>
+            <ul>
+              {% for a in i.links %}
+              <li>
+                <a href='{{ a.href }}'>{{ a.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class='link-group thumbnail'>
-      <h4>Images</h4>
-      <ul>
-        <li>
-          <a href='upload_image.html'>
-            <img alt='Register' src='static/focus/img/thumbs/upload.png' />
-          </a>
-          <a href='upload_image.html'>Register</a>
-        </li>
-        <li>
-          <a href='manage_images.html'>
-            <img alt='Manage' src='static/focus/img/thumbs/manage.png' />
-          </a>
-          <a href='manage_images.html'>Manage</a>
-        </li>
-      </ul>
+    <div class='show-under-980px row'>
+      <h5 class='span1'>
+        {{ i.key }}
+      </h5>
     </div>
-  </div>
-  <div class='span4'>
-    <div class='link-group thumbnail'>
-      <h4>Projects</h4>
-      <ul>
-        <li>
-          <a href='projects.html'>
-            <img alt='Summary' src='static/focus/img/thumbs/summary.png' />
-          </a>
-          <a href='projects.html'>Summary</a>
-        </li>
-        <li>
-          <a href='security_groups.html'>
-            <img alt='Security Groups' src='static/focus/img/thumbs/security_groups.png' />
-          </a>
-          <a href='security_groups.html'>Security Groups</a>
-        </li>
-        <li>
-          <a href='billing.html'>
-            <img alt='Billing' src='static/focus/img/thumbs/billing.png' />
-          </a>
-          <a href='billing.html'>Billing</a>
-        </li>
-        <li>
-          <a href='members.html'>
-            <img alt='Members' src='static/focus/img/thumbs/members.png' />
-          </a>
-          <a href='members.html'>Members</a>
-        </li>
-        <li>
-          <a href='audit.html'>
-            <img alt='Audit' src='static/focus/img/thumbs/audit.png' />
-          </a>
-          <a href='audit.html'>Audit</a>
-        </li>
-        <li>
-          <a href='invite.html'>
-            <img alt='Invite' src='static/focus/img/thumbs/invite.png' />
-          </a>
-          <a href='invite.html'>Invite</a>
-        </li>
-      </ul>
+    <div class='show-under-980px row'>
+      {% for a in i.links %}
+      <a class='thumbnail span1' href='{{ a.href }}' style='text-align: center; width: 140px;height: 80px; line-height: 80px; float: left'>
+        {{ a.title }}
+      </a>
+      {% endfor %}
     </div>
   </div>
-  <div class='span4'>
-    <div class='link-group thumbnail'>
-      <h4>Personal settings</h4>
-      <ul>
-        <li>
-          <a href='ssh.html'>
-            <img alt='SSH Keys' src='static/focus/img/thumbs/terminal.png' />
-          </a>
-          <a href='ssh.html'>SSH Keys</a>
-        </li>
-        <li>
-          <a href='credentials.html'>
-            <img alt='Credentials' src='static/focus/img/thumbs/credentials.jpg' />
-          </a>
-          <a href='credentials.html'>Credentials</a>
-        </li>
-        <li>
-          <a href='notifications.html'>
-            <img alt='Notifications' src='static/focus/img/thumbs/notifications.png' />
-          </a>
-          <a href='notifications.html'>Notifications</a>
-        </li>
-        <li>
-          <a href='avatar.html'>
-            <img alt='Avatar' src='static/focus/img/thumbs/avatar.png' />
-          </a>
-          <a href='avatar.html'>Avatar</a>
-        </li>
-        <li>
-          <a href='change_password.html'>
-            <img alt='Change Password' src='static/focus/img/thumbs/change_password.png' />
-          </a>
-          <a href='change_password.html'>Change Password</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  {% endfor %}
 </div>
