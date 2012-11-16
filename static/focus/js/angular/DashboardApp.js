@@ -18,11 +18,10 @@ angular.module('dashboard.service', []).
                   loads combined info about button positions from window 
                   variable and local datastore 
                 */
-                var cells = localStorage['dashboard.cells'];
-                if (typeof(cells) == 'undefined'){
-                    cells = new Array(dashboardCellsCount);
-                    localStorage['dashboard.cells'] = JSON.stringify(cells)
+                if (typeof(localStorage['dashboard.cells']) == 'undefined'){
+                    localStorage['dashboard.cells'] = JSON.stringify(new Array(dashboardCellsCount))
                 }
+                var cells = JSON.parse(localStorage['dashboard.cells']);
                 var result = {
                     accordion: [],
                     quick_links: new Array(dashboardCellsCount)
@@ -61,7 +60,6 @@ angular.module('dashboard.service', []).
                 } else {
                     var cells = JSON.parse(localStorage['dashboard.cells']);
                     var L = cells.length
-                    console.log(cells)
                     var D = cells - L;
                     if (D > 0){
                         for (i=0; i<D-1; i++){
@@ -79,7 +77,9 @@ angular.module('dashboard.service', []).
             }
             this.unset = function(index){
                 this.ensureCellExists(index);
-                localStorage['dashboard.cells'][index] = undefined;
+                var cells = JSON.parse(localStorage['dashboard.cells'])
+                cells[index] = undefined
+                localStorage['dashboard.cells'] = JSON.stringify(cells);
             }
             this.load()
         }
@@ -120,6 +120,7 @@ angular.module('dashboard.directive', []).
                     $a = $('<a>').
                         attr('href', ui.draggable.attr('href')).
                         attr('data-img-src', ui.draggable.attr('data-img-src')).
+                        attr('data-group-key', ui.draggable.attr('data-group-key')).                 
                         html(ui.draggable.attr('title')).draggable({
                             revert: true,
                             scope: 'cell',
@@ -133,9 +134,20 @@ angular.module('dashboard.directive', []).
                                 $p.find('.accordion-body.collapse.in').css('overflow', 'hidden');
                             }
                         })
-                    // insert the link in correct group at correct position
-                    $x.find().each(function(index, element){
-                        
+                    // fold all groups
+                    // unfile correct group
+                    // insert the link in correct group to right place
+                    var group_key = ui.draggable.attr('data-group-key');
+                    $x.find('.accordion-group').each(function(){
+
+                        var $z = $(this);
+                        var $b = $z.find('.accordion-body')
+                        if ($z.find('.accordion-toggle b').text().trim() == group_key.trim()){
+                            $b.addClass('in')
+                            $b.find('.accordion-inner').append('<p>').append($a)
+                        } else {
+                            $b.removeClass('in')
+                        }
                     });
                     // open correct accordion group
                     // remove draggable
@@ -153,7 +165,6 @@ angular.module('dashboard.directive', []).
             'buttonsPosition', 
             function factory(buttonsPosition){
                 return function link(scope, element, attrs){
-                    console.log(buttonsPosition);
                     var $x = $(element);
                     var cell_id = scope.$eval(attrs['myDroppableCell']);
                     $x.droppable({
@@ -169,13 +180,15 @@ angular.module('dashboard.directive', []).
                                        '</a>').
                                 attr('href', ui.draggable.attr('href')).
                                 attr('data-cell-id', cell_id).
-                                attr('data-title', title).
+                                attr('title', title).
                                 attr('data-img-src', ui.draggable.attr('data-img-src')).
-                                draggable({
+                                attr('data-group-key', ui.draggable.attr('data-group-key')).draggable({
                                     revert: true,
                                     scope: 'repo',
-                                    containment: $('.all-links')
+                                    containment: $('.all-links'),
+                                    scroll: false
                                 });
+                                
                             $a.find('img').
                                 attr('src', ui.draggable.attr('data-img-src')).
                                 attr('title', title);
@@ -184,18 +197,26 @@ angular.module('dashboard.directive', []).
                                 removeClass('droppable-empty').
                                 html($a);
                             buttonsPosition.set(cell_id, $a.attr('href'))
-                            console.log(localStorage['dashboard.cells'])
                             setTimeout(
                                 function(){ui.draggable.remove()}, 
                                 1)
                         },
                         out: function(event, ui){
-                            console.log('out')
+
                         }
                     })
                 }
             }
         ]).
+    directive('myDraggableCellLink', function factory(){
+        return function link(scope, element, attrs){
+            $(element).draggable({
+                revert: true,
+                scope: 'repo',
+                containment: $('.all-links')
+            });
+        }
+    }).
     directive('myDashboardButtons', function factory(){
         return function link(scope, element, attrs){
             /* 
@@ -206,16 +227,22 @@ angular.module('dashboard.directive', []).
         }
     });
 angular.module('dashboard.filter', []).
+    filter('isUndefined', function(){
+        return function(value){
+            return typeof(value) == 'undefined'
+        }
+    }).
     filter('myLinkOrNothing', function (){
         return function (value, arg){
-            if (typeof(value) == 'undefined'){
-                return '&nbsp;'
-            } else {
-                return 'nonono'
-            }
+            return typeof(value) 
         }
     });
-angular.module('DashboardApp', ['dashboard.service', 'dashboard.directive', 'dashboard.filter']).
+angular.module('DashboardApp', [
+    'dashboard.service',
+    'dashboard.directive',
+    'dashboard.filter',
+    'ui'
+]).
     run(function(){
     });
 

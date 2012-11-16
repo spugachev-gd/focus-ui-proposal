@@ -85,7 +85,7 @@ link_groups:
       margin: 10px;
     }
     .quick-links  .droppable-empty {
-      border: 1px red dashed !important;
+      //border: 1px red dashed !important;
     }
     .quick-links .droppable-container {
       display: inline-block;
@@ -127,7 +127,7 @@ link_groups:
         <div class='accordion-body collapse' id='accordion2_{{ $index }}' ng-class='{in: $first}'>
           <div class='accordion-inner'>
             <p ng-repeat='j in i.links'>
-              <a data-group-key="{{ j['data-group-key'] }}" data-img-src="{{ j['data-img-src'] }}" href='{{ j.href }}' my-draggable-link='my-draggable-link' title='Drag Right'>
+              <a data-group-key='{{ j.group_key }}' data-img-src="{{ j['data-img-src'] }}" href='{{ j.href }}' my-draggable-link='my-draggable-link' title='Drag Right'>
                 {{ j.title }}
               </a>
             </p>
@@ -138,7 +138,14 @@ link_groups:
   </div>
   <div class='span10 quick-links'>
     <div class='droppable droppable-empty' my-droppable-cell='$index' ng-repeat='x in quick_links'>
-      {{ x | myLinkOrNothing }}
+      <a class='thumbnail' data-cell-id='{{ $index }}' data-group-key='{{ x.group_key }}' data-img-src="{{x['data-img-src'] }}" href='{{ x.href }}' my-draggable-cell-link='my-draggable-cell-link' ui-if='x'>
+        <img src="{{ x['data-img-src'] }}" />
+        <div class='caption'>
+          <h5 class='nobr'>
+            {{ x.title }}
+          </h5>
+        </div>
+      </a>
     </div>
   </div>
   {% endliteral %}
