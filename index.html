@@ -1,49 +1,150 @@
 ---
 layout: base
+angular_app: DashboardApp
 link_groups:
-  - key: Virtual&nbsp;Machines
+  - key: Virtual Machines
     links:
     - href: spawn_vm.html
       title: Spawn
+      img-src: static/focus/img/thumbs/spawn_vm.png
     - href: manage_vms.html
       title: Manage
+      img-src: static/focus/img/thumbs/manage.png
     - href: flavors.html
-      title: Types&nbsp;of
+      title: Types of
+      img-src: static/focus/img/thumbs/flavors.png
   - key: Images
     links:
     - href: upload_image.html
       title: Register
+      img-src: static/focus/img/thumbs/upload.png
     - href: manage_images.html
       title: Manage
+      img-src: static/focus/img/thumbs/manage.png
   - key: Projects
     links:
     - href: projects.html
       title: Summary
+      img-src: static/focus/img/thumbs/summary.png
     - href: security_groups.html
       title: Security Groups
+      img-src: static/focus/img/thumbs/security_groups.png
     - href: billing.html
       title: Billing
+      img-src: static/focus/img/thumbs/billing.png
     - href: members.html
       title: Members
+      img-src: static/focus/img/thumbs/members.png
     - href: audit.html
       title: Audit
+      img-src: static/focus/img/thumbs/audit.png
     - href: invite.html
       title: Invite
-  - key: Personal&nbsp;Settings
+      img-src: static/focus/img/thumbs/invite.png
+  - key: Personal Settings
     links: 
     - href: ssh.html
       title: SSH Keys
+      img-src: static/focus/img/thumbs/terminal.png
     - href: credentials.html
       title: Credentials
+      img-src: static/focus/img/thumbs/credentials.jpg
     - href: notifications.html
       title: Notifications
+      img-src: static/focus/img/thumbs/notifications.png
     - href: avatar.html
       title: Avatar
+      img-src: static/focus/img/thumbs/avatar.png
     - href: change_password.html
-      title: Change&nbsp;Password
+      title: Change Password
+      img-src: static/focus/img/thumbs/change_password.png
 ---
+<style type='text/css'>
+  /*<![CDATA[*/
+    .links-repo ul {
+      margin: 0;
+      padding: 0;
+    }
+    .ui-accordion-content {
+      padding: 0 !important;
+    }
+    .links-repo a {
+      display: inline-block;
+      width: 100%;
+      padding: 10px;
+    }
+    .links-repo li a:hover {
+      background-color: #333333; 
+      color: #EEEEEE;
+    }
+    .quick-links .droppable {
+      height: 170px !important;
+      width: 170px !important;
+      display: inline-block;
+      vertical-align: top;
+      margin: 10px;
+    }
+    .quick-links  .droppable-empty {
+      border: 1px red dashed !important;
+    }
+    .quick-links .droppable-container {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px;
+      width: 200px;
+      height: 500px;
+    }
+    .can-be-dropped {
+      background-color: yellow;
+    }
+  /*]]>*/
+</style>
+<script type='text/javascript'>
+  //<![CDATA[
+    var quick_links = [
+      {% for i in page.link_groups %}
+      {key: '{{ i.key }}', links: [
+    {% for a in i.links %}
+      {title: '{{ a.title }}', href: '{{ a.href }}', 'data-img-src': '{{ a['img-src']}} '},
+    {% endfor %}
+    ]},
+    {% endfor %}
+    ];
+  //]]>
+</script>
+<div class='row all-links' ng-controller='DashboardController'>
+  {% literal %}
+  <div class='span2 links-repo' my-droppable-repo='my-droppable-repo'>
+    <div class='accordion' id='accordion2'>
+      <div class='accordion-group' ng-repeat='i in accordion'>
+        <div class='accordion-heading'>
+          <a class='accordion-toggle' data-parent='#accordion2' data-toggle='collapse' href='#accordion2_{{ $index }}'>
+            <b>
+              {{ i.key }}
+            </b>
+          </a>
+        </div>
+        <div class='accordion-body collapse' id='accordion2_{{ $index }}' ng-class='{in: $first}'>
+          <div class='accordion-inner'>
+            <p ng-repeat='j in i.links'>
+              <a data-group-key="{{ j['data-group-key'] }}" data-img-src="{{ j['data-img-src'] }}" href='{{ j.href }}' my-draggable-link='my-draggable-link' title='Drag Right'>
+                {{ j.title }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='span10 quick-links'>
+    <div class='droppable droppable-empty' my-droppable-cell='$index' ng-repeat='x in quick_links'>
+      {{ x | myLinkOrNothing }}
+    </div>
+  </div>
+  {% endliteral %}
+</div>
 <div class='row'>
-  <div class='span12 quick-links'>
+  <div>
     <ul class='thumbnails' style='list-style: none;'>
       <li class='span2'>
         <a class='thumbnail' href='spawn_vm.html'>

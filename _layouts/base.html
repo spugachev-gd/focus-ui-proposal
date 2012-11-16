@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MockupModule">
+<html lang="en" ng-app="{{ page.angular_app }}">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>
@@ -12,6 +12,7 @@
 
         {% include header_css.html %}
         {% include header_js.html %}
+        <script src="static/focus/js/angular/{{ page.angular_app }}.js"></script>
     </head>
     <body data-spy="scroll" data-target=".subnav" data-offset="50">
         {% include header_navbar.html %}

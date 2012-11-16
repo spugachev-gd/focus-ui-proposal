@@ -1,50 +1,133 @@
 :plain
   ---
   layout: base
+  angular_app: DashboardApp
   link_groups:
-    - key: Virtual&nbsp;Machines
+    - key: Virtual Machines
       links:
       - href: spawn_vm.html
         title: Spawn
+        img-src: static/focus/img/thumbs/spawn_vm.png
       - href: manage_vms.html
         title: Manage
+        img-src: static/focus/img/thumbs/manage.png
       - href: flavors.html
-        title: Types&nbsp;of
+        title: Types of
+        img-src: static/focus/img/thumbs/flavors.png
     - key: Images
       links:
       - href: upload_image.html
         title: Register
+        img-src: static/focus/img/thumbs/upload.png
       - href: manage_images.html
         title: Manage
+        img-src: static/focus/img/thumbs/manage.png
     - key: Projects
       links:
       - href: projects.html
         title: Summary
+        img-src: static/focus/img/thumbs/summary.png
       - href: security_groups.html
         title: Security Groups
+        img-src: static/focus/img/thumbs/security_groups.png
       - href: billing.html
         title: Billing
+        img-src: static/focus/img/thumbs/billing.png
       - href: members.html
         title: Members
+        img-src: static/focus/img/thumbs/members.png
       - href: audit.html
         title: Audit
+        img-src: static/focus/img/thumbs/audit.png
       - href: invite.html
         title: Invite
-    - key: Personal&nbsp;Settings
+        img-src: static/focus/img/thumbs/invite.png
+    - key: Personal Settings
       links: 
       - href: ssh.html
         title: SSH Keys
+        img-src: static/focus/img/thumbs/terminal.png
       - href: credentials.html
         title: Credentials
+        img-src: static/focus/img/thumbs/credentials.jpg
       - href: notifications.html
         title: Notifications
+        img-src: static/focus/img/thumbs/notifications.png
       - href: avatar.html
         title: Avatar
+        img-src: static/focus/img/thumbs/avatar.png
       - href: change_password.html
-        title: Change&nbsp;Password
+        title: Change Password
+        img-src: static/focus/img/thumbs/change_password.png
   ---
+:css
+  .links-repo ul {
+    margin: 0;
+    padding: 0;
+  }
+  .ui-accordion-content {
+    padding: 0 !important;
+  }
+  .links-repo a {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+  }
+  .links-repo li a:hover {
+    background-color: #333333; 
+    color: #EEEEEE;
+  }
+  .quick-links .droppable {
+    height: 170px !important;
+    width: 170px !important;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+  }
+  .quick-links  .droppable-empty {
+    border: 1px red dashed !important;
+  }
+  .quick-links .droppable-container {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 500px;
+  }
+  .can-be-dropped {
+    background-color: yellow;
+  }
+:javascript
+  var quick_links = [
+    {% for i in page.link_groups %}
+    {key: '{{ i.key }}', links: [
+  {% for a in i.links %}
+    {title: '{{ a.title }}', href: '{{ a.href }}', 'data-img-src': '{{ a['img-src']}} '},
+  {% endfor %}
+  ]},
+  {% endfor %}
+  ];
+%div.row.all-links(ng-controller="DashboardController")
+  {% literal %}
+  %div.span2.links-repo(my-droppable-repo)
+    %div.accordion#accordion2
+      %div.accordion-group(ng-repeat="i in accordion")
+        %div.accordion-heading
+          %a.accordion-toggle(data-toggle="collapse" data-parent="#accordion2" href="#accordion2_{{ $index }}")
+            %b
+              {{ i.key }}
+        %div.accordion-body.collapse(id="accordion2_{{ $index }}" ng-class="{in: $first}")
+          %div.accordion-inner
+            %p(ng-repeat="j in i.links")
+              %a(href="{{ j.href }}" title="Drag Right" my-draggable-link data-img-src="{{ j['data-img-src'] }}" data-group-key="{{ j['data-group-key'] }}")
+                {{ j.title }}
+  
+  %div.span10.quick-links
+    %div.droppable.droppable-empty(ng-repeat="x in quick_links" my-droppable-cell="$index")
+      {{ x | myLinkOrNothing }}
+  {% endliteral %}      
 %div.row
-  %div.span12.quick-links
+  %div
     %ul.thumbnails(style="list-style: none;")
       %li.span2
         %a.thumbnail(href="spawn_vm.html")
