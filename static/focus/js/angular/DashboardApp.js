@@ -121,16 +121,19 @@ angular.module('dashboard.directive', []).
                         attr('href', ui.draggable.attr('href')).
                         attr('data-img-src', ui.draggable.attr('data-img-src')).
                         attr('data-group-key', ui.draggable.attr('data-group-key')).                 
-                        html(ui.draggable.attr('title')).draggable({
+                        html(ui.draggable.attr('data-title')).
+                        draggable({
                             revert: true,
                             scope: 'cell',
                             containment: '.all-links',
                             scroll: false,
                             // overflow: hidden prevents the link from going abroad
                             start: function(event, ui){
+                                var $p = $x.parents('.links-repo')
                                 $p.find('.accordion-body.collapse.in').css('overflow', 'visible');
                             },
                             stop: function(event, ui){
+                                var $p = $x.parents('.links-repo')
                                 $p.find('.accordion-body.collapse.in').css('overflow', 'hidden');
                             }
                         })
@@ -144,7 +147,8 @@ angular.module('dashboard.directive', []).
                         var $b = $z.find('.accordion-body')
                         if ($z.find('.accordion-toggle b').text().trim() == group_key.trim()){
                             $b.addClass('in')
-                            $b.find('.accordion-inner').append('<p>').append($a)
+                            $b.find('.accordion-inner').append('<p>').append($a);
+                        
                         } else {
                             $b.removeClass('in')
                         }
@@ -180,7 +184,7 @@ angular.module('dashboard.directive', []).
                                        '</a>').
                                 attr('href', ui.draggable.attr('href')).
                                 attr('data-cell-id', cell_id).
-                                attr('title', title).
+                                attr('data-title', title).
                                 attr('data-img-src', ui.draggable.attr('data-img-src')).
                                 attr('data-group-key', ui.draggable.attr('data-group-key')).draggable({
                                     revert: true,
