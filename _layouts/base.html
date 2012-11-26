@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="{{ page.angular_app }}">
+<html lang="en" ng-app{% if page.angular_app %}="{{ page.angular_app }}"{% endif %}>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>
