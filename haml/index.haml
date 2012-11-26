@@ -2,65 +2,23 @@
   ---
   layout: base
   angular_app: DashboardApp
-  link_groups:
-    - key: Virtual Machines
-      links:
-      - href: spawn_vm.html
-        title: Spawn
-        img-src: static/focus/img/thumbs/spawn_vm.png
-      - href: manage_vms.html
-        title: Manage
-        img-src: static/focus/img/thumbs/manage.png
-      - href: flavors.html
-        title: Types of
-        img-src: static/focus/img/thumbs/flavors.png
-    - key: Images
-      links:
-      - href: upload_image.html
-        title: Register
-        img-src: static/focus/img/thumbs/upload.png
-      - href: manage_images.html
-        title: Manage
-        img-src: static/focus/img/thumbs/manage.png
-    - key: Projects
-      links:
-      - href: projects.html
-        title: Summary
-        img-src: static/focus/img/thumbs/summary.png
-      - href: security_groups.html
-        title: Security Groups
-        img-src: static/focus/img/thumbs/security_groups.png
-      - href: billing.html
-        title: Billing
-        img-src: static/focus/img/thumbs/billing.png
-      - href: members.html
-        title: Members
-        img-src: static/focus/img/thumbs/members.png
-      - href: audit.html
-        title: Audit
-        img-src: static/focus/img/thumbs/audit.png
-      - href: invite.html
-        title: Invite
-        img-src: static/focus/img/thumbs/invite.png
-    - key: Personal Settings
-      links: 
-      - href: ssh.html
-        title: SSH Keys
-        img-src: static/focus/img/thumbs/terminal.png
-      - href: credentials.html
-        title: Credentials
-        img-src: static/focus/img/thumbs/credentials.jpg
-      - href: notifications.html
-        title: Notifications
-        img-src: static/focus/img/thumbs/notifications.png
-      - href: avatar.html
-        title: Avatar
-        img-src: static/focus/img/thumbs/avatar.png
-      - href: change_password.html
-        title: Change Password
-        img-src: static/focus/img/thumbs/change_password.png
   ---
 :css
+  #accordion2 {
+  background-color: #f0f0f0;
+  border: 1px #ddd solid;
+  }
+  .accordion-group {
+  margin: 0;
+  border: 0;
+  }
+  #accordion2 .accordion-inner {
+    padding: 0;
+  }
+  #accordion2 .accordion-inner p{
+    padding: 0;
+    margin: 0;
+  }
   .links-repo ul {
     margin: 0;
     padding: 0;
@@ -68,14 +26,14 @@
   .ui-accordion-content {
     padding: 0 !important;
   }
-  .links-repo a {
+  
+  #accordion2 .accordion-inner  a {
     display: inline-block;
     width: 100%;
     padding: 10px;
   }
-  .links-repo li a:hover {
-    background-color: #333333; 
-    color: #EEEEEE;
+  #accordion2 .accordion-inner  a:hover {
+  background-color: #ddd;
   }
   .quick-links .droppable {
     height: 170px !important;
@@ -94,40 +52,46 @@
     width: 200px;
     height: 500px;
   }
-  .can-be-dropped {
-    background-color: yellow;
+  .drop-hover > span, .drop-hover > a {
+  border: 1px #08c solid;
   }
-:javascript
-  var quick_links = [
-    {% for i in page.link_groups %}
-    {key: '{{ i.key }}', links: [
-  {% for a in i.links %}
-    {title: '{{ a.title }}', href: '{{ a.href }}', 'data-img-src': '{{ a['img-src']}} '},
-  {% endfor %}
-  ]},
-  {% endfor %}
-  ];
-
+  .accordion-heading a {
+  background-color: #ddd;
+  }
+  .accordion-body a img.small{
+  width: 16px;
+  height: auto;
+  }
+  .accordion-body a img.pin {
+  border: 0;
+  width: 16px;
+  height: auto;
+  }s)
 %div.row.all-links(ng-controller="DashboardController")
   {% literal %}
-  %div.span2.links-repo(my-droppable-repo)
+  %div.span2.links-repo
     %div.accordion#accordion2
-      %div.accordion-group(ng-repeat="i in accordion")
+      %div.accordion-group(ng-repeat="group in links")
         %div.accordion-heading
-          %a.accordion-toggle(data-toggle="collapse" data-parent="#accordion2" href="#accordion2_{{ $index }}")
+          %a.accordion-toggle(data-toggle="collapse" href="#accordion2_{{ $index }}" data-parent="#accordion2")
             %b
-              {{ i.key }}
+              {{ group.key }}
         %div.accordion-body.collapse(id="accordion2_{{ $index }}" ng-class="{in: $first}")
           %div.accordion-inner
-            %p(ng-repeat="j in i.links")
-              %a(href="{{ j.href }}" title="Drag Right" my-draggable-link data-img-src="{{ j['data-img-src'] }}" data-group-key="{{ j.group_key }}")
-                {{ j.title }}
+            %p(ng-repeat="link in group.links")
+              %a(href="{{ link.href }}" dashboard-accordion-link='link')
+                %img.small(src="{{ link.small }}")
+                {{ link.title }}
+                %button(ui-if="link.employed" dashboard-link-pin="{{ link.href }}")
+                  %img.pin(src="static/focus/img/1353882682_pin-black.png")
   
   %div.span10.quick-links
-    %div.droppable.droppable-empty(ng-repeat="x in quick_links" my-droppable-cell="$index")
-      %a.thumbnail(ui-if="x" href="{{ x.href }}" data-group-key="{{ x.group_key }}" data-cell-id="{{ $index }}" data-img-src="{{x['data-img-src'] }}" my-draggable-cell-link)
-        %img(src="{{ x['data-img-src'] }}")
+    %div.droppable.droppable-empty(ng-repeat="cell in cells" dashboard-cell-box)
+      %span.thumbnail(ui-if="!cell" style="height: 160px; background-color: #F0F0F0; line-height: 160px; text-align: center; font-weight: bold; color: #555")
+        Drag link here
+      %a.thumbnail(ui-if="cell" href="{{ cell.href }}" dashboard-cell-link="cell")
+        %img(src="{{ cell.img }}")
         %div.caption
           %h5.nobr
-            {{ x.title }}
+            {{ cell.full_title }}
   {% endliteral %}      

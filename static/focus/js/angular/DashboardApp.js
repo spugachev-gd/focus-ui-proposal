@@ -1,258 +1,346 @@
-function supports_html5_storage() {
+var links_data = [
+        {
+            "key": "Virtual Machines",
+            "links": [
+                {
+                    "title": "Spawn",
+                    "full_title": "Spawn VM",
+                    "img": "static/focus/img/thumbs/spawn_vm.png",
+                    "small": "static/focus/img/thumbs/small/spawn_vm.png",
+                    "href": "spawn_vm.html"
+                },
+                {
+                    "title": "Manage",
+                    "full_title": "Manage VMs",
+                    "img": "static/focus/img/thumbs/manage.png",
+                    "small": "static/focus/img/thumbs/small/manage.png",
+                    "href": "manage_vms.html"
+                },
+                {
+                    "title": "Types of",
+                    "full_title": "Types of VM",
+                    "img": "static/focus/img/thumbs/flavors.png",
+                    "small": "static/focus/img/thumbs/small/flavors.png",
+                    "href": "flavors.html"
+                }
+            ]
+        },
+        {
+            "key": "Images",
+            "links": [
+                {
+                    "title": "Register",
+                    "full_title": "Register an Image",
+                    "img": "static/focus/img/thumbs/upload.png",
+                    "small": "static/focus/img/thumbs/small/upload.png",
+                    "href": "upload_image.html"
+                },
+                {
+                    "title": "Manage",
+                    "full_title": "Manage Images",
+                    "img": "static/focus/img/thumbs/manage.png",
+                    "small": "static/focus/img/thumbs/small/manage.png",
+                    "href": "manage_images.html"
+                }
+            ]
+        },
+        {
+            "key": "Projects",
+            "links": [
+                {
+                    "title": "Summary",
+                    "full_title": "Projects Summary",
+                    "img": "static/focus/img/thumbs/summary.png",
+                    "small": "static/focus/img/thumbs/small/summary.png",
+                    "href": "projects.html"
+                },
+                {
+                    "title": "Security Groups",
+                    "full_title": "Security Groups",
+                    "img": "static/focus/img/thumbs/security_groups.png",
+                    "small": "static/focus/img/thumbs/small/security_groups.png",
+                    "href": "security_groups.html"
+                },
+                {
+                    "title": "Billing",
+                    "full_title": "Billing",
+                    "img": "static/focus/img/thumbs/billing.png",
+                    "small": "static/focus/img/thumbs/small/billing.png",
+                    "href": "billing.html"
+                },
+                {
+                    "title": "Members",
+                    "full_title": "Members",
+                    "img": "static/focus/img/thumbs/members.png",
+                    "small": "static/focus/img/thumbs/small/members.png",
+                    "href": "members.html"
+                },
+                {
+                    "title": "Audit",
+                    "full_title": "Audit",
+                    "img": "static/focus/img/thumbs/audit.png",
+                    "small": "static/focus/img/thumbs/small/audit.png",
+                    "href": "audit.html"
+                },
+                {
+                    "title": "Invite",
+                    "full_title": "Invite a Member",
+                    "img": "static/focus/img/thumbs/invite.png",
+                    "small": "static/focus/img/thumbs/small/invite.png",
+                    "href": "invite.html"
+                }
+            ]
+        },
+        {
+            "key": "Personal Settings",
+            "links": [
+                {
+                    "title": "SSH Keys",
+                    "full_title": "SSH Keys",
+                    "img": "static/focus/img/thumbs/terminal.png",
+                    "small": "static/focus/img/thumbs/small/terminal.png",
+                    "href": "ssh.html"
+                },
+                {
+                    "title": "Credentials",
+                    "full_title": "Crdentials",
+                    "img": "static/focus/img/thumbs/credentials.jpg",
+                    "small": "static/focus/img/thumbs/small/credentials.jpg",
+                    "href": "credentials.html"
+                },
+                {
+                    "title": "Notifications",
+                    "full_title": "Notifications",
+                    "img": "static/focus/img/thumbs/notifications.png",
+                    "small": "static/focus/img/thumbs/small/notifications.png",
+                    "href": "notifications.html"
+                },
+                {
+                    "title": "Avatar",
+                    "full_title": "Avatar",
+                    "img": "static/focus/img/thumbs/avatar.png",
+                    "small": "static/focus/img/thumbs/small/avatar.png",
+                    "href": "avatar.html"
+                },
+                {
+                    "title": "Change Password",
+                    "full_title": "Change Password",
+                    "img": "static/focus/img/thumbs/change_password.png",
+                    "small": "static/focus/img/thumbs/small/change_password.png",
+                    "href": "change_password.html"
+                }
+            ]
+        }
+    ];
+
+function supports_html5_storage(window) {
     try {
         return 'localStorage' in window && window['localStorage'] !== null;
     } catch (e) {
         return false;
     }
 }
-var dashboardCellsCount = 8;
-angular.module('dashboard.service', []).
-    factory('buttonsPosition', ['$window', function($window){
-        if (!supports_html5_storage()) { 
-            alert('Use some modern browser');
-            return false; 
-        }
-        function buttonsPositionService(){
-            this.load = function(){
-                /*
-                  loads combined info about button positions from window 
-                  variable and local datastore 
-                */
-                if (typeof(localStorage['dashboard.cells']) == 'undefined'){
-                    localStorage['dashboard.cells'] = JSON.stringify(new Array(dashboardCellsCount))
-                }
-                var cells = JSON.parse(localStorage['dashboard.cells']);
-                var result = {
-                    accordion: [],
-                    quick_links: new Array(dashboardCellsCount)
-                }
-                for (i=0; i<$window.quick_links.length;i++){
-                    var key = $window.quick_links[i].key
-                    result.accordion.push({
-                        key: key,
-                        links: []
-                    })
-                    var x = $window.quick_links[i];
-                    for (j=0; j<x.links.length; j++){
-                        var seen = false;
-                        x.links[j].group_key = key;
-                        for (k=0; k<cells.length; k++){
-                            if (x.links[j].href == cells[k]){
-                                result.quick_links[k] = x.links[j]
-                                seen = true;
-                                break;
-                            }
-                        }
-                        if (!seen){
-                            result.accordion[
-                                result.accordion.length-1
-                            ].links.push(x.links[j])
-                        }
-                    }
-                }
-                this.data = result;
-            }
-            this.ensureCellExists = function(index){
-                var L = index + 1
-                if (localStorage['dashboard.cells'] == undefined){
-                    var cells = new Array(L);
-                    localStorage['dashboard.cells'] = JSON.stringify(cells);
-                } else {
-                    var cells = JSON.parse(localStorage['dashboard.cells']);
-                    var L = cells.length
-                    var D = cells - L;
-                    if (D > 0){
-                        for (i=0; i<D-1; i++){
-                            cells.push(undefined);
-                        }
-                    }
-                    localStorage['dashboard.cells'] = JSON.stringify(cells);
-                }             
-            }
-            this.set = function(index, value){
-                this.ensureCellExists(index);
-                var cells = JSON.parse(localStorage['dashboard.cells'])
-                cells[index] = value
-                localStorage['dashboard.cells'] = JSON.stringify(cells);             
-            }
-            this.unset = function(index){
-                this.ensureCellExists(index);
-                var cells = JSON.parse(localStorage['dashboard.cells'])
-                cells[index] = undefined
-                localStorage['dashboard.cells'] = JSON.stringify(cells);
-            }
-            this.load()
-        }
-        return new buttonsPositionService()
-    }]);
+
+angular.module('dashboard.service', []);
 
 angular.module('dashboard.directive', []).
-    directive('myDraggableLink', function factory(){
-        return function link(scope, element, attrs){
-            var $x = $(element);
-            var $p = $x.parents('.links-repo')
-            $x.draggable({
-                revert: true,
-                scope: 'cell',
-                containment: '.all-links',
-                scroll: false,
-                // overflow: hidden prevents the link from going abroad
-                start: function(event, ui){
-                    $p.find('.accordion-body.collapse.in').css('overflow', 'visible');
-                },
-                stop: function(event, ui){
-                    $p.find('.accordion-body.collapse.in').css('overflow', 'hidden');
-                }
-            })
-        }
-    }).
-    directive('myDroppableRepo', ['buttonsPosition', function factory(buttonsPosition){
+    directive('dashboardAccordionLink', function(){
         return function (scope, element, attrs){
-            var $x = $(element);
+            var link = scope.$eval(attrs.dashboardAccordionLink)
+            $(element).
+                data('_link', link.href).
+                draggable({
+                    containment: '.all-links',
+                    revert: true,
+                    helper: "clone",
+                    appendTo: "body"        
+                })
+        }}).
+    directive('dashboardCellLink', function(){
+        return function (scope, element, attrs){
+            $(element).
+                data('_cell', true).
+                draggable({
+                    containment: '.all-links',
+                    revert: true
+                })
+        }
+    }).
+    directive('dashboardCellBox', function($window){
+        return function(scope, element, attrs){
+            var $x = $(element)
             $x.droppable({
-                scope: 'repo',
-                activeClass: 'can-be-dropped',
+                hoverClass: "drop-hover",
                 drop: function (event, ui){
-                    /* call service to remove the link from cells */
-                    /* say controller to update the var with linkss */
-                    ui.draggable.parent().addClass('droppable-empty');
-                    buttonsPosition.unset(ui.draggable.attr('data-cell-id'));
-                    $a = $('<a>').
-                        attr('href', ui.draggable.attr('href')).
-                        attr('data-img-src', ui.draggable.attr('data-img-src')).
-                        attr('data-group-key', ui.draggable.attr('data-group-key')).                 
-                        html(ui.draggable.attr('data-title')).
-                        draggable({
-                            revert: true,
-                            scope: 'cell',
-                            containment: '.all-links',
-                            scroll: false,
-                            // overflow: hidden prevents the link from going abroad
-                            start: function(event, ui){
-                                var $p = $x.parents('.links-repo')
-                                $p.find('.accordion-body.collapse.in').css('overflow', 'visible');
-                            },
-                            stop: function(event, ui){
-                                var $p = $x.parents('.links-repo')
-                                $p.find('.accordion-body.collapse.in').css('overflow', 'hidden');
-                            }
+                    var index = scope.$eval('$index');
+                    if (angular.isDefined(ui.draggable.data('_link'))){
+                        var href = ui.draggable.data('_link')
+                        scope.$apply(
+                            'cells.employ("' + href  + '", ' + index + ')')
+                    } else if(angular.isDefined(ui.draggable.data('_cell'))){
+                        var href = ui.draggable.attr('href')
+                        console.log('href', href)
+                        var from_index = scope.$eval('cells.get_index_for("' + href + '")') 
+                        console.log('index', index)
+                        scope.$apply('cells.transfer(' + from_index + ', ' + index + ')')
+                    } else {
+                        console.log('unknown draggable')
+                    }
+                    $window.localStorage['dashboard.cells'] = angular.toJson(
+                        scope.$eval('cells').map(function(n){
+                            return n.href || false
                         })
-                    // fold all groups
-                    // unfile correct group
-                    // insert the link in correct group to right place
-                    var group_key = ui.draggable.attr('data-group-key');
-                    $x.find('.accordion-group').each(function(){
-
-                        var $z = $(this);
-                        var $b = $z.find('.accordion-body')
-                        if ($z.find('.accordion-toggle b').text().trim() == group_key.trim()){
-                            $b.addClass('in')
-                            $b.find('.accordion-inner').append('<p>').append($a);
-                        
-                        } else {
-                            $b.removeClass('in')
-                        }
-                    });
-                    // open correct accordion group
-                    // remove draggable
-                    setTimeout(function(){
-                        ui.draggable.remove()
-                    }, 100)
-                    
+                    )
+                    console.log($window.localStorage['dashboard.cells'])
                 }
             })
         }
-    }]).
-    directive(
-        'myDroppableCell', 
-        [
-            'buttonsPosition', 
-            function factory(buttonsPosition){
-                return function link(scope, element, attrs){
-                    var $x = $(element);
-                    var cell_id = scope.$eval(attrs['myDroppableCell']);
-                    $x.droppable({
-                        activeClass: 'can-be-dropped',
-                        scope: 'cell',
-                        drop: function(event, ui){
-                            var title = ui.draggable.html();
-                            var $a = $('<a class="thumbnail">' + 
-                                       '<img>' +
-                                       '<div class="caption">' +
-                                       '<h5 class="nobr"/>' +
-                                       '</div>' +
-                                       '</a>').
-                                attr('href', ui.draggable.attr('href')).
-                                attr('data-cell-id', cell_id).
-                                attr('data-title', title).
-                                attr('data-img-src', ui.draggable.attr('data-img-src')).
-                                attr('data-group-key', ui.draggable.attr('data-group-key')).draggable({
-                                    revert: true,
-                                    scope: 'repo',
-                                    containment: $('.all-links'),
-                                    scroll: false
-                                });
-                                
-                            $a.find('img').
-                                attr('src', ui.draggable.attr('data-img-src')).
-                                attr('title', title);
-                            $a.find('h5').html(title);
-                            $x.
-                                removeClass('droppable-empty').
-                                html($a);
-                            buttonsPosition.set(cell_id, $a.attr('href'))
-                            setTimeout(
-                                function(){ui.draggable.remove()}, 
-                                1)
-                        },
-                        out: function(event, ui){
+    }).
+    directive('dashboardLinkPin', function (){
+        return function(scope, element, attrs){
+            $(element).click(function (e){
+                e.preventDefault()
+                var href = attrs.dashboardLinkPin;
+                var index = scope.$eval('cells.get_index_for("' + href + '")')
+                scope.$apply('cells.purge(' + index + ')')
+                scope.$apply('links.mark_employed("' + href + '", false)')
 
-                        }
-                    })
-                }
-            }
-        ]).
-    directive('myDraggableCellLink', function factory(){
-        return function link(scope, element, attrs){
-            $(element).draggable({
-                revert: true,
-                scope: 'repo',
-                containment: $('.all-links')
-            });
+            })
         }
-    }).
-    directive('myDashboardButtons', function factory(){
-        return function link(scope, element, attrs){
-            /* 
-               setup accordion, droppables, UI/UX;
-               do it here because we have the DOM element here
-               and can manipulate it legally
-            */
-        }
-    });
-angular.module('dashboard.filter', []).
-    filter('isUndefined', function(){
-        return function(value){
-            return typeof(value) == 'undefined'
-        }
-    }).
-    filter('myLinkOrNothing', function (){
-        return function (value, arg){
-            return typeof(value) 
-        }
-    });
+    })
+
+angular.module('dashboard.filter', [])
 angular.module('DashboardApp', [
     'dashboard.service',
     'dashboard.directive',
     'dashboard.filter',
     'ui'
-]).
-    run(function(){
-    });
+]);
 
-var DashboardController = function($scope, buttonsPosition){
-    /* saves button position defined by a place a button was dropped */
-    $scope.accordion = buttonsPosition.data.accordion
-    $scope.quick_links = buttonsPosition.data.quick_links
+function Links(self){
+    self.mark_employed = function(href, employed){
+        for (var i=0; i<self.length; i++){
+            for (var j=0; j<self[i].links.length; j++){
+                if (self[i].links[j].href == href){
+                    self[i].links[j].employed = employed
+                    return employed
+                }
+            }
+        }
+    }
+    
+    self.for_href = function(href){
+        for (var i=0; i<self.length; i++){
+            for (var j=0; j<self[i].links.length; j++){
+                if (self[i].links[j].href == href){
+                    return self[i].links[j]
+                }
+            }
+        }
+    }
+
+    return self
+}
+
+function Cells($window, maxCount, links){
+    var self = new Array(maxCount)
+    if (angular.isDefined($window.localStorage['dashboard.cells'])){
+        var stored = angular.fromJson(
+            $window.localStorage['dashboard.cells'])
+    } else {
+        var stored = ['spawn_vm.html', 'manage_vms.html', 'flavors.html', 'upload_image.html', 'manage_images.html']
+    }
+    for (var i=0; i<self.length; i++){
+        if (angular.isDefined(stored[i]) && angular.isDefined(links.mark_employed(stored[i], true))){
+            self[i] = links.for_href(stored[i])
+        } else {
+            self[i] = false
+        }
+    }
+
+    self.employ = function(href, index){
+        var currentIndex = self.findIndex(function(n){
+            return n && n.href == href
+        })
+        if (currentIndex != -1){
+            if (index != currentIndex){
+                if (!self.is_spare(index)){
+                    links.mark_employed(self[index].href, false)
+                }
+                
+                self.move(currentIndex, index)
+            }
+        } else {
+            if (!self.is_spare(index)){
+                self.purge(index)
+            }
+            self.embed(href, index)
+        }
+    }
+
+    self.is_spare = function(index){
+        return !self[index]
+    }
+    
+    self.closest_spare = function(index){
+        var i = index + 1;
+        while(true){
+            if (i == index){
+                break
+            }
+            if (i == maxCount) {
+                i = 0
+            }
+            if (self.is_spare(i)){
+                return i
+            }
+            i++;
+        }
+    }
+
+    self.move = function(i, j){
+        self[j] = self[i]
+        self[i] = false
+    }
+
+    self.purge = function(index){
+        links.mark_employed(self[index], false)
+        self[index] = false
+    }
+
+    self.embed = function(href, index){
+        links.mark_employed(href, true)
+        self[index] = links.for_href(href)
+    }
+
+    self.transfer = function(i, j){
+        if (self[i]){
+            if (self[j]){
+                var x = self[j]
+                self[j] = self[i]
+                self[i] = x
+            } else {
+                self.move(i, j)
+            }
+        }
+        console.log(self)
+    }
+
+
+    self.get_index_for = function(href){
+        return self.findIndex(function(n){
+            return n.href == href
+        })
+    }
+
+    return self
+}
+
+var DashboardController = function($scope, $window){
+    if (!supports_html5_storage($window)){
+        console.log('Unsupported browser')
+    }
+    $scope.links = Links(links_data);
+    $scope.cells = Cells($window, 15, $scope.links)
 };
-DashboardController.$inject = ['$scope', 'buttonsPosition'];
+

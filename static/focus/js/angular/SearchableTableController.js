@@ -14,7 +14,7 @@ function SearchableTableController($scope){
         $scope.query = r.join(' ')
     }
 
-    $scope.already_selected_controls = []
+    $scope.already_selected_controls = [{key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'}]
     $scope.visibleControls = function(){
         return $scope.shown_columns.union($scope.hidden_columns).filter(
             function(i){

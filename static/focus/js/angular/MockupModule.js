@@ -31,7 +31,7 @@ module.directive('cbIpWidget', function factory(){
     var directiveDefinitionObject = {
         template: ' \
         <div class="cb-ip-widget"> \
-            <input type="text" ng-model="g1">. \
+            <input type="text" ng-model="g1">fonny. \
             <input type="text" ng-model="g2">. \
             <input type="text" ng-model="g3">. \
             <input type="text" ng-model="g4"> \
@@ -291,5 +291,16 @@ module.directive('ngSecgroupbehaviour', function factory(){
                 $(element).val(value)
             }
         })
+    }
+})
+
+module.directive('myFollowWidth', function(){
+    return function(scope, element, attrs){
+        setTimeout(function(){
+            $x = $(attrs['myFollowWidth']);
+            if ($x.length){
+                console.log($x[0].attr('width'))
+            }
+        }, 100)
     }
 })

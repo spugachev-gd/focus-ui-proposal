@@ -36,8 +36,15 @@
         {name: 'test', query: 'name:test'},
         {name: 'complex really complex search with a very-very long name indeed requiring an ellipsis', query: 'complex really complex search with a very-very long name indeed requiring an ellipsis'}
         ];">
+<style type="text/css">
+@-moz-document url-prefix() {
+  #search_form .btn-group {
+    height: 30px;
+  }
+}
+</style>
     <form class="form-inline" id="search_form">
-        <div class="input-append">
+        <div class="input-append search_input_container">
             <input type="text" class="span2 search" ng-model="query">
             <a class="btn dropdown-toggle builder_lever" ng-click="toggleShown('builder')"><span class="caret"></span></a>
         </div>
@@ -67,15 +74,25 @@
         </div>
     </form>
     <!-- ------------- BUILDER ------------------- -->
-    <div style="position: absolute; width: 500px;"  class="builder_window">
+    <div style="position: absolute; width: 500px;" my-follow-width=".search_input_container" class="builder_window">
 
         <div class="alert control-bar-form" ng-show="shown.builder">
             <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
             <h5>Query Builder</h5>
-            <button class="btn dropdown-toggle" data-toggle="dropdown">Add Field<span class="caret"></span></button>
-            <ul class="dropdown-menu">
+            <div class="btn-group">
+              <button class="btn" ng-click="build_query()">
+                Search
+              </button>
+
+              <button class="btn dropdown-toggle" data-toggle="dropdown">
+                Add Field
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
                 <li ng-repeat="x in visibleControls()"><a ng-click="addField(x.key)">{{ x.title }}</a></li>
-            </ul>
+              </ul>
+            </div>
+            
 
             <form class="form-horizontal form-inline">
                 <div class="control-group" ng-repeat="x in already_selected_controls">
@@ -112,7 +129,7 @@
                 </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button class="btn" ng-click="build_query()">Search</button>
+                        
                     </div>
                 </div>
             </form>
