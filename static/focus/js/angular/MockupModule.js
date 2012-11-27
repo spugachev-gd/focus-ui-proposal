@@ -161,7 +161,7 @@ module.directive('cbPasswordStrength', function(){
     }
 
     var directiveDefinitionObject = {
-        template: '<div class="progress" style="width: {{ barWidth }}px;"> \
+        template: '<div class="progress" style="width: {{ barWidth }}px;" ng-show="!error_message"> \
             <div class="bar bar-danger" style="width: {{ danger }}%;"></div> \
         <div class="bar bar-warning" style="width: {{ warning}}%;"></div> \
         <div class="bar bar-success" style="width: {{ success }}%;"></div> \
@@ -177,8 +177,13 @@ module.directive('cbPasswordStrength', function(){
                 var dangerWidth = 20,
                     warningWidth = 36,
                     successWidth = 44;
-                if (!(isMixedCaseAlphanumeric(value) && isLongEnough(value))){
-                    scope.error_message = 'Password must be mixed-case alphanumeric 6 chars minimum.'
+                if (!isLongEnough(value)){
+                    scope.error_message = 'Password must be 6 chars minimum.'
+                    scope.danger = 0;
+                    scope.warning = 0;
+                    scope.success = 0;
+                } else if (!isMixedCaseAlphanumeric(value)){
+                    scope.error_message = 'Password must be mixed-case alphanumeric.'
                     scope.danger = 0;
                     scope.warning = 0;
                     scope.success = 0;
