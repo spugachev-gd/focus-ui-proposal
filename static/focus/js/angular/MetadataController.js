@@ -35,16 +35,4 @@ function ExistingPairController($scope){
 function FormAppearanceController($scope){
     $scope.show_advanced = false
 }
-jQuery(function($){
-    var select = $('.chzn-select-tagged')
-    select.chosen();
-    var $x = $('#' + select.attr('id') + '_chzn');
-    $x.find('.search-field input').keyup(function(event){
-        if (event.which == 13){
-            var text = $x.find('.no-results span').text()
-            text = text.replace('<', '&lt;').replace('>', '&gt;')
-            select.append('<option selected>' + text + '</option>')
-            select.trigger('liszt:updated')
-        }
-    })
-})
+

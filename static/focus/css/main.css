@@ -131,16 +131,20 @@ table caption{
     overlow: hidden;
 }
 .tiled-list__item td {
-    padding: 20px 15px 15px 15px;
+    padding: 20px 10px 15px 10px;
     text-align: center;
 }
 .tiled-list__item .actions {
-    text-align: left;
+    text-align: center;
     padding-left: 17px;
 }
 .tiled-list__item .name {
  font-family: Garamond, Georgia, "Times New Roman", serif;
     font-weight: bold;
+    text-align: center;
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
 }
 
 .tiled-list__item .name, .tiled-list__item .value {
