@@ -10,6 +10,6 @@ function ChangePasswordController($scope){
         return $scope.wha() && ($scope.new_password != '');
     }
     $scope.$on('hideAllWindows', function(){
-        console.log('catched')
+
     });
 }

@@ -179,9 +179,7 @@ angular.module('dashboard.directive', []).
                             'cells.employ("' + href  + '", ' + index + ')')
                     } else if(angular.isDefined(ui.draggable.data('_cell'))){
                         var href = ui.draggable.attr('href')
-                        console.log('href', href)
                         var from_index = scope.$eval('cells.get_index_for("' + href + '")') 
-                        console.log('index', index)
                         scope.$apply('cells.transfer(' + from_index + ', ' + index + ')')
                     } else {
                         console.log('unknown draggable')
@@ -191,7 +189,6 @@ angular.module('dashboard.directive', []).
                             return n.href || false
                         })
                     )
-                    console.log($window.localStorage['dashboard.cells'])
                 }
             })
         }
@@ -323,7 +320,6 @@ function Cells($window, maxCount, links){
                 self.move(i, j)
             }
         }
-        console.log(self)
     }
 
 

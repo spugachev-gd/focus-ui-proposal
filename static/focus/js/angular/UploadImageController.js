@@ -19,13 +19,11 @@ function UploadImageController($scope, $log){
     //Image Upload Behaviour
     $scope.canSubmit = false;
     $scope.doSubmit = function doSubmit(){
-        console.log('clicked')
         if ($scope.type == 'solid'){
             window.localStorage['additional_image_name'] = $scope.solid_name
         } else {
             window.localStorage['additional_image_name'] = $scope.amazon_name
         }
         window.location = '/dev/spawn_vm.html'
-        //console.log(window.localStorage)
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app{% if page.angular_app %}="{{ page.angular_app }}"{% endif %}>
+<html lang="en" ng-app{% if page.angular_app %}="{{ page.angular_app }}"{% else %}="MockupModule"{% endif %}>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>
@@ -14,7 +14,6 @@
         {% include header_js.html %}
         <script src="static/angular-ui-0.3.1/angular-ui.min.js"></script>
         <script src="static/angular-ui-0.3.1/angular-ui-ieshiv.min.js"></script>
-        <script src="static/focus/js/angular/MockupModule.js"></script>
         {% if page.angular_app %}
         <script src="static/focus/js/angular/{{ page.angular_app }}.js?1"></script>
         {% endif %}

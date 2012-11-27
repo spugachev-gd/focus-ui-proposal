@@ -310,3 +310,24 @@ module.directive('myFollowCss', function(){
         }, 100)
     }
 })
+
+function getHumanReadableLifespan(minutes){
+    return (minutes).minutesAfter(new Date()).relative()
+}
+
+module.directive('slider', function(){
+    return function(scope, element, attrs){
+        var init = 10000
+        $(element).slider({
+            range: "max",
+            min: 1,
+            max: 100500,
+            value: init,
+            slide: function( event, ui ) {
+                scope.$apply('human_readable_lifespan="' + getHumanReadableLifespan(ui.value) + '"')
+            }
+        })
+        scope.human_readable_lifespan = getHumanReadableLifespan(init)
+    }
+})
+
