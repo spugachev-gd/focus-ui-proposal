@@ -74,9 +74,8 @@
         </div>
     </form>
     <!-- ------------- BUILDER ------------------- -->
-    <div style="position: absolute; width: 500px;" my-follow-width=".search_input_container" class="builder_window">
-
-        <div class="alert control-bar-form" ng-show="shown.builder">
+    <div style="position: absolute;" class="builder_window" my-follow-css='{".search_input_container": ["left", "width"]}'>
+        <div class="alert control-bar-form" ng-show="shown.builder" style="right: 0px; left: 0px;">
             <button type="button" class="close" ng-click="toggleShown('builder')">×</button>
             <h5>Query Builder</h5>
             <div class="btn-group">

@@ -294,12 +294,18 @@ module.directive('ngSecgroupbehaviour', function factory(){
     }
 })
 
-module.directive('myFollowWidth', function(){
+module.directive('myFollowCss', function(){
     return function(scope, element, attrs){
         setTimeout(function(){
-            $x = $(attrs['myFollowWidth']);
-            if ($x.length){
-                console.log($x[0].attr('width'))
+            var properties = JSON.parse(attrs['myFollowCss'])
+            var $me = $(element);
+            for (selector in properties){
+                var $x = $(selector);
+                if ($x.length){
+                    properties[selector].forEach(function(name){
+                        $me.css(name, $x.css(name))
+                    })
+                }
             }
         }, 100)
     }

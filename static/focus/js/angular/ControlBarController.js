@@ -21,7 +21,7 @@ function ControlBarController($scope, $rootScope){
                 $("."+ name +"_window").css('left', window_parent_position['left']);
             }
             if (name == 'builder'){
-                $("."+ name +"_window").css('left', window_parent_position['left'] - 414);
+                //$("."+ name +"_window").css('left', window_parent_position['left'] - 15);
             }
       }
     }
