@@ -32,11 +32,9 @@ function ControlBarController($scope, $rootScope){
     $scope.saved_searches_shown = false;
 
     $scope.newSearch = function(){
-        console.log('here inside')
         if ($scope.new_search_name){
             $scope.saved_searches.push({name: $scope.new_search_name, query: $scope.query})
             $scope.new_search_name = '';
-            console.log('here')
         }
     }
     $scope.applySearch = function(query){

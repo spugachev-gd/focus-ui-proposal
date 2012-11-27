@@ -161,15 +161,27 @@ backbuttonned: true
                           </div>
                         </div>
 
-                        <div class="control-group" ng-controller="LifespanController" ng-show="show_advanced">
+                        <div class="control-group" ng-show="show_advanced" ng-controller="LifespanController">
                           <label class="control-label">Lifespan</label>
                           <div class="controls">
                             <p>
-                              <input type="checkbox"  ng-model="infinite_lifespan"> Infinite
+                              <input 
+                                 type="checkbox"  
+                                 ng-model="infinite_lifespan"
+                                 style="margin-top: -4px;"> 
+                              <span style="display: inline-block; margin-top: 6px;">
+                                Infinite
+                              </span>
                             </p>
-                            <p ng-show="!infinite_lifespan">
-                              <input type="text" ng-model="lifespan">{{ lifespan }}
-                            </p>
+                            <div ng-show="!infinite_lifespan">
+                              <div>
+                                Maximum VM lifespan: 
+                                <span>
+                                  {{ human_readable_lifespan }}
+                                </span>
+                              </div>
+                              <div class="slider" slider></div>
+                            </div>
                           </div>
                     </div>
                     
