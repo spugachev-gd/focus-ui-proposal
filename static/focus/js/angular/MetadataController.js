@@ -32,3 +32,6 @@ function ExistingPairController($scope){
         $scope.disabled = true
     }
 }
+function FormAppearanceController($scope){
+    $scope.show_advanced = false
+}

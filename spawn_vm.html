@@ -13,10 +13,9 @@ backbuttonned: true
 {% literal %}
 <div class="row">
     <div class="span6">
-        <form method="GET" action="spawned.html" class="form-horizontal well">
+        <form method="GET" action="spawned.html" class="form-horizontal well" ng-controller="FormAppearanceController">
             <fieldset>
-                <div class="row">
-                    <div class="span5">
+
                         <div class="control-group">
                             <label class="control-label">
                                 <b>Project</b>
@@ -73,7 +72,21 @@ backbuttonned: true
                                 <input type="text" value="" name="name" id="name" tabindex="4">
                             </div>
                         </div>
-                        <div class="control-group ">
+
+
+                        <div class="control-group"  ng-show="!show_advanced">
+                          <label class="control-label">
+                            <a ng-click="show_advanced=true">Show Advanced</a>
+                          </label>
+                        </div>
+                        <div class="control-group"  ng-show="show_advanced"  style="border-bottom: 1px solid #E5E5E5">
+                          <label class="control-label">
+                            <a ng-click="show_advanced=false">Show Basic</a>
+                          </label>
+                        </div>
+
+
+                        <div class="control-group " ng-show="show_advanced">
                             <label class="control-label">Key Pair</label>
                             <div class="controls">
                                 <select class="chzn-select" name="keypair" data-placeholder="Select SSH Key Pair" tabindex="7">
@@ -83,7 +96,8 @@ backbuttonned: true
                                 <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_keypair.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
-                        <div class="control-group">
+
+                        <div class="control-group" ng-show="show_advanced" >
                             <label class="control-label">Security Groups</label>
                             <div class="controls">
                                 <select multiple class="chzn-select" name="sg" data-placeholder="Select Security Groups" tabindex="8">
@@ -100,7 +114,7 @@ backbuttonned: true
                                 <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
-                        <div class="control-group">
+                        <div class="control-group" ng-show="show_advanced">
                           <label class="control-label">Tags</label>
                           <div class="controls">
                             <select multiple class="chzn-select" name="tags" data-placeholder="Enter Tags" tabindex="9">
@@ -111,7 +125,7 @@ backbuttonned: true
                           </div>
                         </div>
 
-                        <div class="control-group" ng-controller="MetadataController">
+                        <div class="control-group" ng-controller="MetadataController" ng-show="show_advanced">
                           <label class="control-label">Metadata</label>
                           <div class="controls" style="position: relative">
                             
@@ -147,7 +161,7 @@ backbuttonned: true
                           </div>
                         </div>
 
-                        <div class="control-group" ng-controller="LifespanController">
+                        <div class="control-group" ng-controller="LifespanController" ng-show="show_advanced">
                           <label class="control-label">Lifespan</label>
                           <div class="controls">
                             <p>
@@ -159,7 +173,6 @@ backbuttonned: true
                           </div>
                     </div>
                     
-                </div>
                 <div class="form-actions">
                     <button class="btn btn-primary" type="submit" tabindex="9"> Spawn it</button>
                     <a class="btn" tabindex="9" href="javascript: history.back();">Cancel</a>
