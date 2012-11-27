@@ -2,6 +2,8 @@
 layout: base
 backbuttonned: true
 ---
+<script src="static/focus/js/angular/LifespanController.js"></script>
+<script src="static/focus/js/angular/MetadataController.js"></script>
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
     <li><a href="manage_vms.html">Virtual Machines</a> <span class="divider">/</span></li>
@@ -45,7 +47,7 @@ backbuttonned: true
                                         chosen
                                        >
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini" href="upload_image.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="upload_image.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -78,7 +80,7 @@ backbuttonned: true
                                     <option value=""></option>
                                     <option value="first private key">first private key</option>
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini" href="add_new_keypair.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_keypair.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -95,7 +97,7 @@ backbuttonned: true
                                     <option value="">web5</option>
 
                                 </select>
-                                <span class="help-inline"><a class="btn btn-mini" href="add_new_security_group.html"><i class="icon-plus-sign"></i></a></span>
+                                <span class="help-inline"><a class="btn btn-mini btn-success" href="add_new_security_group.html"><i class="icon-plus-sign icon-white"></i></a></span>
                             </div>
                         </div>
                         <div class="control-group">
@@ -108,7 +110,55 @@ backbuttonned: true
                             </select>
                           </div>
                         </div>
+
+                        <div class="control-group" ng-controller="MetadataController">
+                          <label class="control-label">Metadata</label>
+                          <div class="controls" style="position: relative">
+                            
+                            <span class="help-inline" style="position: absolute; left: 224px";>
+                              
+                              <a class="btn btn-mini btn-success" ng-click="show_add=!show_add" ng-show="!show_add">
+                                <i class="icon-plus-sign icon-white"></i>
+                            </a>
+                            </span>
+                            
+                            <p ng-show="pairs.length == 0 && !show_add" style="padding-top: 6px"><i>Add some metadata.</i></p>
+
+                            <p ng-repeat="x in pairs" ng-controller="ExistingPairController">
+                              <input type="text" ng-model="x.name" ng-disabled="disabled"> 
+                              <input type="text" ng-model="x.value" ng-disabled="disabled">
+                              <span class="help-inline" >
+                                <a class="btn btn-mini btn-danger" ng-click="removePair(name)" ng-show="disabled"><i class="icon-remove-sign icon-white"></i></a>
+                                <a class="btn btn-mini btn-info" ng-click="editPair()" ng-show="disabled"><i class="icon-pencil icon-white"></i></a>
+                                <a class="btn btn-mini btn-primary" ng-click="disabled=true" ng-show="!disabled"><i class="icon-ok icon-white"></i></a>
+                                <a class="btn btn-mini" ng-click="restorePair()" ng-show="!disabled"><i class="icon-ban-circle"></i></a>
+
+                              </span>
+                            </p>
+                            
+                            <p ng-show="show_add">
+                              <input type="text" ng-model="name"/>
+                              <input type="text" ng-model="value"/>
+                              <a class="btn btn-mini btn-primary" ng-click="add()"><i class="icon-ok icon-white"></i></a>
+                              <a class="btn btn-mini" ng-click="show_add=!show_add"><i class="icon-ban-circle"></i></a>
+                            </p>
+                            
+                           
+                          </div>
+                        </div>
+
+                        <div class="control-group" ng-controller="LifespanController">
+                          <label class="control-label">Lifespan</label>
+                          <div class="controls">
+                            <p>
+                              <input type="checkbox"  ng-model="infinite_lifespan"> Infinite
+                            </p>
+                            <p ng-show="!infinite_lifespan">
+                              <input type="text" ng-model="lifespan">{{ lifespan }}
+                            </p>
+                          </div>
                     </div>
+                    
                 </div>
                 <div class="form-actions">
                     <button class="btn btn-primary" type="submit" tabindex="9"> Spawn it</button>
