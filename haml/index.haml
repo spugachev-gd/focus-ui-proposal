@@ -48,8 +48,14 @@
     vertical-align: top;
     margin: 10px;
   }
-  .quick-links  .droppable-empty {
-    //border: 1px red dashed !important;
+  .quick-links  .droppable-empty {}
+  .quick-links  .droppable span.thumbnail {
+  height: 160px; 
+  background-color: white; 
+  line-height: 160px; 
+  text-align: center; 
+  font-weight: bold; 
+  color: #F0F0F0;
   }
   .quick-links .droppable-container {
     display: inline-block;
@@ -58,8 +64,9 @@
     width: 200px;
     height: 500px;
   }
-  .drop-hover > span, .drop-hover > a {
+  .drop-hover >  span, .drop-hover >  a {
   border: 1px #08c solid;
+  color: #555555 !important;
   }
   .accordion-heading a {
   background-color: #ddd;
@@ -93,7 +100,7 @@
   
   %div.span10.quick-links
     %div.droppable.droppable-empty(ng-repeat="cell in cells" dashboard-cell-box)
-      %span.thumbnail(ui-if="!cell" style="height: 160px; background-color: #F0F0F0; line-height: 160px; text-align: center; font-weight: bold; color: #555")
+      %span.thumbnail(ui-if="!cell")
         Drag link here
       %a.thumbnail(ui-if="cell" href="{{ cell.href }}" dashboard-cell-link="cell")
         %img(src="{{ cell.img }}")

@@ -48,8 +48,14 @@ angular_app: DashboardApp
       vertical-align: top;
       margin: 10px;
     }
-    .quick-links  .droppable-empty {
-      //border: 1px red dashed !important;
+    .quick-links  .droppable-empty {}
+    .quick-links  .droppable span.thumbnail {
+    height: 160px; 
+    background-color: white; 
+    line-height: 160px; 
+    text-align: center; 
+    font-weight: bold; 
+    color: #F0F0F0;
     }
     .quick-links .droppable-container {
       display: inline-block;
@@ -58,8 +64,9 @@ angular_app: DashboardApp
       width: 200px;
       height: 500px;
     }
-    .drop-hover > span, .drop-hover > a {
+    .drop-hover >  span, .drop-hover >  a {
     border: 1px #08c solid;
+    color: #555555 !important;
     }
     .accordion-heading a {
     background-color: #ddd;
@@ -105,7 +112,7 @@ angular_app: DashboardApp
   </div>
   <div class='span10 quick-links'>
     <div class='droppable droppable-empty' dashboard-cell-box='dashboard-cell-box' ng-repeat='cell in cells'>
-      <span class='thumbnail' style='height: 160px; background-color: #F0F0F0; line-height: 160px; text-align: center; font-weight: bold; color: #555' ui-if='!cell'>
+      <span class='thumbnail' ui-if='!cell'>
         Drag link here
       </span>
       <a class='thumbnail' dashboard-cell-link='cell' href='{{ cell.href }}' ui-if='cell'>
