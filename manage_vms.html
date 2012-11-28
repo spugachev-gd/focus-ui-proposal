@@ -57,6 +57,9 @@ backbuttonned: true
      checked_all = false
 
      ">
+    <div class="row">
+      <div class="span10">
+
     {% include control_bar.html %}
     {% literal %}
 
@@ -69,8 +72,6 @@ backbuttonned: true
             {{ 100500 + selectedNumber }} selected on all pages. To restrict selection to this pag only <a ng-click="all_selected=false">click here</a>
         </div>
     </div>
-    <div class="row">
-      <div class="span10">
         <table class="table table-striped table-bordered table-condensed"   ng-hide="mockup_rows == undefined">
             <thead>
             <tr>
