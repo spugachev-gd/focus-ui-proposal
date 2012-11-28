@@ -22,6 +22,11 @@
       {% if page.omit_navbar %}{% else %}
         {% include header_navbar.html %}
       {% endif %}
+      <style type="text/css">
+        .container .container {
+        margin-left: 0px !important;
+        }
+      </style>
         <div class="container">
             {{ content }}
         </div>
