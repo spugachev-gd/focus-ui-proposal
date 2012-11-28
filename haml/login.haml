@@ -1,0 +1,35 @@
+:plain
+  ---
+  layout: base
+  omit_navbar: true
+  ---
+%div.row
+  %div.offset3.span4
+    %form.form-horizontal(method="GET" action="index.html")
+      %div.control-group
+        %div.controls
+          %h4
+            Login
+      %div.control-group
+        %label.control-label(for="inputEmail")
+          Email
+        %div.controls
+          %input(type="text" id="inputEmail" placeholder="Email")
+      %div.control-group
+        %label.control-label(for="inputPassword")
+          Email
+        %div.controls
+          %input(type="text" id="inputPassword" placeholder="Password")
+      %div.control-group
+        %div.controls
+          %label.checkbox
+            %input.checkbox(type="checkbox")
+            Remember me
+          %button.btn(type="submit")
+            Sign in
+          %a(href="recover_password.html")
+            recover password
+            
+        
+      
+        

@@ -19,7 +19,9 @@
         {% endif %}
     </head>
     <body data-spy="scroll" data-target=".subnav" data-offset="50" class="{% if page.backbuttonned %}backbuttonned{% endif %}">
+      {% if page.omit_navbar %}{% else %}
         {% include header_navbar.html %}
+      {% endif %}
         <div class="container">
             {{ content }}
         </div>
