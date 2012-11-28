@@ -77,9 +77,9 @@
   }
   .accordion-body a img.pin {
   border: 0;
-  width: 16px;
-  height: auto;
-  }s)
+  width: 12px;
+  height: 12px;
+  }
 %div.row.all-links(ng-controller="DashboardController")
   {% literal %}
   %div.span2.links-repo
@@ -95,8 +95,9 @@
               %a(href="{{ link.href }}" dashboard-accordion-link='link')
                 %img.small(src="{{ link.small }}")
                 {{ link.title }}
-                %button(ui-if="link.employed" dashboard-link-pin="{{ link.href }}")
-                  %img.pin(src="static/focus/img/1353882682_pin-black.png")
+                %img.pin(ui-if="link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png")
+                %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png")
+                  
   
   %div.span10.quick-links
     %div.droppable.droppable-empty(ng-repeat="cell in cells" dashboard-cell-box)

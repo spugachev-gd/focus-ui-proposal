@@ -77,9 +77,9 @@ angular_app: DashboardApp
     }
     .accordion-body a img.pin {
     border: 0;
-    width: 16px;
-    height: auto;
-    }s)
+    width: 12px;
+    height: 12px;
+    }
   /*]]>*/
 </style>
 <div class='row all-links' ng-controller='DashboardController'>
@@ -100,9 +100,8 @@ angular_app: DashboardApp
               <a dashboard-accordion-link='link' href='{{ link.href }}'>
                 <img class='small' src='{{ link.small }}' />
                 {{ link.title }}
-                <button dashboard-link-pin='{{ link.href }}' ui-if='link.employed'>
-                  <img class='pin' src='static/focus/img/1353882682_pin-black.png' />
-                </button>
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112560_pushpin-2.png' ui-if='link.employed' />
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112565_pin.png' ui-if='!link.employed' />
               </a>
             </p>
           </div>
