@@ -1,0 +1,129 @@
+---
+layout: base
+angular_app: DashboardApp
+---
+<style type='text/css'>
+  /*<![CDATA[*/
+    #accordion2 {
+    background-color: #f0f0f0;
+    border: 1px #ddd solid;
+      border-radius: 4px 4px 4px 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      transition: all 0.2s ease-in-out 0s;
+    }
+    .accordion-group {
+    margin: 0;
+    border: 0;
+    }
+    #accordion2 .accordion-inner {
+      padding: 0;
+    }
+    #accordion2 .accordion-inner p{
+      padding: 0;
+      margin: 0;
+    }
+    .links-repo {
+    margin-top: 10px;
+    }
+    .links-repo ul {
+      margin: 0;
+      padding: 0;
+    }
+    .ui-accordion-content {
+      padding: 0 !important;
+    }
+    
+    #accordion2 .accordion-inner  a {
+      display: inline-block;
+      width: 100%;
+      padding: 10px;
+    }
+    #accordion2 .accordion-inner  a:hover {
+    background-color: #ddd;
+    }
+    .quick-links .droppable {
+      height: 170px !important;
+      width: 170px !important;
+      display: inline-block;
+      vertical-align: top;
+      margin: 10px;
+    }
+    .quick-links  .droppable-empty {}
+    .quick-links  .droppable span.thumbnail {
+    height: 160px; 
+    background-color: white; 
+    line-height: 160px; 
+    text-align: center; 
+    font-weight: bold; 
+    color: #F0F0F0;
+    border-color: #eeffff;
+    }
+    .quick-links .droppable-container {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px;
+      width: 200px;
+      height: 500px;
+    }
+    .drop-hover >  span, .drop-hover >  a {
+    border: 1px #08c solid;
+    color: #555555 !important;
+    }
+    .accordion-heading a {
+    background-color: #ddd;
+    }
+    .accordion-body a img.small{
+    width: 16px;
+    height: auto;
+    }
+    .accordion-body a img.pin {
+    border: 0;
+    width: 12px;
+    height: 12px;
+    }
+  /*]]>*/
+</style>
+<div class='row all-links' ng-controller='DashboardController'>
+  {% literal %}
+  <div class='span2 links-repo'>
+    <div class='accordion' id='accordion2'>
+      <div class='accordion-group' ng-repeat='group in links'>
+        <div class='accordion-heading'>
+          <a class='accordion-toggle' data-parent='#accordion2' data-toggle='collapse' href='#accordion2_{{ $index }}'>
+            <b>
+              {{ group.key }}
+            </b>
+          </a>
+        </div>
+        <div class='accordion-body collapse' id='accordion2_{{ $index }}' ng-class='{in: $first}'>
+          <div class='accordion-inner'>
+            <p ng-repeat='link in group.links'>
+              <a dashboard-accordion-link='link' href='{{ link.href }}'>
+                <img class='small' src='{{ link.small }}' />
+                {{ link.title }}
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112560_pushpin-2.png' ui-if='link.employed' />
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112565_pin.png' ui-if='!link.employed' />
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='span10 quick-links'>
+    <div class='droppable droppable-empty' dashboard-cell-box='dashboard-cell-box' ng-repeat='cell in cells'>
+      <span class='thumbnail' ui-if='!cell'>
+        Drag link here
+      </span>
+      <a class='thumbnail' dashboard-cell-link='cell' href='{{ cell.href }}' ui-if='cell'>
+        <img src='{{ cell.img }}' />
+        <div class='caption'>
+          <h5 class='nobr'>
+            {{ cell.full_title }}
+          </h5>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endliteral %}
+</div>
