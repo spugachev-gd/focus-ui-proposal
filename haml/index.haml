@@ -24,6 +24,8 @@
   }
   .links-repo {
   margin-top: 10px;
+  margin-left: 0px;
+  width: 160px;
   }
   .links-repo ul {
     margin: 0;
@@ -71,11 +73,7 @@
   .accordion-heading a {
   background-color: #ddd;
   }
-  .accordion-body a img.small{
-  width: 16px;
-  height: auto;
-  }
-  .accordion-body a img.pin {
+  .accordion-body img.pin {
   border: 0;
   width: 12px;
   height: 12px;
@@ -91,12 +89,12 @@
               {{ group.key }}
         %div.accordion-body.collapse(id="accordion2_{{ $index }}" ng-class="{in: $first}")
           %div.accordion-inner
-            %p(ng-repeat="link in group.links")
-              %a(href="{{ link.href }}" dashboard-accordion-link='link')
-                %img.small(src="{{ link.small }}")
+            %p(ng-repeat="link in group.links" style="position: relative")
+              %img.pin(ui-if="link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png" style="position: absolute; right: 2px; top: 13px;")
+              %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png" style="position: absolute; right: 2px; top: 13px;")
+              %a(href="{{ link.href }}" dashboard-accordion-link='link' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center;")
                 {{ link.title }}
-                %img.pin(ui-if="link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png")
-                %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png")
+              
                   
   
   %div.span10.quick-links
