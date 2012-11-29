@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app{% if page.angular_app %}="{{ page.angular_app }}"{% else %}="MockupModule"{% endif %}>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>
+            Altai Private Cloud
+        </title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="shortcut icon" href="static/img/favicon.ico">
+
+        {% include header_css.html %}
+        {% include header_js.html %}
+        <script src="static/angular-ui-0.3.1/angular-ui.min.js"></script>
+        <script src="static/angular-ui-0.3.1/angular-ui-ieshiv.min.js"></script>
+        {% if page.angular_app %}
+        <script src="static/focus/js/angular/{{ page.angular_app }}.js?1"></script>
+        {% endif %}
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50" class="{% if page.backbuttonned %}backbuttonned{% endif %}">
+      {% if page.omit_navbar %}{% else %}
+        {% include header_navbar.html %}
+      {% endif %}
+      <style type="text/css">
+        .container .container {
+        margin-left: 0px !important;
+        }
+        .footer {
+        border-top: 1px solid #DDDDDD;
+        }
+      </style>
+        <div class="container">
+            {{ content }}
+        </div>
+        <div class="footer container">
+          <a href="https://altaicloud.atlassian.net/">Altai</a> 
+          Altai Focus UI v.42
+          Build #10500 [26-Dec-2012]
+          |
+          <a href="http://griddynamics.zendesk.com/">Support Desk</a>
+          |
+          <a href="http://altaicloud.myjetbrains.com/">Issues Tracker</a>
+        </div>
+    </body>
+</html>

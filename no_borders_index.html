@@ -24,8 +24,6 @@ angular_app: DashboardApp
     }
     .links-repo {
     margin-top: 10px;
-    margin-left: 0px;
-    width: 160px;
     }
     .links-repo ul {
       margin: 0;
@@ -58,6 +56,10 @@ angular_app: DashboardApp
     text-align: center; 
     font-weight: bold; 
     color: #F0F0F0;
+    border-color: #ffffff;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     }
     .quick-links .droppable-container {
       display: inline-block;
@@ -73,7 +75,11 @@ angular_app: DashboardApp
     .accordion-heading a {
     background-color: #ddd;
     }
-    .accordion-body img.pin {
+    .accordion-body a img.small{
+    width: 16px;
+    height: auto;
+    }
+    .accordion-body a img.pin {
     border: 0;
     width: 12px;
     height: 12px;
@@ -94,11 +100,12 @@ angular_app: DashboardApp
         </div>
         <div class='accordion-body collapse' id='accordion2_{{ $index }}' ng-class='{in: $first}'>
           <div class='accordion-inner'>
-            <p ng-repeat='link in group.links' style='position: relative'>
-              <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112560_pushpin-2.png' style='position: absolute; right: 2px; top: 13px;' ui-if='link.employed' />
-              <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112565_pin.png' style='position: absolute; right: 2px; top: 13px;' ui-if='!link.employed' />
-              <a dashboard-accordion-link='link' href='{{ link.href }}' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center;">
+            <p ng-repeat='link in group.links'>
+              <a dashboard-accordion-link='link' href='{{ link.href }}'>
+                <img class='small' src='{{ link.small }}' />
                 {{ link.title }}
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112560_pushpin-2.png' ui-if='link.employed' />
+                <img class='pin' dashboard-link-pin='{{ link.href }}' src='static/focus/img/1354112565_pin.png' ui-if='!link.employed' />
               </a>
             </p>
           </div>
