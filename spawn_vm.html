@@ -139,7 +139,7 @@ backbuttonned: true
                             <p ng-show="pairs.length == 0 && !show_add" style="padding-top: 6px"><i>Add some metadata.</i></p>
 
                             <p ng-repeat="x in pairs" ng-controller="ExistingPairController">
-                              <input type="text" ng-model="x.name" ng-disabled="disabled"> 
+                              <input type="text" ng-model="x.name" ng-disabled="disabled" style="margin-bottom: 2px;"> 
                               <input type="text" ng-model="x.value" ng-disabled="disabled">
                               <span class="help-inline" >
                                 <a class="btn btn-mini btn-danger" ng-click="removePair(name)" ng-show="disabled"><i class="icon-remove-sign icon-white"></i></a>
@@ -151,10 +151,12 @@ backbuttonned: true
                             </p>
                             
                             <p ng-show="show_add">
-                              <input type="text" ng-model="name"/>
+                              <input type="text" ng-model="name" style="margin-bottom: 2px;"/>
                               <input type="text" ng-model="value"/>
+                              <span class="help-inline" >
                               <a class="btn btn-mini btn-primary" ng-click="add()"><i class="icon-ok icon-white"></i></a>
                               <a class="btn btn-mini" ng-click="show_add=!show_add"><i class="icon-ban-circle"></i></a>
+                              </span>
                             </p>
                             
                            
