@@ -2,6 +2,12 @@
 layout: base
 backbuttonned: true
 ---
+<style type="text/css">
+.chzn-container.chzn-container-multi{
+    width: 75% !important; 
+    min-width: 220px !important;
+}
+</style>
 <script src="static/focus/js/angular/MetadataController.js"></script>
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
@@ -78,17 +84,17 @@ backbuttonned: true
         <td>
           <div class="controls" style="position: relative;">
             <p ng-show="pairs.length == 0 && !show_add" style="padding-top: 6px"><i>Add some metadata.</i></p>
-            <p ng-repeat="x in pairs" ng-controller="ExistingPairController">
+            <div ng-repeat="x in pairs" ng-controller="ExistingPairController">
               <input type="text" ng-model="x.name" ng-disabled="disabled"> 
               <input type="text" ng-model="x.value" ng-disabled="disabled">
                 <a class="btn btn-mini btn-danger" ng-click="removePair(name)" ng-show="disabled" style="margin-top: -8px"><i class="icon-remove-sign icon-white"></i></a>
                 <a class="btn btn-mini btn-info" ng-click="editPair()" ng-show="disabled" style="margin-top: -8px"><i class="icon-pencil icon-white"></i></a>
                 <a class="btn btn-mini btn-primary" ng-click="disabled=true" ng-show="!disabled" style="margin-top: -8px"><i class="icon-ok icon-white"></i></a>
                 <a class="btn btn-mini" ng-click="restorePair()" ng-show="!disabled" style="margin-top: -8px"><i class="icon-ban-circle"></i></a>
-            </p>
+            </div>
             <p ng-show="show_add">
-              <input type="text" ng-model="name"/>
-              <input type="text" ng-model="value"/>
+              <input type="text" ng-model="name" placeholder="Key"/>
+              <input type="text" ng-model="value" placeholder="Value"/>
               <a class="btn btn-mini btn-primary" ng-click="add()" style="margin-top: -8px"><i class="icon-ok icon-white"></i></a>
               <a class="btn btn-mini" ng-click="show_add=!show_add" style="margin-top: -8px"><i class="icon-ban-circle"></i></a>
             </p>

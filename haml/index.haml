@@ -77,7 +77,16 @@
   border: 0;
   width: 12px;
   height: 12px;
+  opacity: 0.65;
   }
+  .accordion-body img.pin:hover {
+  opacity: 1;
+  }
+  a.thumbnail:hover div.xxx-hoverit { border: 1px solid #0088cc !important; transition-delay: 0s; transition-duration: 0.2s; transition-property: all; transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1)}
+
+  a.thumbnail div.xxx-hoverit {  position: absolute; right: -1px; border: 1px #dddddd solid; border-radius: 0 5px; top: -1px; width: 20px; text-align: center; 
+  }
+
 %div.row.all-links(ng-controller="DashboardController")
   {% literal %}
   %div.span2.links-repo
@@ -90,9 +99,9 @@
         %div.accordion-body.collapse(id="accordion2_{{ $index }}" ng-class="{in: $first}")
           %div.accordion-inner
             %p(ng-repeat="link in group.links" style="position: relative")
-              %img.pin(ui-if="link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png" style="position: absolute; right: 2px; top: 13px;")
-              %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png" style="position: absolute; right: 2px; top: 13px;")
-              %a(href="{{ link.href }}" dashboard-accordion-link='link' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center;")
+              %img.pin(ui-if="link.employed" dashboard-link-unpin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png" style="position: absolute; right: 14px; top: 14px; bottom: 14px; cursor: pointer;")
+              %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png" style="position: absolute; right: 14px; top: 14px; bottom: 14px; cursor: pointer;")
+              %a(href="{{ link.href }}" dashboard-accordion-link='link' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center; ")
                 {{ link.title }}
               
                   
@@ -102,6 +111,8 @@
       %span.thumbnail(ui-if="!cell")
         Drag link here
       %a.thumbnail(ui-if="cell" href="{{ cell.href }}" dashboard-cell-link="cell")
+        %div.xxx-hoverit(dashboard-link-unpin="{{ cell.href }}")<
+          x
         %img(src="{{ cell.img }}")
         %div.caption
           %h5.nobr

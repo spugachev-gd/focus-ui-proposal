@@ -2,16 +2,24 @@ var module = angular.module('MockupModule', [])
 
 function doMaybeLink(x){
     if (x.length == 2){
-        if (x[0].endsWith('.html')){
-            return '<a href="' + x[0] + '">' + x[1] +'</a>';
-        } else if (x[0] == 'boolean') {
-            if (x[1] == true){
-                return '<i class="icon icon-check"></i>'
+        if (x[0] == 'binstatus'){
+            console.log('binstatus!')
+            if (Math.random() > 1/2){
+                return '<div style="width: 40px; height: 40px; padding: 10px;"><div style="margin: 10px; width: 20px; height: 20px; background-color: green;text-indent: -100px; border-radius: 10px; overflow: hidden;">OK</div></div>'
             } else {
-                return ''
+                return '<div style="width: 40px; height: 40px; padding: 10px;"><div style="margin: 10px; width: 20px; height: 20px; background-color: red;text-indent: -100px; border-radius: 10px; overflow: hidden;">FAIL</div></div>'
+            }
+        } else {
+            if (x[0].endsWith('.html')){
+                return '<a href="' + x[0] + '">' + x[1] +'</a>';
+            } else if (x[0] == 'boolean') {
+                if (x[1] == true){
+                    return '<i class="icon icon-check"></i>'
+                } else {
+                    return ''
+                }
             }
         }
-
     } else {
         return x[0];
     }
