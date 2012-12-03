@@ -78,14 +78,14 @@ backbuttonned: true
         <td>
           <div class="controls" style="position: relative;">
             <p ng-show="pairs.length == 0 && !show_add" style="padding-top: 6px"><i>Add some metadata.</i></p>
-            <p ng-repeat="x in pairs" ng-controller="ExistingPairController">
+            <div ng-repeat="x in pairs" ng-controller="ExistingPairController">
               <input type="text" ng-model="x.name" ng-disabled="disabled"> 
               <input type="text" ng-model="x.value" ng-disabled="disabled">
                 <a class="btn btn-mini btn-danger" ng-click="removePair(name)" ng-show="disabled" style="margin-top: -8px"><i class="icon-remove-sign icon-white"></i></a>
                 <a class="btn btn-mini btn-info" ng-click="editPair()" ng-show="disabled" style="margin-top: -8px"><i class="icon-pencil icon-white"></i></a>
                 <a class="btn btn-mini btn-primary" ng-click="disabled=true" ng-show="!disabled" style="margin-top: -8px"><i class="icon-ok icon-white"></i></a>
                 <a class="btn btn-mini" ng-click="restorePair()" ng-show="!disabled" style="margin-top: -8px"><i class="icon-ban-circle"></i></a>
-            </p>
+            </div>
             <p ng-show="show_add">
               <input type="text" ng-model="name" placeholder="Key"/>
               <input type="text" ng-model="value" placeholder="Value"/>
