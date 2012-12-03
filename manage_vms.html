@@ -30,6 +30,7 @@ backbuttonned: true
      ng-init="
      shown_columns = [
         {key: 'name', title: 'Name', type: 'text', placeholder: 'Enter Name', help: 'Help!'},
+        {key: 'pingtest', title: 'Ping Test', type: 'binstatus', help: 'Status of VM according to ping test'},
         {key: 'id', title: 'Id', type: 'text', placeholder: 'Enter Id', help: ''},
         {key: 'cost', title: 'Cost Per Day', type: 'intrange', type_options: {min: 0, max: 500, amount_template: '$%min%-$%max%'}, placeholder: 'Enter Cost', help: ''},
         {key: 'vlan', title: 'VLAN', type: 'select', type_options: {options: [{k: '2501', v: '2501'}, {k: '1102', v: '1102'}]}, placeholder: 'Enter VLAN', help: ''},
@@ -43,6 +44,7 @@ backbuttonned: true
      hidden_columns = [];
      mockup_data = {
         name: ['vm_details.html', 'test1'],
+        pingtest: ['binstatus', true],
         id: ['47d4ae6e-cbe1-444e-877d-c4dc9cb696c4'],
         cost: ['$6.4'],
         vlan: ['321'],
