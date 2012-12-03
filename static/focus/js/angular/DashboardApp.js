@@ -193,15 +193,25 @@ angular.module('dashboard.directive', []).
             })
         }
     }).
+    directive('dashboardLinkUnpin', function (){
+        return function(scope, element, attrs){
+            $(element).click(function (e){
+                e.preventDefault()
+                var href = attrs.dashboardLinkUnpin;
+                var index = scope.$eval('cells.get_index_for("' + href + '")')
+                scope.$apply('cells.purge(' + index + ')')
+                scope.$apply('links.mark_employed("' + href + '", false)')
+            })
+        }
+    }).
     directive('dashboardLinkPin', function (){
         return function(scope, element, attrs){
             $(element).click(function (e){
                 e.preventDefault()
                 var href = attrs.dashboardLinkPin;
-                var index = scope.$eval('cells.get_index_for("' + href + '")')
-                scope.$apply('cells.purge(' + index + ')')
-                scope.$apply('links.mark_employed("' + href + '", false)')
-
+                var index = scope.$eval('cells.closest_spare(0, true)')
+                console.log(href, index)
+                scope.$apply('cells.employ("' + href  + '", ' + index + ')')
             })
         }
     })
@@ -255,6 +265,18 @@ function Cells($window, maxCount, links){
         }
     }
 
+    self.serialize = function(){
+        $window.localStorage['dashboard.cells'] = angular.toJson(
+            self.map(function(n){
+                if (n){
+                    return n.href
+                } else {
+                    return undefined
+                }
+            })
+        )
+    }
+
     self.employ = function(href, index){
         var currentIndex = self.findIndex(function(n){
             return n && n.href == href
@@ -264,7 +286,6 @@ function Cells($window, maxCount, links){
                 if (!self.is_spare(index)){
                     links.mark_employed(self[index].href, false)
                 }
-                
                 self.move(currentIndex, index)
             }
         } else {
@@ -279,10 +300,23 @@ function Cells($window, maxCount, links){
         return !self[index]
     }
     
-    self.closest_spare = function(index){
-        var i = index + 1;
+    self.closest_spare = function(index, inclusive){
+        var i, stopIndex;
+        if (inclusive){
+            i = index;
+        } else {
+            i = index + 1;
+        }
+        if (inclusive){
+            stopIndex = index - 1;
+            if (stopIndex == -1){
+                stopIndex = maxCount - 1;
+            }
+        } else {
+            stopIndex = index;
+        }
         while(true){
-            if (i == index){
+            if (i == stopIndex){
                 break
             }
             if (i == maxCount) {
@@ -298,16 +332,19 @@ function Cells($window, maxCount, links){
     self.move = function(i, j){
         self[j] = self[i]
         self[i] = false
+        self.serialize();
     }
 
     self.purge = function(index){
         links.mark_employed(self[index], false)
         self[index] = false
+        self.serialize();
     }
 
     self.embed = function(href, index){
         links.mark_employed(href, true)
         self[index] = links.for_href(href)
+        self.serialize();
     }
 
     self.transfer = function(i, j){
@@ -320,6 +357,7 @@ function Cells($window, maxCount, links){
                 self.move(i, j)
             }
         }
+        self.serialize();
     }
 
 

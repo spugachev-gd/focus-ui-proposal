@@ -90,9 +90,9 @@
         %div.accordion-body.collapse(id="accordion2_{{ $index }}" ng-class="{in: $first}")
           %div.accordion-inner
             %p(ng-repeat="link in group.links" style="position: relative")
-              %img.pin(ui-if="link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png" style="position: absolute; right: 14px; top: 14px; bottom: 14px;")
+              %img.pin(ui-if="link.employed" dashboard-link-unpin="{{ link.href }}" src="static/focus/img/1354112560_pushpin-2.png" style="position: absolute; right: 14px; top: 14px; bottom: 14px; cursor: pointer;")
               %img.pin(ui-if="!link.employed" dashboard-link-pin="{{ link.href }}" src="static/focus/img/1354112565_pin.png" style="position: absolute; right: 14px; top: 14px; bottom: 14px; cursor: pointer;")
-              %a(href="{{ link.href }}" dashboard-accordion-link='link' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center; cursor: pointer;")
+              %a(href="{{ link.href }}" dashboard-accordion-link='link' style="background-image: url('{{ link.small }}'); padding-left: 20px; background-repeat: no-repeat; background-position: 2px center; ")
                 {{ link.title }}
               
                   
