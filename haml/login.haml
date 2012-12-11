@@ -4,7 +4,7 @@
   omit_navbar: true
   ---
 %div.row
-  %div.offset3.span4
+  %div.offset3.span6
     %form.form-horizontal(method="GET" action="index.html")
       %div.control-group
         %div.controls
@@ -12,12 +12,12 @@
             Login
       %div.control-group
         %label.control-label(for="inputEmail")
-          Email
+          Name
         %div.controls
-          %input(type="text" id="inputEmail" placeholder="Email")
+          %input(type="text" id="inputEmail" placeholder="Name")
       %div.control-group
         %label.control-label(for="inputPassword")
-          Email
+          Password
         %div.controls
           %input(type="text" id="inputPassword" placeholder="Password")
       %div.control-group
@@ -27,9 +27,10 @@
             Remember me
           %button.btn(type="submit")
             Sign in
+          &nbsp;::&nbsp;
           %a(href="recover_password.html")
             recover password
-            
-        
-      
+          &nbsp;::&nbsp;
+          %a(href="recover_name.html")
+            recover name
         
