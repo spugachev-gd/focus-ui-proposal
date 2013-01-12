@@ -37,7 +37,7 @@ backbuttonned: true
      empty_message = 'Use search to find images you are interested in.'
      ">
 {% include control_bar.html %}
-    {% literal %}
+    {% raw %}
     <div class="alert alert-info" ng-show="mockup_rows==undefined">{{ empty_message }}</div>
     <div class="alert alert-warning" ng-show="all_checked_checkbox">
         <div ng-show="!all_selected">
@@ -163,7 +163,7 @@ backbuttonned: true
         </tr>-->
     </tbody>
     </table>
-    {% endliteral %}
+    {% endraw %}
     {% include pagination.html %}
 </div>
 </div>

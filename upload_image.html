@@ -8,7 +8,7 @@ backbuttonned: true
     <li class="active">Register</li>
 </ul>
 {% include hidden_back_button.html %}
-{% literal %}
+{% raw %}
 <div class="row" ng-controller="UploadImageController">
     <div class="span7">
         <form method="POST" class="form-horizontal new-image well">
@@ -154,7 +154,7 @@ backbuttonned: true
 <hr>
 * <i>paste image URL or select file from local disk, then press <button class="btn btn-success btn-mini"><i class="icon-white icon-circle-arrow-up"></i></button></i>
 <script src="static/focus/js/angular/UploadImageController.js"></script>
-{% endliteral %}
+{% endraw %}
 {% include back_button.html %}
 
 

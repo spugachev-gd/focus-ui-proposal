@@ -10,7 +10,7 @@ backbuttonned: true
     <li class="active">Start VM</li>
 </ul>
 {% include hidden_back_button.html %}
-{% literal %}
+{% raw %}
 <div class="row">
     <div class="span6">
         <form method="GET" action="spawned.html" class="form-horizontal well" ng-controller="FormAppearanceController">
@@ -250,5 +250,5 @@ backbuttonned: true
         $("#preselected_image").attr('selected', 'selected');
     }
 </script>
-{% endliteral %}
+{% endraw %}
 {% include back_button.html %}
