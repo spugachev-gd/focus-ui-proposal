@@ -46,7 +46,7 @@ backbuttonned: true
              <option>OSCORE</option>
          </select>
     </form>
-    {% literal %}
+    {% raw %}
     <div class="alert alert-info" ng-show="results.length == 0">{{ empty_message }}</div>
 
     <div  ng-hide="results.length == 0">
@@ -62,7 +62,7 @@ backbuttonned: true
                 </tr>
             </tbody>
         </table>
-        {% endliteral %}
+        {% endraw %}
         {% include pagination.html %}
     </div>
 </div>

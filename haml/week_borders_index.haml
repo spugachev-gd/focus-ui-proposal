@@ -82,7 +82,7 @@
   height: 12px;
   }
 %div.row.all-links(ng-controller="DashboardController")
-  {% literal %}
+  {% raw %}
   %div.span2.links-repo
     %div.accordion#accordion2
       %div.accordion-group(ng-repeat="group in links")
@@ -109,4 +109,4 @@
         %div.caption
           %h5.nobr
             {{ cell.full_title }}
-  {% endliteral %}      
+  {% endraw %}      
